@@ -1,0 +1,27 @@
+.bold {
+  font-weight: bold;
+}
+
+.text-size {
+  font-size: 1.6rem;
+}
+
+.text-color {
+  color: var(--text-color);
+}
+
+.heading-color {
+  color: var(--primary-color);
+}
+
+.title {
+  font-size: 6rem;
+}
+
+.sub-title {
+  font-size: 4rem;
+}
+
+.section-title {
+  font-size: 6.5rem;
+}
