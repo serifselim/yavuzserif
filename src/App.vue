@@ -1,6 +1,13 @@
 <template>
-  <div>App</div>
+  <model />
 </template>
+
 <script>
-export default {};
+// Components
+import { Model } from "./components";
+export default {
+  components: {
+    Model,
+  },
+};
 </script>
