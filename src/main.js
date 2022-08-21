@@ -2,7 +2,7 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import { TroisJSVuePlugin } from 'troisjs'
 import router from './router'
-import './index.css'
+import './styles/main.css';
 
 const app = createApp(App)
 

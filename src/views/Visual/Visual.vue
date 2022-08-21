@@ -1,6 +1,15 @@
 <template>
-  <div>Visual</div>
+  <main class="bg-iron min-h-screen">
+    <Header />
+  </main>
 </template>
+
 <script>
-export default {};
+import { Header } from "../../components/visualComponents";
+
+export default {
+  components: {
+    Header,
+  },
+};
 </script>

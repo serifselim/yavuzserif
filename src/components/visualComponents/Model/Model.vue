@@ -4,7 +4,7 @@
     antialias
     :orbit-ctrl="{ target, autoRotate: true, enableZoom: false }"
     shadow
-    resize
+    resize="window"
   >
     <Camera :position="{ x: 15, y: 15, z: 15 }" />
     <Scene ref="scene" background="transparent">
