@@ -4,17 +4,25 @@
     antialias
     :orbit-ctrl="{ target, autoRotate: true, enableZoom: false }"
     shadow
-    resize="window"
+    resize
   >
     <Camera :position="{ x: 15, y: 15, z: 15 }" />
     <Scene ref="scene" background="transparent">
+      <HemisphereLight />
       <DirectionalLight
         :position="{ x: 0, y: 200, z: 100 }"
         cast-shadow
         :shadow-camera="{ top: 180, bottom: -120, left: -120, right: 120 }"
       />
 
-      <ShadowMaterial />
+      <Plane
+        :width="2000"
+        :height="2000"
+        :rotation="{ x: -Math.PI / 2 }"
+        receive-shadow
+      >
+        <PhongMaterial color="#999999" :props="{ depthWrite: false }" />
+      </Plane>
 
       <FbxModel src="/assets/models/serifdog.fbx" @load="onLoad" />
     </Scene>

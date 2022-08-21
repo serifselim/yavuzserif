@@ -1,13 +1,14 @@
 <template>
-  <model />
+  <router-view></router-view>
+  asdasd
 </template>
 
 <script>
 // Components
-import { Model } from "./components";
+// import { Model } from "./components";
 export default {
-  components: {
-    Model,
-  },
+  // components: {
+  //   Model,
+  // },
 };
 </script>
