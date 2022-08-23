@@ -4,10 +4,10 @@
     antialias
     :orbit-ctrl="{ target, autoRotate: true, enableZoom: false }"
     shadow
-    resize="window"
+    resize
   >
     <Camera :position="{ x: 15, y: 15, z: 15 }" />
-    <Scene ref="scene" background="transparent">
+    <Scene ref="scene" background="#d2d8d9">
       <HemisphereLight />
       <DirectionalLight
         :position="{ x: 0, y: 200, z: 100 }"

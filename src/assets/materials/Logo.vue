@@ -18,6 +18,3 @@
     <circle cx="10.0941" cy="55.1294" r="9.31765" fill="#6B735C" />
   </svg>
 </template>
-<script>
-export default {};
-</script>
