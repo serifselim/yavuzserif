@@ -2,5 +2,12 @@
   <router-view />
 </template>
 <script>
-export default {};
+import setTheme from './utils/setTheme';
+export default {
+  data:()=>({
+  }),
+  created() {
+    setTheme();
+  },
+};
 </script>

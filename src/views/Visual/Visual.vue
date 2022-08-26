@@ -1,6 +1,6 @@
 <template>
-  <main class="bg-iron min-h-screen">
-    <Header />
+  <main class="bg-slate-50">
+    <Header :lang='lang' />
     <Model/>
   </main>
 </template>
@@ -9,6 +9,7 @@
 import { Header, Model } from "../../components/visualComponents";
 
 export default {
+  props:['lang'],
   components: {
     Header,
     Model
