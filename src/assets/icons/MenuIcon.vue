@@ -1,11 +1,8 @@
 <template>
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    :style="{ fill: 'var(--text-color)' }"
-    height="48"
-    width="48"
-  >
-    <path d="M6 36v-3h36v3Zm0-10.5v-3h36v3ZM6 15v-3h36v3Z" />
+  <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48">
+    <path
+      d="M6 36v-3h26v3Zm33.9-2.6-9.45-9.45 9.4-9.4L42 16.7l-7.25 7.25 7.3 7.3ZM6 25.4v-3h20v3ZM6 15v-3h26v3Z"
+    />
   </svg>
 </template>
 <script>

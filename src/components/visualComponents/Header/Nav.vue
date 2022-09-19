@@ -1,34 +1,25 @@
-<template lang="">
-    <ul class="flex nav">
-        <li class="nav__item text-size">[<span>0</span>]About</li>
-        <li class="nav__item text-size">[<span>1</span>]Projects</li>
-        <li class="nav__item text-size">[<span>2</span>]Source</li>
-    </ul>
+<template>
+  <ul
+    class="
+      flex flex-col
+      md:flex-row
+      gap-y-8
+      md:gap-x-8 md:mr-7 md:mt-0
+      mt-10
+      text-lg
+    "
+  >
+    <li class="hover:text-primary">
+      <a href="/#"> [<span class="text-primary">0</span>] About </a>
+    </li>
+    <li class="hover:text-primary">
+      <a href="/#"> [<span class="text-primary">1</span>] Projects </a>
+    </li>
+    <li class="hover:text-primary">
+      <a href="/#"> [<span class="text-primary">2</span>] Source </a>
+    </li>
+  </ul>
 </template>
 <script>
-export default {
-  props: ["class"],
-};
+export default {};
 </script>
-<style scoped>
-.nav {
-  margin-right: 2rem;
-}
-
-.nav__item {
-  cursor: pointer;
-  margin-block: auto;
-}
-
-.nav__item:not(:first-child) {
-  margin-left: 2rem;
-}
-
-.nav__item:hover {
-  color: var(--primary-color);
-}
-
-.nav__item span {
-  color: var(--primary-color);
-}
-</style>

@@ -1,18 +1,26 @@
 <template>
-  <main class="bg-slate-50">
-    <Header :lang='lang' />
-    <Model/>
+  <main>
+    <Header />
+    <section class="flex">
+      <Introduce />
+    </section>
+    <div>
+      <ul>
+        <li></li>
+      </ul>
+    </div>
   </main>
 </template>
 
 <script>
-import { Header, Model } from "../../components/visualComponents";
+import { Header, Model, Introduce } from "../../components/visualComponents";
 
 export default {
-  props:['lang'],
+  props: ["lang"],
   components: {
     Header,
-    Model
+    Model,
+    Introduce,
   },
 };
 </script>

@@ -2,29 +2,20 @@
   <Renderer
     ref="renderer"
     antialias
+    :height="400"
+    :width="400"
     :orbit-ctrl="{ target, autoRotate: true, enableZoom: false }"
     shadow
-    resize
   >
-    <Camera :position="{ x: 15, y: 15, z: 15 }" />
+    <Camera :position="{ x: 16, y: 16, z: 15 }" />
     <Scene ref="scene" background="#d2d8d9">
       <HemisphereLight />
-      <DirectionalLight
-        :position="{ x: 0, y: 200, z: 100 }"
-        cast-shadow
-        :shadow-camera="{ top: 180, bottom: -120, left: -120, right: 120 }"
+
+      <FbxModel
+        src="/assets/models/serifdog.fbx"
+        @load="onLoad"
+        :scale="{ x: 1.3, y: 1.3, z: 1.3 }"
       />
-
-      <Plane
-        :width="2000"
-        :height="2000"
-        :rotation="{ x: -Math.PI / 2 }"
-        receive-shadow
-      >
-        <PhongMaterial color="#999999" :props="{ depthWrite: false }" />
-      </Plane>
-
-      <FbxModel src="/assets/models/serifdog.fbx" @load="onLoad" />
     </Scene>
   </Renderer>
 </template>

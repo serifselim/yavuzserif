@@ -6,8 +6,8 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base{
-    body{
-        @apply font-sans;
-    }
+@layer base {
+  body {
+    @apply font-sans bg-background;
+  }
 }
