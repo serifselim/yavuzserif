@@ -13,7 +13,8 @@ module.exports = {
         'background': '#d2d8d9',
       },
       fontFamily: {
-        sans: ['Cascadia Code', 'sans-serif']
+        sans: ['Cascadia Code', 'sans-serif'],
+        mono: ['Cascadia Mono', 'sans-serif']
       }
     },
   },

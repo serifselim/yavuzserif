@@ -9,13 +9,13 @@
       text-lg
     "
   >
-    <li class="hover:text-primary">
+    <li class="md:hover:text-primary">
       <a href="/#"> [<span class="text-primary">0</span>] About </a>
     </li>
-    <li class="hover:text-primary">
+    <li class="md:hover:text-primary">
       <a href="/#"> [<span class="text-primary">1</span>] Projects </a>
     </li>
-    <li class="hover:text-primary">
+    <li class="md:hover:text-primary">
       <a href="/#"> [<span class="text-primary">2</span>] Source </a>
     </li>
   </ul>

@@ -1,19 +1,19 @@
 <template>
   <main>
     <Header />
-    <section class="flex">
       <Introduce />
-    </section>
     <div>
       <ul>
         <li></li>
       </ul>
     </div>
+    <FooterLeft/>
+    <FooterRight/>
   </main>
 </template>
 
 <script>
-import { Header, Model, Introduce } from "../../components/visualComponents";
+import { Header, Model, Introduce, FooterLeft, FooterRight } from "../../components/visualComponents";
 
 export default {
   props: ["lang"],
@@ -21,6 +21,8 @@ export default {
     Header,
     Model,
     Introduce,
+    FooterLeft,
+    FooterRight
   },
 };
 </script>

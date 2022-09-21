@@ -1,3 +1,5 @@
 export { default as Header } from './Header/Header.vue'
 export { default as Model } from './Model/Model.vue'
 export { default as Introduce } from './Introduce/Introduce.vue'
+export { default as FooterLeft } from './Footer/FooterLeft.vue'
+export { default as FooterRight } from './Footer/FooterRight.vue'

@@ -7,8 +7,6 @@
     "preview": "vite preview --port 4173"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^6.2.0",
-    "animate.css": "^4.1.1",
     "three": "^0.134.0",
     "troisjs": "^0.3.4",
     "vue": "^3.2.37",

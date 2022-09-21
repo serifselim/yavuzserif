@@ -15,9 +15,9 @@
       <div class="md:hidden">
         <button
           @click="dialog = true"
-          class="navbar-burger flex items-center text-dark md:p-3"
+          class="navbar-burger flex items-center text-dark md:p-3 outline rounded-sm"
         >
-          <MenuIcon />
+          <ion-icon name="menu-outline" size="large"/>
         </button>
       </div>
       <!-- Hamburger Menu -->
@@ -27,6 +27,7 @@
           md:hidden
           items-center
           fixed
+          z-20
           w-screen
           h-screen
           top-0
@@ -50,7 +51,7 @@
             @click="dialog = false"
             class="absolute right-5 top-7 cursor-pointer"
           >
-            <CloseIcon />
+            <ion-icon name="close-circle-outline"/>
           </div>
           <Logo />
           <Nav />
@@ -103,5 +104,6 @@ export default {
     opacity: 1;
   }
 }
+
 </style>
 

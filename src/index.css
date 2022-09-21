@@ -1,5 +1,6 @@
 /* Font */
 @import url('https://cdn.jsdelivr.net/npm/@xz/fonts@1/serve/cascadia-code.min.css');
+@import url('http://fonts.cdnfonts.com/css/cascadia-mono');
 
 /* Tailwind */
 @tailwind base;
@@ -9,5 +10,8 @@
 @layer base {
   body {
     @apply font-sans bg-background;
+  }
+  ion-icon{
+    font-size: 48px;
   }
 }
