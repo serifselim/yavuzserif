@@ -1,8 +1,8 @@
 <template>
-  <section class="flex">
+  <section class="flex relative top-2/4 -translate-y-2/4">
     <div class="
       flex flex-col-reverse
-      md:flex-row md:mt-40
+      md:flex-row
       max-w-7xl
       mx-auto
       my-auto

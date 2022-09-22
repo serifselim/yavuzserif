@@ -1,6 +1,6 @@
 <template>
   <header>
-    <div class="py-6 px-9 flex items-center justify-end">
+    <div class="py-6 px-9 flex items-center fixed w-screen justify-end z-50 bg-light shadow-sm">
       <Logo class="mr-auto" />
       <!-- Desktop -->
       <div class="hidden md:flex items-center">

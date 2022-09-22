@@ -1,28 +1,30 @@
 <template>
   <main>
     <Header />
-      <Introduce />
-    <div>
-      <ul>
-        <li></li>
-      </ul>
+    <div class="max-w-7xl mx-auto">
+      <div class="h-screen">
+        <Introduce />
+      </div>
+      <div class="h-screen">
+        <About />
+      </div>
+      <FooterLeft />
+      <FooterRight />
     </div>
-    <FooterLeft/>
-    <FooterRight/>
   </main>
 </template>
 
 <script>
-import { Header, Model, Introduce, FooterLeft, FooterRight } from "../../components/visualComponents";
+import { Header, Model, Introduce, FooterLeft, FooterRight, About } from "../../components/visualComponents";
 
 export default {
-  props: ["lang"],
   components: {
     Header,
     Model,
     Introduce,
     FooterLeft,
-    FooterRight
+    FooterRight,
+    About
   },
 };
 </script>
