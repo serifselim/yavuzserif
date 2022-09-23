@@ -8,14 +8,20 @@
       <div class="h-screen">
         <About />
       </div>
-      <FooterLeft />
-      <FooterRight />
+      <div class="h-screen mb-10">
+        <Projects />
+      </div>
+      <div class="hidden md:block">
+        <FooterLeft />
+        <FooterRight />
+      </div>
+
     </div>
   </main>
 </template>
 
 <script>
-import { Header, Model, Introduce, FooterLeft, FooterRight, About } from "../../components/visualComponents";
+import { Header, Model, Introduce, FooterLeft, FooterRight, About, Projects } from "../../components/visualComponents";
 
 export default {
   components: {
@@ -24,7 +30,8 @@ export default {
     Introduce,
     FooterLeft,
     FooterRight,
-    About
+    About,
+    Projects
   },
 };
 </script>

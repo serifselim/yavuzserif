@@ -16,10 +16,7 @@
     </section>
 </template>
 <script>
-import AboutCode from '../../../assets/materials/AboutCode.vue'
 export default {
-    components:{
-        AboutCode
-    }
+
 }
 </script>

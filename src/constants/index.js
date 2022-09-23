@@ -1,3 +1,1 @@
-export const appTexts = {
-    
-}
+export {default as projectsInfo} from './projectsInfo'

@@ -1,5 +1,5 @@
 <template>
-    <div class="fixed left-11 bottom-0 md:visible">
+    <div class="fixed left-11 bottom-0">
         <ul class="flex flex-col gap-x-5">
             <li class="transition-all hover:mb-3 hover:text-primary">
                 <a target="_blank" href="https://github.com/serifselim">
