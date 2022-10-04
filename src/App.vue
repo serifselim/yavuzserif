@@ -1,13 +1,10 @@
 <template>
-  <router-view />
+  <main-vue/>
 </template>
 <script>
-import setTheme from './utils/setTheme';
+import MainVue from './views/Main.vue';
 export default {
-  data:()=>({
-  }),
-  created() {
-    setTheme();
-  },
+  name: 'App',
+  components: {MainVue}
 };
 </script>

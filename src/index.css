@@ -8,10 +8,15 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply font-sans bg-background;
   }
-  ion-icon{
+
+  ion-icon {
     font-size: 48px;
   }
 }

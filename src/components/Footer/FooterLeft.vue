@@ -20,4 +20,9 @@
         <div class="w-1 h-20 bg-dark mx-auto" />
     </div>
 </template>
+<script>
+export default {
+    name: "FooterLeft"
+}
+</script>
 

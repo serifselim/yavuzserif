@@ -1,7 +1,7 @@
 <template >
     <section class="flex flex-col md:flex-row">
         <div class="flex flex-col items-center flex-1">
-            <img src="../../../assets/images/avatar.jpg" alt="avatar" class="max-w-xs rounded-3xl mb-10 grayscale transition-all hover:grayscale-0 border-4 border-primary">
+            <img src="@/assets/images/avatar.jpg" alt="avatar" class="max-w-xs rounded-3xl mb-10 grayscale transition-all hover:grayscale-0 border-4 border-primary">
             <p class="text-lg font-bold text-dark leading-6 font-mono w-3/4 mb-10 md:mb-0">
                 I have been interested in computers since childhood and design since high school. When I started
                 university
@@ -11,12 +11,12 @@
             </p>
         </div>
         <div class="flex-1">
-            <img src="../../../assets/images/code.png" class="w-3/4 mx-auto" alt="code-img">
+            <img src="@/assets/images/code.png" class="w-3/4 mx-auto" alt="code-img">
         </div>
     </section>
 </template>
 <script>
 export default {
-
+    name: "About"
 }
 </script>

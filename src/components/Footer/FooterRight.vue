@@ -5,9 +5,14 @@
     </div>
 </template>
 
-<style scoped>
-    .text-vertical{
-        writing-mode: vertical-lr;
-    }
+<script>
+export default {
+    name: "FooterRight"
+}
+</script>    
 
+<style scoped>
+.text-vertical {
+    writing-mode: vertical-lr;
+}
 </style>

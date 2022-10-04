@@ -15,5 +15,7 @@
   </button>
 </template>
 <script>
-export default {};
+export default {
+  name: "Resume Button"
+};
 </script>

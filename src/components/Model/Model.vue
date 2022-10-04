@@ -36,6 +36,7 @@ import {
   ShadowMaterial,
 } from "troisjs";
 export default {
+  name: "Model",
   components: {
     AmbientLight,
     Camera,

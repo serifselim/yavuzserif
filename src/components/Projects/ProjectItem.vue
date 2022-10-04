@@ -4,21 +4,18 @@
             <img class="rounded-lg max-w-md" :src="project.images[imgIndex]" alt="item-image">
         </div>
         <div class="flex-1 text-center md:text-right font-mono">
-            <h2 class="text-[35px] font-bold text-primary">Linkedin Clone</h2>
-            <p class="text-lg">This project includes various functions of linkedin, one of the most used social media
-                today.</p>
+            <h2 class="text-[35px] font-bold text-primary">{{project.title}}</h2>
+            <p class="text-lg">{{project.desc}}</p>
             <ul class="text-lg">
                 <li class="text-primary font-bold text-xl">What did i use ?</li>
-                <li>ReactJS</li>
-                <li>Styled-Components</li>
-                <li>Redux</li>
-                <li>Context API</li>
+                <li v-for="(tech,i) in project.technologies" :key='i'>{{tech}}</li>
             </ul>
         </div>
     </div>
 </template>
 <script>
 export default {
+    name: "ProjectItem",
     props:['project'],
     data:() => ({
         imgIndex:0

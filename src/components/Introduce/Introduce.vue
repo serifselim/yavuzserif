@@ -18,7 +18,7 @@
         bg-red
         -mt-10
       ">
-        <span class="text-[40px]">Hi I’m Serif.I’m</span>
+        <span class="text-[40px]">Hey, I’m Yavuz Selim</span>
         <span class="
           relative
           text-[60px]
@@ -28,8 +28,7 @@
           text-center
           md:text-right
           text-primary
-        ">FRONTEND
-          <br />DEVELOP<span class="box">E</span>R</span>
+        ">DESIGNER+DEVELOP<span class="box">E</span>R</span>
       </div>
       <Model />
     </div>
@@ -38,6 +37,7 @@
 <script>
 import Model from "../Model/Model.vue";
 export default {
+  name: "Introduce",
   components: {
     Model,
   },
