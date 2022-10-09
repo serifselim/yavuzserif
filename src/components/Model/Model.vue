@@ -14,7 +14,7 @@
       <FbxModel
         src="/assets/models/serifdog.fbx"
         @load="onLoad"
-        :scale="{ x: 1.3, y: 1.3, z: 1.3 }"
+        :scale="modelScale"
       />
     </Scene>
   </Renderer>
@@ -52,6 +52,10 @@ export default {
   data() {
     return {
       target: new Vector3(0, 0, 0),
+      modelScale:
+        window.screen.width < 768
+          ? { x: 1, y: 1, z: 1 }
+          : { x: 1.3, y: 1.3, z: 1.3 },
       scene: null,
     };
   },
