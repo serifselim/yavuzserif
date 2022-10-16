@@ -1,5 +1,7 @@
 <template >
-  <button
+  <a
+    href="/src/assets/docs/resume.pdf"
+    download="resume"
     class="
       transition-all
       text-dark
@@ -12,10 +14,10 @@
     "
   >
     Resume
-  </button>
+  </a>
 </template>
 <script>
 export default {
-  name: "Resume Button"
+  name: "Resume Button",
 };
 </script>
