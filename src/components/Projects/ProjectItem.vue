@@ -1,6 +1,6 @@
 <template>
   <div class="flex items-center justify-center flex-col md:flex-row">
-    <div class="img-div flex-[2]">
+    <div class="releative img-div flex-[2]">
       <img
         class="rounded-lg md:max-w-md"
         :src="project.images[imgIndex]"
@@ -8,12 +8,33 @@
       />
     </div>
     <div class="flex-1 text-center md:text-right font-mono">
-      <h2 class="text-[35px] font-bold text-primary">{{ project.title }}</h2>
+      <a :href="project.liveHref" target="_black">
+        <h2
+          class="
+            text-[35px]
+            font-bold
+            text-primary
+            md:no-underline
+            underline
+            hover:underline hover:text-dark
+            transition-all
+          "
+        >
+          {{ project.title }}
+        </h2>
+      </a>
       <p class="text-lg">{{ project.desc }}</p>
-      <ul class="text-lg">
-        <li class="text-primary font-bold text-xl">What did i use ?</li>
-        <li v-for="(tech, i) in project.technologies" :key="i">{{ tech }}</li>
-      </ul>
+      <div class="details">
+        <ul class="text-lg">
+          <li class="text-primary font-bold text-xl">What did i use ?</li>
+          <li v-for="(tech, i) in project.technologies" :key="i">{{ tech }}</li>
+        </ul>
+        <div>
+          <a target="_blank" :href="project.githubHref">
+            <ion-icon size="extra-large" name="logo-github" />
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 </template>

@@ -5,10 +5,41 @@
       <div id="intro" class="h-screen">
         <introduce-vue />
       </div>
-      <div id="about" class="md:flex md:items-center">
+      <div id="about" class="md:flex md:items-center flex-wrap">
+        <h1
+          class="
+            hidden
+            md:block
+            text-primary
+            -rotate-12
+            font-black
+            text-[50px]
+            ml-14
+            -mb-[280px]
+            transition-all
+            hover:text-dark
+          "
+        >
+          About
+        </h1>
         <about-vue />
       </div>
-      <div id="projects" class="px-10 flex items-center">
+      <div id="projects" class="px-10 flex items-center flex-wrap pt-32">
+        <h1
+          class="
+            hidden
+            md:block
+            text-primary
+            -rotate-12
+            font-black
+            text-[50px]
+            -mb-[170px]
+            transition-all
+            hover:text-dark
+          "
+        >
+          Projects
+        </h1>
         <projects-vue />
       </div>
       <div class="hidden md:block">

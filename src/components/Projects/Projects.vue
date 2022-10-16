@@ -1,5 +1,5 @@
 <template>
-  <section class="bg-red md:mt-[270px]">
+  <section class="bg-red md:mt-[150px]">
     <h1 class="absolute left-0 top-0 font-mono font-bold text-primary">
       Projects
     </h1>

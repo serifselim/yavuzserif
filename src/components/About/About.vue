@@ -1,5 +1,5 @@
 <template >
-  <section class="flex flex-col md:flex-row">
+  <section class="flex flex-col md:flex-row md:my-[200px]">
     <div class="flex flex-col items-center flex-1">
       <img
         src="@/assets/images/avatar.jpg"

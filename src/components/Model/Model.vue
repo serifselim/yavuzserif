@@ -72,5 +72,10 @@ export default {
       this.mixer.update(this.clock.getDelta());
     },
   },
+  watch: {
+    modelScale() {
+      console.log(this.modelScale);
+    },
+  },
 };
 </script>
