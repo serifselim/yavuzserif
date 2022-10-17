@@ -12,7 +12,7 @@ export default {
   }),
   mounted(){
     setTimeout(() => {
-      // this.isLoading = false
+      this.isLoading = false
     }, 1500);
   },
   components: {MainVue, SpinnerVue},

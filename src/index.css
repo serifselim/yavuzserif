@@ -21,7 +21,6 @@
     font-size: 48px;
   }
   canvas{
-    border-radius: 50px;
-    @apply md:mb-0 mb-14
+    @apply md:mb-0 mb-14 rounded-[70px]
   }
 }
