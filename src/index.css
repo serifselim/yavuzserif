@@ -14,9 +14,14 @@
 
   body {
     @apply font-sans bg-background;
+    overflow-y: scroll;
   }
 
   ion-icon {
     font-size: 48px;
+  }
+  canvas{
+    border-radius: 50px;
+    @apply md:mb-0 mb-14
   }
 }

@@ -4,12 +4,28 @@
     antialias
     :height="400"
     :width="400"
-    :orbit-ctrl="{ target, autoRotate: true, enableZoom: false }"
+    :orbit-ctrl="{ 
+      target, 
+      enableZoom: false, 
+      autoRotate: true, 
+      enablePan: false,  
+      maxPolarAngle: Math.PI / 3.5 , 
+      minPolarAngle: Math.PI / 3.5 
+      }"
     shadow
   >
     <Camera :position="{ x: 16, y: 16, z: 15 }" />
     <Scene ref="scene" background="#d2d8d9">
-      <HemisphereLight />
+
+      <DirectionalLight
+        :position="{ x: 0, y: 30, z: 100 }"
+        cast-shadow :shadow-camera="{ top: 180, bottom: 100, left: -120, right: 120 }"
+      />
+
+      <DirectionalLight
+        :position="{ x: -50, y: -30, z: -100 }"
+        cast-shadow :shadow-camera="{ top: 180, bottom: 100, left: -120, right: 120 }"
+      />
 
       <FbxModel
         src="/assets/models/serifdog.fbx"
@@ -22,7 +38,7 @@
 
 <script>
 // Model from mixamo.com
-import { AnimationMixer, Clock, Vector3 } from "three";
+import { AnimationMixer, Clock, Vector3, Fog, GridHelper } from "three";
 import {
   AmbientLight,
   Camera,
@@ -56,11 +72,10 @@ export default {
         window.screen.width < 768
           ? { x: 1, y: 1, z: 1 }
           : { x: 1.3, y: 1.3, z: 1.3 },
-      scene: null,
     };
   },
   mounted() {
-    this.scene = this.$refs.scene.scene;
+    this.setGrid()
   },
   methods: {
     onLoad(object) {
@@ -71,6 +86,14 @@ export default {
     updateMixer() {
       this.mixer.update(this.clock.getDelta());
     },
+    setGrid(){
+      const scene = this.$refs.scene.scene;
+      scene.fog = new Fog(0xa0a0a0, 200, 1000)
+      const grid = new GridHelper(2000, 20, 0x000000, 0x000000)
+      grid.material.opacity = 0.5
+      grid.material.transparent = true
+      this.$refs.scene.add(grid)
+    }
   },
   watch: {
     modelScale() {

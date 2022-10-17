@@ -33,13 +33,14 @@
             relative
             md:text-[60px]
             text-[50px]
-            font-mono font-bold
+            font-mono 
+            font-bold
             leading-[3.90rem]
             text-center
             md:text-right
             text-primary
           "
-          >FRONTEND DEVELOP<span class="box">E</span>R</span
+          >FRONTEND DEVELOPE<span class="box">R</span></span
         >
       </div>
       <Model />

@@ -1,8 +1,8 @@
+import './index.css';
+import 'animate.css';
 import { createApp } from 'vue'
 import { TroisJSVuePlugin } from 'troisjs'
 import App from './App.vue'
-import './index.css';
-import 'animate.css';
 
 const app = createApp(App)
 

@@ -2,7 +2,7 @@
   <header>
     <div
       class="
-        py-6
+        pt-6
         px-9
         flex
         items-center

@@ -7,6 +7,7 @@
       text-dark
       border-4 border-primary
       rounded
+      text-center
       py-[2px]
       px-6
       text-lg

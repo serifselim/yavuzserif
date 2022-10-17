@@ -2,7 +2,7 @@
   <div class="flex items-center justify-center flex-col md:flex-row">
     <div class="releative img-div flex-[2]">
       <img
-        class="rounded-lg md:max-w-md"
+        class="rounded-lg md:max-w-md md:mb-0 mb-3"
         :src="project.images[imgIndex]"
         alt="item-image"
       />
@@ -11,7 +11,8 @@
       <a :href="project.liveHref" target="_black">
         <h2
           class="
-            text-[35px]
+            text-[28px]
+            md:text-[35px]
             font-bold
             text-primary
             md:no-underline
@@ -23,10 +24,10 @@
           {{ project.title }}
         </h2>
       </a>
-      <p class="text-lg">{{ project.desc }}</p>
+      <p class=" text-sm md:text-lg">{{ project.desc }}</p>
       <div class="details">
-        <ul class="text-lg">
-          <li class="text-primary font-bold text-xl">What did i use ?</li>
+        <ul class="text-sm md:text-lg">
+          <li class="text-primary font-bold text-base md:text-xl">What did i use ?</li>
           <li v-for="(tech, i) in project.technologies" :key="i">{{ tech }}</li>
         </ul>
         <div>
