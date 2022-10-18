@@ -76,7 +76,6 @@
           </div>
           <logo-vue />
           <nav-vue />
-          <resume-button-vue class="w-full mt-auto" />
         </div>
       </div>
 
