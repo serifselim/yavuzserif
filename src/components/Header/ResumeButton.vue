@@ -1,7 +1,6 @@
 <template >
   <a
-    href="/src/assets/docs/resume.pdf"
-    download="resume"
+    href="https://cdn.discordapp.com/attachments/852603525103091787/1031890780907896892/resume.pdf"
     class="
       transition-all
       text-dark
