@@ -1,6 +1,6 @@
 /* Font */
 @import url('https://cdn.jsdelivr.net/npm/@xz/fonts@1/serve/cascadia-code.min.css');
-@import url('http://fonts.cdnfonts.com/css/cascadia-mono');
+@import url('https://fonts.cdnfonts.com/css/cascadia-mono');
 
 /* Tailwind */
 @tailwind base;
