@@ -1,86 +1,75 @@
 <template>
-  <section class="flex relative top-2/4 -translate-y-2/4 flex-wrap">
+  <section class="grid min-h-[calc(100vh-7rem)] items-center gap-10 pb-14 md:grid-cols-[1.05fr_0.95fr] md:pb-20">
     <div
-      class="
-        flex flex-col-reverse
-        md:flex-row
-        max-w-7xl
-        mx-auto
-        my-auto
-        h-full
-        -mt-38
-        md:mt-0
-      "
+      class="order-2 flex flex-col items-start md:order-1"
     >
-      <div
-        class="
-          flex-1
-          z-10
-          md:mt-8
-          flex flex-col
-          items-center
-          md:items-end
-          bg-red
-          px-12
-          -mt-10
-        "
-      >
-        <span class="text-center md:text-left text-[26px] md:text-[40px]"
-          >Hey, I’m Yavuz and I'm a
-        </span>
-        <span
-          class="
-            relative
-            md:text-[60px]
-            text-[50px]
-            font-mono 
-            font-bold
-            leading-[3.90rem]
-            text-center
-            md:text-right
-            text-primary
-          "
-          >FRONTEND DEVELOPE<span class="box">R</span></span
+      <p class="font-mono text-sm font-semibold uppercase tracking-[0.2em] text-primary">
+        {{ $t("hero.eyebrow") }}
+      </p>
+      <h1 class="mt-5 max-w-4xl text-5xl font-black leading-[0.98] text-dark md:text-7xl">
+        {{ $t("hero.title") }}
+      </h1>
+      <p class="mt-6 max-w-2xl text-lg leading-8 text-muted md:text-xl">
+        {{ $t("hero.body") }}
+      </p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a
+          href="#projects"
+          class="rounded-full bg-dark px-6 py-3 text-sm font-semibold text-light transition hover:bg-primary"
         >
+          {{ $t("hero.projectsCta") }}
+        </a>
+        <a
+          href="#contact"
+          class="rounded-full border border-line bg-surface px-6 py-3 text-sm font-semibold text-dark transition hover:border-primary hover:text-primary"
+        >
+          {{ $t("hero.contactCta") }}
+        </a>
       </div>
-      <Model />
+      <dl class="mt-12 grid w-full max-w-2xl grid-cols-3 gap-3">
+        <div
+          v-for="metric in metrics"
+          :key="metric.label"
+          class="border-l border-line pl-4"
+        >
+          <dt class="text-2xl font-black text-dark">{{ metric.value }}</dt>
+          <dd class="mt-1 text-xs font-semibold uppercase tracking-wide text-muted">{{ metric.label }}</dd>
+        </div>
+      </dl>
     </div>
-    <p class="mx-auto text-right font-mono hidden md:block">
-      “The design is not just what it looks like and feels like. <br />
-      The design is how it works” <br />
-      <span class="italic text-primary">— Steve Jobs</span>
-      <hr class="mt-3 border-primary border-2 rounded"/>
-    </p>
+
+    <div class="order-1 md:order-2">
+      <div class="relative mx-auto max-w-[440px]">
+        <div class="absolute -left-4 top-8 hidden rounded-full border border-line bg-surface px-4 py-2 text-sm font-semibold shadow-sm md:block">
+          {{ $t("hero.craftBadge") }}
+        </div>
+        <div class="absolute -right-2 bottom-10 hidden rounded-full bg-dark px-4 py-2 text-sm font-semibold text-light shadow-sm md:block">
+          {{ $t("hero.codeBadge") }}
+        </div>
+        <Model />
+      </div>
+    </div>
   </section>
 </template>
 <script>
-import Model from "../Model/Model.vue";
+import { defineAsyncComponent } from "vue";
+
 export default {
   name: "Introduce",
   components: {
-    Model,
+    Model: defineAsyncComponent(() => import("../Model/Model.vue")),
+  },
+  computed: {
+    metrics() {
+      return this.$tm("hero.metrics");
+    },
   },
 };
 </script>
 <style scoped>
-.box {
-  background: transparent;
-  color: #828c6d;
-  animation: 1s closeOpen infinite;
-}
-
-@keyframes closeOpen {
-  0% {
-    background: #1f2426;
-    color: #d2d8d9;
-  }
-  90% {
-    background: #1f2426;
-    color: #d2d8d9;
-  }
-  100% {
-    background: transparent;
-    color: #828c6d;
+@media (max-width: 420px) {
+  h1 {
+    font-size: clamp(2.75rem, 12vw, 3.4rem);
   }
 }
 </style>

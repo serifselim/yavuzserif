@@ -1,23 +1,23 @@
 <template>
-    <div class="fixed left-11 bottom-0">
-        <ul class="flex flex-col gap-x-5">
-            <li class="transition-all hover:mb-3 hover:text-primary">
-                <a target="_blank" href="https://github.com/serifselim">
-                    <ion-icon size="large" name="logo-github" />
+    <div class="fixed left-8 bottom-0">
+        <ul class="flex flex-col gap-4">
+            <li class="transition-all hover:-translate-y-1 hover:text-primary">
+                <a target="_blank" rel="noreferrer" aria-label="GitHub" href="https://github.com/serifselim">
+                    <ion-icon name="logo-github" />
                 </a>
             </li>
-            <li class="transition-all hover:mb-3 hover:text-primary">
-                <a target="_blank" href="https://www.linkedin.com/in/serifselim/">
-                    <ion-icon size="large" name="logo-linkedin" />
+            <li class="transition-all hover:-translate-y-1 hover:text-primary">
+                <a target="_blank" rel="noreferrer" aria-label="LinkedIn" href="https://www.linkedin.com/in/serifselim/">
+                    <ion-icon name="logo-linkedin" />
                 </a>
             </li>
-            <li class="transition-all hover:mb-3 hover:text-primary">
-                <a target="_blank" href="https://www.instagram.com/yvzserif/">
-                    <ion-icon size="large" name="logo-instagram" />
+            <li class="transition-all hover:-translate-y-1 hover:text-primary">
+                <a target="_blank" rel="noreferrer" aria-label="Instagram" href="https://www.instagram.com/yvzserif/">
+                    <ion-icon name="logo-instagram" />
                 </a>
             </li>
         </ul>
-        <div class="w-1 h-20 bg-dark mx-auto" />
+        <div class="mt-5 h-20 w-px bg-dark mx-auto" />
     </div>
 </template>
 <script>
@@ -25,4 +25,3 @@ export default {
     name: "FooterLeft"
 }
 </script>
-

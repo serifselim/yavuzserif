@@ -1,44 +1,46 @@
-<template >
-  <section class="flex flex-col md:flex-row md:my-[200px]">
-    <div class="flex flex-col items-center flex-1">
+<template>
+  <section class="grid gap-10 border-t border-line py-16 md:grid-cols-[0.8fr_1.2fr] md:py-24">
+    <div>
+      <p class="font-mono text-sm font-semibold uppercase tracking-[0.2em] text-primary">
+        {{ $t("about.eyebrow") }}
+      </p>
+      <h2 class="mt-3 text-4xl font-black leading-tight md:text-5xl">
+        {{ $t("about.title") }}
+      </h2>
+    </div>
+
+    <div class="grid gap-8 md:grid-cols-[240px_1fr]">
       <img
         src="@/assets/images/avatar.jpg"
-        alt="avatar"
-        class="
-          w-1/2
-          md:max-w-xs
-          rounded-3xl
-          mb-10
-          grayscale
-          transition-all
-          hover:grayscale-0
-          border-4 border-primary
-        "
+        alt="Yavuz Serifoglu"
+        loading="lazy"
+        decoding="async"
+        class="aspect-[4/5] w-full max-w-[260px] rounded-2xl border border-line object-cover shadow-sm"
       />
-      <p
-        class="
-          text-lg
-          font-bold
-          text-dark
-          leading-6
-          font-mono
-          w-3/4
-          mb-10
-          md:mb-0
-        "
-      >
-        I have been interested in computers since childhood and design since
-        high school. When I started university I first determined my profession
-        as an Interface Designer, but with the algorithm course I took last
-        year, I met the software. I develop myself both in software and design.
-      </p>
-    </div>
-    <div class="flex-1">
-      <img
-        src="@/assets/images/code.png"
-        class="w-3/4 mx-auto"
-        alt="code-img"
-      />
+      <div class="space-y-7">
+        <p class="text-lg leading-8 text-muted">
+          {{ $t("about.body") }}
+        </p>
+        <div class="grid gap-3 sm:grid-cols-3">
+          <div
+            v-for="item in strengths"
+            :key="item.title"
+            class="rounded-lg border border-line bg-surface p-4"
+          >
+            <h3 class="font-bold text-dark">{{ item.title }}</h3>
+            <p class="mt-2 text-sm leading-6 text-muted">{{ item.desc }}</p>
+          </div>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <span
+            v-for="skill in skills"
+            :key="skill"
+            class="rounded-full border border-line bg-surface px-3 py-2 text-xs font-semibold text-muted"
+          >
+            {{ skill }}
+          </span>
+        </div>
+      </div>
     </div>
   </section>
 </template>
@@ -46,8 +48,11 @@
 export default {
   name: "About",
   computed: {
-    getWidth() {
-      return window.screen.width;
+    strengths() {
+      return this.$tm("about.strengths");
+    },
+    skills() {
+      return this.$tm("about.skills");
     },
   },
 };

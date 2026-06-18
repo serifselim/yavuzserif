@@ -1,46 +1,47 @@
 <template>
-  <header>
+  <header class="fixed inset-x-0 top-0 z-50 border-b border-line/80 bg-background/90 backdrop-blur-xl">
     <div
       class="
-        pt-6
-        px-9
+        mx-auto
         flex
+        max-w-7xl
         items-center
-        fixed
-        w-screen
-        justify-end
-        z-50
-        bg-light
+        justify-between
+        px-5
+        py-4
+        md:px-10
       "
     >
-      <logo-vue class="mr-auto" />
-      <!-- Desktop -->
-      <div class="hidden md:flex items-center">
+      <a href="#intro" :aria-label="$t('common.goToIntro')">
+        <logo-vue />
+      </a>
+
+      <div class="hidden items-center md:flex">
         <nav-vue />
+        <language-toggle-vue class="mr-3" />
         <resume-button-vue />
       </div>
-      <!-- Desktop -->
 
-      <!-- Mobile -->
-
-      <!-- Hamburger Menu -->
       <div class="md:hidden">
         <button
           @click="dialog = true"
+          type="button"
+          :aria-label="$t('common.openNavigation')"
           class="
-            navbar-burger
             flex
             items-center
+            justify-center
             text-dark
-            md:p-3
-            outline
-            rounded-sm
+            rounded-full
+            border border-line
+            bg-surface
+            p-3
+            shadow-sm
           "
         >
           <ion-icon name="menu-outline" size="large" />
         </button>
       </div>
-      <!-- Hamburger Menu -->
 
       <div
         v-if="dialog"
@@ -55,31 +56,39 @@
           left-0
           bg-dialog
         "
+        @click.self="dialog = false"
       >
         <div
           class="
             dialog-content
             flex flex-col
-            bg-white
-            w-2/3
+            bg-background
+            w-[82vw]
+            max-w-sm
             h-screen
-            py-6
-            px-9
+            py-5
+            px-6
             relative
+            border-r border-line
           "
         >
-          <div
+          <button
             @click="dialog = false"
-            class="absolute right-5 top-7 cursor-pointer"
+            type="button"
+            :aria-label="$t('common.closeNavigation')"
+            class="absolute right-5 top-5 flex items-center justify-center rounded-full border border-line bg-surface p-2 text-dark"
           >
             <ion-icon name="close-circle-outline" />
-          </div>
-          <logo-vue />
-          <nav-vue />
+          </button>
+
+          <a href="#intro" class="w-fit" :aria-label="$t('common.goToIntro')" @click="dialog = false">
+            <logo-vue />
+          </a>
+          <nav-vue @navigate="dialog = false" />
+          <language-toggle-vue class="mt-8 w-fit" />
+          <resume-button-vue class="mt-8 w-fit" />
         </div>
       </div>
-
-      <!-- Mobile -->
     </div>
   </header>
 </template>
@@ -89,34 +98,36 @@
 import LogoVue from "../Logo/Logo.vue";
 import ResumeButtonVue from "./ResumeButton.vue";
 import NavVue from "./Nav.vue";
+import LanguageToggleVue from "./LanguageToggle.vue";
 export default {
   name: "Header",
   components: {
     LogoVue,
     NavVue,
     ResumeButtonVue,
+    LanguageToggleVue,
   },
   data: () => ({
-    drawer: false,
     dialog: false,
   }),
 };
 </script>
 <style scoped>
 .bg-dialog {
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(21, 21, 21, 0.35);
 }
 .dialog-content {
-  animation: openDialogAnim 0.2s linear;
+  animation: openDialogAnim 0.18s ease-out;
 }
 
 @keyframes openDialogAnim {
   from {
     opacity: 0;
+    transform: translateX(-16px);
   }
   to {
     opacity: 1;
+    transform: translateX(0);
   }
 }
 </style>
-

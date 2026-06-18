@@ -2,20 +2,21 @@
   <Renderer
     ref="renderer"
     antialias
-    :height="400"
-    :width="400"
+    :height="canvasSize"
+    :width="canvasSize"
     :orbit-ctrl="{ 
       target, 
       enableZoom: false, 
       autoRotate: true, 
       enablePan: false,  
-      maxPolarAngle: Math.PI / 3.5 , 
-      minPolarAngle: Math.PI / 3.5 
+      maxPolarAngle: polarAngle, 
+      minPolarAngle: polarAngle 
       }"
     shadow
   >
     <Camera :position="{ x: 16, y: 16, z: 15 }" />
-    <Scene ref="scene" background="#d2d8d9">
+    <Scene ref="scene" background="#f5f2ec">
+      <AmbientLight color="#ffffff" :intensity="0.55" />
 
       <DirectionalLight
         :position="{ x: 0, y: 30, z: 100 }"
@@ -37,20 +38,16 @@
 </template>
 
 <script>
-// Model from mixamo.com
 import { AnimationMixer, Clock, Vector3, Fog, GridHelper } from "three";
 import {
   AmbientLight,
   Camera,
   DirectionalLight,
   FbxModel,
-  HemisphereLight,
   Renderer,
-  PhongMaterial,
-  Plane,
   Scene,
-  ShadowMaterial,
 } from "troisjs";
+
 export default {
   name: "Model",
   components: {
@@ -58,24 +55,25 @@ export default {
     Camera,
     DirectionalLight,
     FbxModel,
-    HemisphereLight,
     Renderer,
-    PhongMaterial,
-    Plane,
     Scene,
-    ShadowMaterial,
   },
   data() {
     return {
       target: new Vector3(0, 0, 0),
-      modelScale:
-        window.screen.width < 768
-          ? { x: 1, y: 1, z: 1 }
-          : { x: 1.3, y: 1.3, z: 1.3 },
+      polarAngle: Math.PI / 3.5,
+      canvasSize: window.innerWidth < 768 ? 320 : 420,
+      modelScale: window.innerWidth < 768
+        ? { x: 1, y: 1, z: 1 }
+        : { x: 1.3, y: 1.3, z: 1.3 },
     };
   },
   mounted() {
-    this.setGrid()
+    this.setGrid();
+    window.addEventListener("resize", this.updateCanvasSize);
+  },
+  beforeUnmount() {
+    window.removeEventListener("resize", this.updateCanvasSize);
   },
   methods: {
     onLoad(object) {
@@ -86,18 +84,20 @@ export default {
     updateMixer() {
       this.mixer.update(this.clock.getDelta());
     },
-    setGrid(){
+    setGrid() {
       const scene = this.$refs.scene.scene;
-      scene.fog = new Fog(0xa0a0a0, 200, 1000)
-      const grid = new GridHelper(2000, 20, 0x000000, 0x000000)
-      grid.material.opacity = 0.5
-      grid.material.transparent = true
-      this.$refs.scene.add(grid)
-    }
-  },
-  watch: {
-    modelScale() {
-      console.log(this.modelScale);
+      scene.fog = new Fog(0xf5f2ec, 200, 1000);
+      const grid = new GridHelper(2000, 20, 0x2f7d6b, 0x151515);
+      grid.material.opacity = 0.18;
+      grid.material.transparent = true;
+      this.$refs.scene.add(grid);
+    },
+    updateCanvasSize() {
+      const isCompact = window.innerWidth < 768;
+      this.canvasSize = isCompact ? 320 : 420;
+      this.modelScale = isCompact
+        ? { x: 1, y: 1, z: 1 }
+        : { x: 1.3, y: 1.3, z: 1.3 };
     },
   },
 };

@@ -7,14 +7,18 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'primary': '#828c6d',
-        'light': '#d2d8d9',
-        'dark': '#1F2426',
-        'background': '#d2d8d9',
+        'primary': '#2f7d6b',
+        'accent': '#d9703f',
+        'light': '#f8fafc',
+        'dark': '#151515',
+        'muted': '#626a73',
+        'line': '#d8ded8',
+        'surface': '#ffffff',
+        'background': '#f5f2ec',
       },
       fontFamily: {
-        sans: ['Cascadia Code', 'sans-serif'],
-        mono: ['Cascadia Mono', 'sans-serif']
+        sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        mono: ['Cascadia Code', 'SFMono-Regular', 'Consolas', 'monospace']
       }
     },
   },

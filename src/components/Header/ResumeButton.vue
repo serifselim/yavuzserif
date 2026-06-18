@@ -1,23 +1,34 @@
 <template >
   <a
-    href="https://cdn.discordapp.com/attachments/852603525103091787/1031890780907896892/resume.pdf"
+    :href="resumeUrl"
+    target="_blank"
+    rel="noreferrer"
     class="
       transition-all
-      text-dark
-      border-4 border-primary
-      rounded
+      text-light
+      bg-dark
+      border border-dark
+      rounded-full
       text-center
-      py-[2px]
-      px-6
-      text-lg
-      md:hover:bg-primary md:hover:text-light
+      py-2
+      px-5
+      text-sm
+      font-semibold
+      shadow-sm
+      hover:bg-primary
+      hover:border-primary
     "
   >
-    Resume
+    {{ $t("common.resume") }}
   </a>
 </template>
 <script>
+import resumeUrl from "@/assets/docs/resume.pdf";
+
 export default {
-  name: "Resume Button",
+  name: "ResumeButton",
+  data: () => ({
+    resumeUrl,
+  }),
 };
 </script>

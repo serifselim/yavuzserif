@@ -12,7 +12,7 @@
       mb-4
       max-w-xs
       text-light
-      rounded-lg
+      rounded-full
       shadow
       bg-dark
     "
@@ -26,10 +26,9 @@
         items-center
         w-8
         h-8
-        text-green-500
-        bg-green-100
-        rounded-lg
-        dark:bg-green-800 dark:text-green-200
+        text-light
+        bg-primary
+        rounded-full
       "
     >
       <svg
@@ -45,10 +44,10 @@
           clip-rule="evenodd"
         ></path>
       </svg>
-      <span class="sr-only">Check icon</span>
+      <span class="sr-only">{{ $t("common.emailCopied") }}</span>
     </div>
-    <div class="ml-3 text-sm text-right font-normal">
-      Email copied successfully.
+    <div class="ml-3 text-sm text-right font-medium">
+      {{ $t("common.emailCopied") }}
     </div>
   </div>
 </template>

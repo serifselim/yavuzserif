@@ -12,8 +12,9 @@ import {
 export default [
   {
     id: 0,
-    title: 'Linkedin Clone',
-    desc: 'This project includes various functions of linkedin, one of the most used social media today.',
+    titleKey: 'projects.items.linkedin.title',
+    categoryKey: 'projects.items.linkedin.category',
+    descKey: 'projects.items.linkedin.desc',
     githubHref: 'https://github.com/serifselim/linkedin-clone',
     liveHref: 'https://linkedin-clone-lemon.vercel.app/',
     technologies: ['ReactJS', 'Styled-Components', 'Redux', 'Context API'],
@@ -21,8 +22,9 @@ export default [
   },
   {
     id: 1,
-    title: 'Weather of Turkey',
-    desc: 'It is an application that shows the current weather conditions of the cities in Turkey.',
+    titleKey: 'projects.items.weather.title',
+    categoryKey: 'projects.items.weather.category',
+    descKey: 'projects.items.weather.desc',
     githubHref: 'https://github.com/serifselim/weather-of-turkey',
     liveHref: 'https://weather-of-turkey.vercel.app/',
     technologies: ['ReactJS', 'Styled-Components', 'Redux', 'Context API'],
@@ -30,11 +32,12 @@ export default [
   },
   {
     id: 2,
-    title: 'Keyboard Practice',
-    desc: 'It is an application that aims to improve your ability to use the keyboard',
+    titleKey: 'projects.items.keyboard.title',
+    categoryKey: 'projects.items.keyboard.category',
+    descKey: 'projects.items.keyboard.desc',
     githubHref: 'https://github.com/serifselim/keyboard-practice',
     liveHref: 'https://keyboard-practice-kappa.vercel.app/',
-    technologies: ['Pure HTML', 'Pure CSS', 'Redux', 'Pure Javascript'],
+    technologies: ['HTML', 'CSS', 'JavaScript'],
     images: [keyboard0],
   },
 ]
