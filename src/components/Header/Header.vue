@@ -9,7 +9,7 @@
         justify-between
         px-5
         py-4
-        md:px-10
+        md:px-20
       "
     >
       <a href="#intro" :aria-label="$t('common.goToIntro')">
@@ -22,7 +22,7 @@
         <resume-button-vue />
       </div>
 
-      <div class="md:hidden">
+      <div v-show="!dialog" class="md:hidden">
         <button
           @click="dialog = true"
           type="button"

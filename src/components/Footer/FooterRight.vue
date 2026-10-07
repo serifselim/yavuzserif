@@ -5,7 +5,7 @@
       type="button"
       class="text-vertical cursor-pointer text-center text-sm font-medium tracking-wide text-muted transition hover:text-primary"
       :aria-label="$t('common.copyEmail')"
-      >yavuzserifoglu@gmail.com</button
+      >{{ site.email }}</button
     >
     <div class="w-px h-20 bg-dark ml-2 mx-auto mt-3" />
     <toast-vue v-if="isCopied" />
@@ -14,15 +14,17 @@
 
 <script>
 import ToastVue from "../Global/Toast.vue";
+import { site } from "@/constants";
 export default {
   name: "FooterRight",
   data: () => ({
     isCopied: false,
+    site,
   }),
   methods: {
     async copyEmail() {
       if (navigator.clipboard) {
-        await navigator.clipboard.writeText("yavuzserifoglu@gmail.com");
+        await navigator.clipboard.writeText(site.email);
       }
       this.isCopied = true;
       setTimeout(() => {

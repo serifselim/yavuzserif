@@ -1,15 +1,18 @@
 <template>
   <main class="overflow-hidden">
     <header-vue />
-    <div class="mx-auto max-w-7xl px-5 md:px-10">
+    <div class="mx-auto max-w-7xl px-5 md:px-20">
       <div id="intro" class="min-h-screen pt-24 md:pt-28">
         <introduce-vue />
       </div>
+      <div id="work" class="scroll-mt-28">
+        <projects-vue />
+      </div>
+      <div id="experience" class="scroll-mt-28">
+        <experience-vue />
+      </div>
       <div id="about" class="scroll-mt-28">
         <about-vue />
-      </div>
-      <div id="projects" class="scroll-mt-28">
-        <projects-vue />
       </div>
       <section
         id="contact"
@@ -31,13 +34,13 @@
             <div class="flex flex-wrap gap-3">
               <a
                 class="rounded-full bg-dark px-5 py-3 text-sm font-semibold text-light transition hover:bg-primary"
-                href="mailto:yavuzserifoglu@gmail.com"
+                :href="emailHref"
               >
                 {{ $t("contact.email") }}
               </a>
               <a
                 class="rounded-full border border-line bg-surface px-5 py-3 text-sm font-semibold text-dark transition hover:border-primary hover:text-primary"
-                href="https://www.linkedin.com/in/serifselim/"
+                :href="site.linkedin"
                 target="_blank"
                 rel="noreferrer"
               >
@@ -45,11 +48,19 @@
               </a>
               <a
                 class="rounded-full border border-line bg-surface px-5 py-3 text-sm font-semibold text-dark transition hover:border-primary hover:text-primary"
-                href="https://github.com/serifselim"
+                :href="site.github"
                 target="_blank"
                 rel="noreferrer"
               >
                 {{ $t("contact.github") }}
+              </a>
+              <a
+                class="rounded-full border border-line bg-surface px-5 py-3 text-sm font-semibold text-dark transition hover:border-primary hover:text-primary"
+                :href="resumeUrl"
+                target="_blank"
+                rel="noreferrer"
+              >
+                {{ $t("contact.resume") }}
               </a>
             </div>
           </div>
@@ -64,6 +75,7 @@
 </template>
 
 <script>
+import resumeUrl from "@/assets/docs/resume.pdf";
 import {
   HeaderVue,
   IntroduceVue,
@@ -71,10 +83,22 @@ import {
   FooterRightVue,
   AboutVue,
   ProjectsVue,
+  ExperienceVue,
 } from "@/components";
+import { site } from "@/constants";
+import { mailtoHref } from "@/i18n/locale.mjs";
 
 export default {
   name: "Main",
+  data: () => ({
+    site,
+    resumeUrl,
+  }),
+  computed: {
+    emailHref() {
+      return mailtoHref(site.email, this.$t("common.emailSubject"));
+    },
+  },
   components: {
     HeaderVue,
     IntroduceVue,
@@ -82,6 +106,7 @@ export default {
     FooterRightVue,
     AboutVue,
     ProjectsVue,
+    ExperienceVue,
   },
 };
 </script>

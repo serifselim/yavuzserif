@@ -94,7 +94,11 @@ export default {
     },
   },
   mounted() {
-    if (this.project.images.length > 1) {
+    const prefersReducedMotion =
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (this.project.images.length > 1 && !prefersReducedMotion) {
       const randomRepeat = Math.random() * 2000 + 1000;
       this.intervalId = setInterval(() => this.loopIndex(), randomRepeat);
     }

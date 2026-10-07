@@ -1,21 +1,11 @@
 <template>
-  <spinner-vue v-if="isLoading" />
   <main-vue />
 </template>
 <script>
-import MainVue from './views/Main.vue';
-import { SpinnerVue } from './components'
+import MainVue from "./views/Main.vue";
 
 export default {
-  name: 'App',
-  data: () => ({
-    isLoading: true
-  }),
-  mounted() {
-    setTimeout(() => {
-      this.isLoading = false
-    }, 700);
-  },
-  components: { MainVue, SpinnerVue },
+  name: "App",
+  components: { MainVue },
 };
 </script>
