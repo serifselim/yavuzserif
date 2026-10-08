@@ -155,7 +155,7 @@ def build():
     story.append(Paragraph("Yavuz Selim Şerifoğlu", s["name"]))
     story.append(
         Paragraph(
-            "Senior Full Stack Developer  ·  Looking for full-time or contract",
+            "Senior Full Stack Developer  ·  React, Vue, NestJS, .NET Core, PostgreSQL",
             s["title"],
         )
     )
@@ -169,10 +169,9 @@ def build():
     story.append(section_rule())
     story.append(
         Paragraph(
-            "I studied communication design, then moved into software and have been "
-            "doing this since 2022. I write React and Vue in the browser, NestJS or "
-            ".NET Core and PostgreSQL on the server. Based in Istanbul. Looking for "
-            "full-time or contract work.",
+            "Communication design background, software since 2022. React and Vue "
+            "on the client, NestJS and .NET Core on the API, PostgreSQL for data. "
+            "Based in Istanbul.",
             s["body"],
         )
     )
@@ -207,10 +206,10 @@ def build():
     story.append(Spacer(1, 4))
 
     bullets = [
-        "Vue and React screens that go to production, plus the REST APIs and PostgreSQL behind them.",
-        "NestJS and .NET Core for login, CRUD, and connecting the UI to real data.",
-        "Take designs from Figma into code, then leave the work in a shape someone else can continue.",
-        "Make sure it works on a phone, stays reasonably fast, and can be used with a keyboard.",
+        "Vue and React UIs in production, with the REST APIs and PostgreSQL under them.",
+        "NestJS and .NET Core: authentication, CRUD, wiring screens to real data.",
+        "Figma to code, left in a shape another developer can continue.",
+        "Responsive layout, keyboard use, and keeping pages reasonably fast.",
     ]
     for item in bullets:
         story.append(Paragraph(f"•  {item}", s["bullet"]))

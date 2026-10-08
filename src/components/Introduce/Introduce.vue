@@ -12,10 +12,10 @@
       </p>
       <div class="mt-8 flex flex-wrap gap-3">
         <a
-          :href="emailHref"
+          href="#work"
           class="rounded-full bg-dark px-6 py-3 text-sm font-semibold text-light transition hover:bg-primary"
         >
-          {{ $t("hero.contactCta") }}
+          {{ $t("hero.projectsCta") }}
         </a>
         <a
           :href="resumeUrl"
@@ -24,12 +24,6 @@
           class="rounded-full border border-line bg-surface px-6 py-3 text-sm font-semibold text-dark transition hover:border-primary hover:text-primary"
         >
           {{ $t("hero.resumeCta") }}
-        </a>
-        <a
-          href="#work"
-          class="rounded-full px-6 py-3 text-sm font-semibold text-muted transition hover:text-dark"
-        >
-          {{ $t("hero.projectsCta") }}
         </a>
       </div>
       <dl class="mt-12 grid w-full max-w-2xl grid-cols-3 gap-3">
@@ -57,7 +51,7 @@
         <p class="mt-1 font-semibold text-primary">{{ $t("hero.profileRole") }}</p>
         <p class="mt-1 text-sm text-muted">{{ $t("hero.profileLocation") }}</p>
         <p class="mt-4 rounded-full bg-background px-3 py-2 text-xs font-semibold text-dark">
-          {{ $t("hero.profileAvailability") }}
+          {{ $t("hero.profileFocus") }}
         </p>
         <ul class="mt-5 flex flex-wrap gap-2" :aria-label="$t('projects.technologies')">
           <li
@@ -75,7 +69,6 @@
 <script>
 import resumeUrl from "@/assets/docs/resume.pdf";
 import { site } from "@/constants";
-import { mailtoHref } from "@/i18n/locale.mjs";
 
 export default {
   name: "Introduce",
@@ -89,9 +82,6 @@ export default {
     },
     stack() {
       return this.$tm("hero.stack");
-    },
-    emailHref() {
-      return mailtoHref(site.email, this.$t("common.emailSubject"));
     },
   },
 };
