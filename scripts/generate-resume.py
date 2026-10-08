@@ -155,7 +155,7 @@ def build():
     story.append(Paragraph("Yavuz Selim Şerifoğlu", s["name"]))
     story.append(
         Paragraph(
-            "Senior Full Stack Developer  ·  Open to full-time &amp; contract",
+            "Senior Full Stack Developer  ·  Looking for full-time or contract",
             s["title"],
         )
     )
@@ -169,11 +169,10 @@ def build():
     story.append(section_rule())
     story.append(
         Paragraph(
-            "Senior full stack developer with 4+ years in production. I own product "
-            "features from the interface through the API and the database — React and Vue "
-            "on the client, NestJS or .NET Core and PostgreSQL on the server. I started in "
-            "communication design, so I still care how a product feels, and I care equally "
-            "that a team gets a shippable slice rather than a handoff.",
+            "I studied communication design, then moved into software and have been "
+            "doing this since 2022. I write React and Vue in the browser, NestJS or "
+            ".NET Core and PostgreSQL on the server. Based in Istanbul. Looking for "
+            "full-time or contract work.",
             s["body"],
         )
     )
@@ -208,11 +207,10 @@ def build():
     story.append(Spacer(1, 4))
 
     bullets = [
-        "Delivered production web products across the stack: Vue/React clients, REST APIs, and PostgreSQL-backed services.",
-        "Owned feature slices from design intent to release — UI, API contracts, and data — so the team received shippable work, not a frontend-only handoff.",
-        "Built and extended NestJS and .NET Core services, including authentication, resource APIs, and integration with product databases.",
-        "Held the quality bar on readable architecture, responsive interfaces, accessibility, and performance in production.",
-        "Worked with product and design (Figma) to turn intent into maintainable code other engineers can extend.",
+        "Vue and React screens that go to production, plus the REST APIs and PostgreSQL behind them.",
+        "NestJS and .NET Core for login, CRUD, and connecting the UI to real data.",
+        "Take designs from Figma into code, then leave the work in a shape someone else can continue.",
+        "Make sure it works on a phone, stays reasonably fast, and can be used with a keyboard.",
     ]
     for item in bullets:
         story.append(Paragraph(f"•  {item}", s["bullet"]))
@@ -241,12 +239,12 @@ def build():
     )
     story.append(skills)
 
-    story.append(Paragraph("SELECTED WORK", s["section"]))
+    story.append(Paragraph("PROJECTS", s["section"]))
     story.append(section_rule())
     projects = [
-        "<b>Social feed product UI</b>  ·  React, Redux, Context API — authenticated feed, session state, reusable layout.",
-        "<b>Turkey weather interface</b>  ·  React, Redux — city search, API-driven data UI, explicit loading and error states.",
-        "<b>Keyboard practice tool</b>  ·  HTML, CSS, JavaScript — keyboard-first interaction with immediate visual feedback.",
+        "<b>Social feed</b>  ·  React, Redux, Context API. Login, a feed, layout that holds up on mobile.",
+        "<b>Weather for Turkey</b>  ·  React, Redux. Pick a city on the map, see the forecast.",
+        "<b>Typing practice</b>  ·  HTML, CSS, JavaScript. The letter lights up as you type.",
     ]
     for item in projects:
         story.append(Paragraph(f"•  {item}", s["bullet"]))
@@ -278,7 +276,7 @@ def build():
     story.append(Paragraph("LANGUAGES", s["section"]))
     story.append(section_rule())
     story.append(
-        Paragraph("Turkish — Native    ·    English — B2, professional working", s["body"])
+        Paragraph("Turkish — Native    ·    English — B2", s["body"])
     )
 
     doc = SimpleDocTemplate(
