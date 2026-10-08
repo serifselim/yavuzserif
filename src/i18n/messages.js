@@ -1,9 +1,9 @@
 export default {
   en: {
     meta: {
-      title: "Yavuz Serifoglu | Product Engineer",
+      title: "Yavuz Serifoglu | Senior Full Stack Developer",
       description:
-        "Product engineer in Istanbul. I ship the interface and the feature behind it — React/Vue, NestJS or .NET Core, PostgreSQL. Open to full-time and contract roles.",
+        "Senior full stack developer in Istanbul. I ship features from UI to API and data — React/Vue, NestJS or .NET Core, PostgreSQL. Open to full-time and contract roles.",
     },
     common: {
       language: "Language",
@@ -30,7 +30,7 @@ export default {
       ],
     },
     hero: {
-      eyebrow: "Product Engineer · Open to full-time & contract",
+      eyebrow: "Senior Full Stack Developer · Open to full-time & contract",
       title: "I ship the interface and the feature behind it.",
       body: "I'm Yavuz. I take a product slice from UI to API and data — React/Vue on the surface, NestJS or .NET Core and PostgreSQL underneath — so teams get something they can ship, not a handoff.",
       projectsCta: "Selected work",
@@ -41,14 +41,14 @@ export default {
         { value: "UI+API", label: "Feature slices" },
         { value: "TR/EN", label: "Working languages" },
       ],
-      profileRole: "Product Engineer",
+      profileRole: "Senior Full Stack Developer",
       profileLocation: "Istanbul, Turkey",
       profileAvailability: "Open to full-time & contract",
       stack: ["React", "Vue", "NestJS", ".NET Core", "PostgreSQL"],
     },
     about: {
       eyebrow: "How I work",
-      title: "Frontend-led, able to finish the slice.",
+      title: "Full stack, end to end.",
       body: "I started in design, then moved into production engineering. I still care about how a surface feels — and I care equally about the API, the data, and the code a teammate can extend next week.",
       strengths: [
         {
@@ -79,18 +79,18 @@ export default {
     experience: {
       eyebrow: "Experience",
       title: "Production work since 2022.",
-      body: "The public demos below are selected craft. The seniority sits here: shipping real product interfaces in a software team.",
+      body: "The public demos below are selected craft. The seniority sits here: shipping full stack product work in a software team.",
       items: [
         {
           company: "Intime Info Software Solves",
-          role: "Frontend / Product Engineer",
+          role: "Senior Full Stack Developer",
           location: "Istanbul, Turkey",
           dates: "2022 — Present",
           bullets: [
-            "Shipped production web interfaces with Vue and React, from layout systems through release.",
-            "Turned product and design intent into UI other engineers can extend.",
-            "Integrated product surfaces with backend APIs and owned the slice past the mock.",
-            "Held the quality bar on responsive behavior, accessibility, and readable frontend architecture.",
+            "Delivered production web products across the stack: Vue/React clients, REST APIs, and PostgreSQL-backed services.",
+            "Owned feature slices from design intent to release — UI, API contracts, and data.",
+            "Built and extended NestJS and .NET Core services, including authentication and resource APIs.",
+            "Held the quality bar on readable architecture, responsive UI, accessibility, and performance.",
           ],
         },
       ],
@@ -137,9 +137,9 @@ export default {
   },
   tr: {
     meta: {
-      title: "Yavuz Serifoglu | Product Engineer",
+      title: "Yavuz Serifoglu | Senior Full Stack Developer",
       description:
-        "İstanbul'da product engineer. Arayüzü ve arkasındaki özelliği birlikte teslim ederim — React/Vue, NestJS veya .NET Core, PostgreSQL. Tam zamanlı ve sözleşmeli roller için açığım.",
+        "İstanbul'da senior full stack developer. Özelliği arayüzden API ve veriye kadar teslim ederim — React/Vue, NestJS veya .NET Core, PostgreSQL. Tam zamanlı ve sözleşmeli roller için açığım.",
     },
     common: {
       language: "Dil",
@@ -166,7 +166,7 @@ export default {
       ],
     },
     hero: {
-      eyebrow: "Product Engineer · Tam zamanlı ve sözleşmeli roller için açığım",
+      eyebrow: "Senior Full Stack Developer · Tam zamanlı ve sözleşmeli roller için açığım",
       title: "Arayüzü ve arkasındaki özelliği birlikte teslim ederim.",
       body: "Merhaba, ben Yavuz. Bir ürün dilimini arayüzden API ve veriye kadar taşırım — yüzeyde React/Vue, altında NestJS veya .NET Core ve PostgreSQL — ekipler el değiştiren bir mock değil, yayınlanabilir bir parça alır.",
       projectsCta: "Seçili işler",
@@ -177,14 +177,14 @@ export default {
         { value: "UI+API", label: "Özellik dilimi" },
         { value: "TR/EN", label: "Çalışma dilleri" },
       ],
-      profileRole: "Product Engineer",
+      profileRole: "Senior Full Stack Developer",
       profileLocation: "İstanbul, Türkiye",
       profileAvailability: "Tam zamanlı ve sözleşmeli roller için açığım",
       stack: ["React", "Vue", "NestJS", ".NET Core", "PostgreSQL"],
     },
     about: {
       eyebrow: "Nasıl çalışırım",
-      title: "Frontend önde, dilimi bitirebilirim.",
+      title: "Full stack, uçtan uca.",
       body: "Tasarımla başladım, sonra üretim mühendisliğine geçtim. Bir yüzeyin nasıl hissettirdiğini hâlâ önemsiyorum — API'yi, veriyi ve bir ekip arkadaşının gelecek hafta üzerine yazacağı kodu da en az o kadar önemsiyorum.",
       strengths: [
         {
@@ -215,18 +215,18 @@ export default {
     experience: {
       eyebrow: "Deneyim",
       title: "2022'den beri üretim.",
-      body: "Aşağıdaki public demolar seçili zanaat. Kıdem burada duruyor: bir yazılım ekibinde gerçek ürün arayüzleri yayınlamak.",
+      body: "Aşağıdaki public demolar seçili zanaat. Kıdem burada duruyor: bir yazılım ekibinde full stack ürün işi yayınlamak.",
       items: [
         {
           company: "Intime Info Software Solves",
-          role: "Frontend / Product Engineer",
+          role: "Senior Full Stack Developer",
           location: "İstanbul, Türkiye",
           dates: "2022 — Günümüz",
           bullets: [
-            "Vue ve React ile üretim web arayüzleri teslim ettim; layout sisteminden yayına kadar.",
-            "Ürün ve tasarım niyetini başka mühendislerin genişletebileceği arayüze çevirdim.",
-            "Ürün yüzeylerini backend API'lerle entegre ettim ve dilimi mock'un ötesinde sahiplendim.",
-            "Responsive davranış, erişilebilirlik ve okunabilir frontend mimarisinde kalite barını tuttum.",
+            "Vue/React istemcileri, REST API'ler ve PostgreSQL servisleriyle üretim web ürünleri teslim ettim.",
+            "Tasarım niyetinden yayına kadar özellik dilimini sahiplendim — arayüz, API sözleşmeleri ve veri.",
+            "NestJS ve .NET Core servislerini kurdum ve genişlettim; kimlik doğrulama ve kaynak API'leri dahil.",
+            "Okunabilir mimari, responsive arayüz, erişilebilirlik ve performansta kalite barını tuttum.",
           ],
         },
       ],
