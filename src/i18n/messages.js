@@ -3,7 +3,7 @@ export default {
     meta: {
       title: "Yavuz Serifoglu | Senior Full Stack Developer",
       description:
-        "Yavuz Serifoglu, senior full stack developer in Istanbul. React, Vue, NestJS, .NET Core, PostgreSQL.",
+        "Yavuz Serifoglu, senior full stack developer in Istanbul. React, Vue, React Native, NestJS, .NET Core, PostgreSQL.",
     },
     common: {
       language: "Language",
@@ -31,29 +31,34 @@ export default {
     },
     hero: {
       eyebrow: "Senior Full Stack Developer",
-      title: "UI, API, and the database.",
-      body: "I'm Yavuz. Communication design background, software since 2022. I work in React and Vue, NestJS and .NET Core, PostgreSQL. Istanbul.",
+      title: "UI, mobile, API, and the database.",
+      body: "I'm Yavuz. Communication design background, software since 2022. I work in React and Vue, React Native, NestJS and .NET Core, PostgreSQL. Istanbul.",
       projectsCta: "Projects",
       contactCta: "Email",
       resumeCta: "Resume",
       metrics: [
         { value: "React/Vue", label: "Client" },
+        { value: "React Native", label: "Mobile" },
         { value: "NestJS/.NET", label: "API" },
         { value: "PostgreSQL", label: "Data" },
       ],
       profileRole: "Senior Full Stack Developer",
       profileLocation: "Istanbul, Turkey",
-      profileFocus: "Client · API · Data",
-      stack: ["React", "Vue", "NestJS", ".NET Core", "PostgreSQL"],
+      profileFocus: "Client · Mobile · API · Data",
+      stack: ["React", "Vue", "React Native", "NestJS", ".NET Core", "PostgreSQL"],
     },
     about: {
       eyebrow: "Skills",
       title: "What I work with.",
-      body: "I came from communication design at Yıldız, then into software. I still use Figma. I also write the API and the queries.",
+      body: "I came from communication design at Yıldız, then into software. I still use Figma. Web, React Native, the API, and the queries.",
       strengths: [
         {
           title: "Client",
           desc: "React and Vue. Reusable components, state that stays predictable as the product grows.",
+        },
+        {
+          title: "Mobile",
+          desc: "React Native with Expo. HydraPlant and Beyaz Nokta: screens, native pieces, the same API as the rest of the stack.",
         },
         {
           title: "API",
@@ -67,7 +72,9 @@ export default {
       skills: [
         "Vue",
         "React",
+        "React Native",
         "TypeScript / JavaScript",
+        "Expo",
         "NestJS",
         ".NET Core",
         "PostgreSQL",
@@ -79,7 +86,7 @@ export default {
     experience: {
       eyebrow: "Experience",
       title: "Intime, since 2022.",
-      body: "Production work. The three projects below are personal.",
+      body: "Production work. The personal projects are below.",
       items: [
         {
           company: "Intime Info Software Solves",
@@ -101,28 +108,44 @@ export default {
     projects: {
       eyebrow: "Projects",
       title: "Personal work.",
-      body: "Things I built myself. Company work is under experience.",
+      body: "HydraPlant and Beyaz Nokta are full stack personal projects.",
       previewSlides: "Project preview slides",
       previewAlt: "{title} preview",
       technologies: "Technologies",
       livePreview: "Live",
       code: "Code",
       items: {
-        linkedin: {
-          title: "Social feed",
-          category: "React",
-          desc: "Auth, a feed, a layout that holds on mobile. Redux and Context keep session and feed data out of the presentational components.",
+        hydraplant: {
+          title: "HydraPlant",
+          category: "React Native",
+          desc: "Daily water tracker. Each sip feeds a plant; skip a day and it wilts. Expo app, NestJS API, PostgreSQL. Auth, goals, streaks, home-screen widget.",
         },
-        weather: {
-          title: "Weather for Turkey",
-          category: "React",
-          desc: "Map, city, forecast. React and Redux on a weather API, with loading and error states.",
+        beyaznokta: {
+          title: "Beyaz Nokta",
+          category: "React Native",
+          desc: "Online football manager. Rooms, eight fictional leagues, daily auto matches, transfers, training. Expo client, NestJS, PostgreSQL. No pay-to-win.",
         },
-        keyboard: {
-          title: "Typing practice",
-          category: "JavaScript",
-          desc: "HTML, CSS, JavaScript. Keypress lights the matching letter.",
-        },
+      },
+    },
+    game: {
+      title: "Dev Runner",
+      ariaLabel:
+        "Dev Runner mini game. Press Space or Arrow Up, or tap, to jump over bugs and collect tech.",
+      idleHint: "Press Space or tap to run",
+      retryHint: "Space or tap to retry",
+      gameOver: "Game over",
+      score: "Score",
+      best: "Best",
+      combo: "Combo",
+      soundOn: "Sound on",
+      soundOff: "Sound off",
+      reducedMotionNote:
+        "Reduced motion is on. Animations are minimal; the game still waits for your input.",
+      techLabel: "Tech collected",
+      titles: {
+        junior: "Junior Bug Fixer",
+        mid: "Full Stack Mid Dev",
+        senior: "Senior Architecture Wizard",
       },
     },
     contact: {
@@ -139,7 +162,7 @@ export default {
     meta: {
       title: "Yavuz Serifoglu | Senior Full Stack Developer",
       description:
-        "Yavuz Serifoglu, İstanbul'da senior full stack developer. React, Vue, NestJS, .NET Core, PostgreSQL.",
+        "Yavuz Serifoglu, İstanbul'da senior full stack developer. React, Vue, React Native, NestJS, .NET Core, PostgreSQL.",
     },
     common: {
       language: "Dil",
@@ -167,29 +190,34 @@ export default {
     },
     hero: {
       eyebrow: "Senior Full Stack Developer",
-      title: "Arayüz, API ve veritabanı.",
-      body: "Yavuz. İletişim tasarımı kökenliyim, 2022'den beri yazılım. React ve Vue, NestJS ve .NET Core, PostgreSQL. İstanbul.",
+      title: "Arayüz, mobil, API ve veritabanı.",
+      body: "Yavuz. İletişim tasarımı kökenliyim, 2022'den beri yazılım. React ve Vue, React Native, NestJS ve .NET Core, PostgreSQL. İstanbul.",
       projectsCta: "Projeler",
       contactCta: "E-posta",
       resumeCta: "CV",
       metrics: [
         { value: "React/Vue", label: "İstemci" },
+        { value: "React Native", label: "Mobil" },
         { value: "NestJS/.NET", label: "API" },
         { value: "PostgreSQL", label: "Veri" },
       ],
       profileRole: "Senior Full Stack Developer",
       profileLocation: "İstanbul, Türkiye",
-      profileFocus: "İstemci · API · Veri",
-      stack: ["React", "Vue", "NestJS", ".NET Core", "PostgreSQL"],
+      profileFocus: "İstemci · Mobil · API · Veri",
+      stack: ["React", "Vue", "React Native", "NestJS", ".NET Core", "PostgreSQL"],
     },
     about: {
       eyebrow: "Yetenekler",
       title: "Ne ile çalışıyorum.",
-      body: "Yıldız'da iletişim tasarımı, sonra yazılım. Figma hâlâ duruyor. API'yi ve sorguları da ben yazıyorum.",
+      body: "Yıldız'da iletişim tasarımı, sonra yazılım. Figma hâlâ duruyor. Web, React Native, API ve sorgular.",
       strengths: [
         {
           title: "İstemci",
           desc: "React ve Vue. Tekrar kullanılan bileşenler, ürün büyüdükçe tahmin edilebilir kalan state.",
+        },
+        {
+          title: "Mobil",
+          desc: "React Native ve Expo. HydraPlant ve Beyaz Nokta: ekranlar, native parçalar, aynı API.",
         },
         {
           title: "API",
@@ -203,7 +231,9 @@ export default {
       skills: [
         "Vue",
         "React",
+        "React Native",
         "TypeScript / JavaScript",
+        "Expo",
         "NestJS",
         ".NET Core",
         "PostgreSQL",
@@ -215,7 +245,7 @@ export default {
     experience: {
       eyebrow: "Deneyim",
       title: "Intime, 2022'den beri.",
-      body: "Üretim işi. Alttaki üç proje kişisel.",
+      body: "Üretim işi. Kişisel projeler aşağıda.",
       items: [
         {
           company: "Intime Info Software Solves",
@@ -237,28 +267,44 @@ export default {
     projects: {
       eyebrow: "Projeler",
       title: "Kişisel işler.",
-      body: "Kendim yazdıklarım. Şirket işi deneyim bölümünde.",
+      body: "HydraPlant ve Beyaz Nokta tam yığın kişisel projeler.",
       previewSlides: "Proje önizleme görselleri",
       previewAlt: "{title} önizlemesi",
       technologies: "Teknolojiler",
       livePreview: "Canlı",
       code: "Kod",
       items: {
-        linkedin: {
-          title: "Sosyal akış",
-          category: "React",
-          desc: "Auth, akış, mobilde duran layout. Redux ve Context ile oturum ve feed verisi sunum bileşenlerinin dışında.",
+        hydraplant: {
+          title: "HydraPlant",
+          category: "React Native",
+          desc: "Günlük su takibi. Yudum bitkiyi besler, unutulursa solar. Expo uygulama, NestJS API, PostgreSQL. Auth, hedef, seri, ana ekran widget'ı.",
         },
-        weather: {
-          title: "Türkiye hava durumu",
-          category: "React",
-          desc: "Harita, şehir, tahmin. React ve Redux, hava API'si, yükleme ve hata halleri.",
+        beyaznokta: {
+          title: "Beyaz Nokta",
+          category: "React Native",
+          desc: "Online futbol menajerliği. Oda, sekiz kurgusal lig, günlük otomatik maç, transfer, antrenman. Expo istemci, NestJS, PostgreSQL. Pay-to-win yok.",
         },
-        keyboard: {
-          title: "Yazma pratiği",
-          category: "JavaScript",
-          desc: "HTML, CSS, JavaScript. Tuşa basınca ilgili harf yanıyor.",
-        },
+      },
+    },
+    game: {
+      title: "Dev Runner",
+      ariaLabel:
+        "Dev Runner mini oyunu. Hataların üzerinden atlamak ve teknolojileri toplamak için Space ya da Yukarı Ok'a bas veya dokun.",
+      idleHint: "Başlamak için Space'e bas veya dokun",
+      retryHint: "Tekrar için Space'e bas veya dokun",
+      gameOver: "Oyun bitti",
+      score: "Skor",
+      best: "Rekor",
+      combo: "Kombo",
+      soundOn: "Ses açık",
+      soundOff: "Ses kapalı",
+      reducedMotionNote:
+        "Hareket azaltma açık. Animasyonlar minimal; oyun yine de girdini bekler.",
+      techLabel: "Toplanan teknolojiler",
+      titles: {
+        junior: "Çaylak Bug Avcısı",
+        mid: "Full Stack Orta Seviye",
+        senior: "Kıdemli Mimari Sihirbazı",
       },
     },
     contact: {
