@@ -1,4 +1,4 @@
-"""Generate the senior full-stack résumé PDF."""
+"""Generate the senior frontend résumé PDF."""
 
 from reportlab.lib.colors import HexColor
 from reportlab.lib.enums import TA_LEFT, TA_RIGHT
@@ -155,7 +155,7 @@ def build():
     story.append(Paragraph("Yavuz Selim Şerifoğlu", s["name"]))
     story.append(
         Paragraph(
-            "Senior Full Stack Developer  ·  React, Vue, NestJS, .NET Core, PostgreSQL",
+            "Senior Frontend Developer  ·  Vue, React, React Native, TypeScript, UI Architecture",
             s["title"],
         )
     )
@@ -169,9 +169,9 @@ def build():
     story.append(section_rule())
     story.append(
         Paragraph(
-            "Communication design background, software since 2022. React and Vue "
-            "on the client, NestJS and .NET Core on the API, PostgreSQL for data. "
-            "Based in Istanbul.",
+            "Communication design background, software since 2022. Specializing in frontend "
+            "architecture, Vue and React ecosystems, cross-platform mobile apps, and robust "
+            "API integrations. Based in Istanbul.",
             s["body"],
         )
     )
@@ -179,16 +179,17 @@ def build():
     story.append(Paragraph("EXPERIENCE", s["section"]))
     story.append(section_rule())
 
-    header = Table(
+    # Position 1: Frontend Team Lead
+    header1 = Table(
         [
             [
-                Paragraph("Senior Full Stack Developer", s["job"]),
-                Paragraph("2022 – Present", s["meta_right"]),
+                Paragraph("Frontend Team Lead", s["job"]),
+                Paragraph("Jun 2024 – Present", s["meta_right"]),
             ]
         ],
         colWidths=[125 * mm, 55 * mm],
     )
-    header.setStyle(
+    header1.setStyle(
         TableStyle(
             [
                 ("VALIGN", (0, 0), (-1, -1), "BOTTOM"),
@@ -199,26 +200,63 @@ def build():
             ]
         )
     )
-    story.append(header)
+    story.append(header1)
     story.append(
-        Paragraph("Intime Info Software Solves  ·  Istanbul, Turkey", s["meta"])
+        Paragraph("Intime Info Yazılım Çözümleri A.Ş.  ·  Ataşehir, Istanbul, Turkey (Hybrid)", s["meta"])
     )
-    story.append(Spacer(1, 4))
+    story.append(Spacer(1, 3))
 
-    bullets = [
-        "Vue and React UIs in production, with the REST APIs and PostgreSQL under them.",
-        "NestJS and .NET Core: authentication, CRUD, wiring screens to real data.",
-        "Figma to code, left in a shape another developer can continue.",
-        "Responsive layout, keyboard use, and keeping pages reasonably fast.",
+    bullets1 = [
+        "Technical leadership for the frontend team, establishing architectural standards, and guiding code reviews.",
+        "Design and maintenance of scalable, reusable component libraries across the enterprise Vue ecosystem.",
+        "Cross-functional collaboration with product design (Figma) and backend teams to optimize UX and performance.",
+        "Enforcing modern frontend best practices, responsive layouts, and accessibility standards in production.",
     ]
-    for item in bullets:
+    for item in bullets1:
+        story.append(Paragraph(f"•  {item}", s["bullet"]))
+
+    story.append(Spacer(1, 6))
+
+    # Position 2: Frontend Developer
+    header2 = Table(
+        [
+            [
+                Paragraph("Frontend Developer", s["job"]),
+                Paragraph("Jul 2022 – Jun 2024", s["meta_right"]),
+            ]
+        ],
+        colWidths=[125 * mm, 55 * mm],
+    )
+    header2.setStyle(
+        TableStyle(
+            [
+                ("VALIGN", (0, 0), (-1, -1), "BOTTOM"),
+                ("LEFTPADDING", (0, 0), (-1, -1), 0),
+                ("RIGHTPADDING", (0, 0), (-1, -1), 0),
+                ("TOPPADDING", (0, 0), (-1, -1), 0),
+                ("BOTTOMPADDING", (0, 0), (-1, -1), 1),
+            ]
+        )
+    )
+    story.append(header2)
+    story.append(
+        Paragraph("Intime Info Yazılım Çözümleri A.Ş.  ·  Üsküdar, Istanbul, Turkey", s["meta"])
+    )
+    story.append(Spacer(1, 3))
+
+    bullets2 = [
+        "Developed user-facing web applications using Vue and modern JavaScript in production.",
+        "Translated Figma specifications into pixel-accurate, responsive, and maintainable frontend code.",
+        "Integrated RESTful APIs, handled client-side state management, and optimized web performance.",
+    ]
+    for item in bullets2:
         story.append(Paragraph(f"•  {item}", s["bullet"]))
 
     story.append(Paragraph("SKILLS", s["section"]))
     story.append(section_rule())
     skills = Table(
         [
-            skill_row("Frontend", "React, Vue, TypeScript, JavaScript, HTML, CSS", s),
+            skill_row("Frontend", "React, Vue, Expo, TypeScript, JavaScript, HTML, CSS", s),
             skill_row("Backend", "NestJS, .NET Core, Node.js, REST APIs", s),
             skill_row("Data", "PostgreSQL, SQL", s),
             skill_row("Tools", "Git, Postman, Figma", s),
@@ -241,6 +279,8 @@ def build():
     story.append(Paragraph("PROJECTS", s["section"]))
     story.append(section_rule())
     projects = [
+        "<b>HydraPlant</b>  ·  Expo, NestJS, PostgreSQL. Water tracker: each sip feeds a plant. Auth, goals, streaks, home-screen widget.",
+        "<b>Beyaz Nokta</b>  ·  Expo, NestJS, PostgreSQL. Online football manager: rooms, 8 leagues, daily auto matches, transfers, training.",
         "<b>Social feed</b>  ·  React, Redux, Context API. Login, a feed, layout that holds up on mobile.",
         "<b>Weather for Turkey</b>  ·  React, Redux. Pick a city on the map, see the forecast.",
         "<b>Typing practice</b>  ·  HTML, CSS, JavaScript. The letter lights up as you type.",
@@ -285,7 +325,7 @@ def build():
         rightMargin=16 * mm,
         topMargin=14 * mm,
         bottomMargin=14 * mm,
-        title="Yavuz Selim Şerifoğlu — Senior Full Stack Developer",
+        title="Yavuz Selim Şerifoğlu — Senior Frontend Developer",
         author="Yavuz Selim Şerifoğlu",
         subject="Résumé",
     )

@@ -15,7 +15,7 @@
     shadow
   >
     <Camera :position="{ x: 16, y: 16, z: 15 }" />
-    <Scene ref="scene" background="#f5f2ec">
+    <Scene ref="scene" background="#f8fafc">
       <AmbientLight color="#ffffff" :intensity="0.55" />
 
       <DirectionalLight
@@ -86,8 +86,8 @@ export default {
     },
     setGrid() {
       const scene = this.$refs.scene.scene;
-      scene.fog = new Fog(0xf5f2ec, 200, 1000);
-      const grid = new GridHelper(2000, 20, 0x2f7d6b, 0x151515);
+      scene.fog = new Fog(0xf8fafc, 200, 1000);
+      const grid = new GridHelper(2000, 20, 0x2563eb, 0x0f172a);
       grid.material.opacity = 0.18;
       grid.material.transparent = true;
       this.$refs.scene.add(grid);

@@ -1,9 +1,9 @@
 export default {
   en: {
     meta: {
-      title: "Yavuz Serifoglu | Senior Full Stack Developer",
+      title: "Yavuz Serifoglu | Senior Frontend Developer",
       description:
-        "Yavuz Serifoglu, senior full stack developer in Istanbul. React, Vue, React Native, NestJS, .NET Core, PostgreSQL.",
+        "Yavuz Serifoglu, senior frontend developer in Istanbul. React, Vue, React Native, NestJS, .NET Core, PostgreSQL.",
     },
     common: {
       language: "Language",
@@ -30,7 +30,7 @@ export default {
       ],
     },
     hero: {
-      eyebrow: "Senior Full Stack Developer",
+      eyebrow: "Senior Frontend Developer",
       title: "UI, mobile, API, and the database.",
       body: "I'm Yavuz. Communication design background, software since 2022. I work in React and Vue, React Native, NestJS and .NET Core, PostgreSQL. Istanbul.",
       projectsCta: "Projects",
@@ -42,7 +42,7 @@ export default {
         { value: "NestJS/.NET", label: "API" },
         { value: "PostgreSQL", label: "Data" },
       ],
-      profileRole: "Senior Full Stack Developer",
+      profileRole: "Senior Frontend Developer",
       profileLocation: "Istanbul, Turkey",
       profileFocus: "Client · Mobile · API · Data",
       stack: ["React", "Vue", "React Native", "NestJS", ".NET Core", "PostgreSQL"],
@@ -86,18 +86,29 @@ export default {
     experience: {
       eyebrow: "Experience",
       title: "Intime, since 2022.",
-      body: "Production work. The personal projects are below.",
+      body: "Production leadership and frontend engineering. The personal projects are below.",
       items: [
         {
-          company: "Intime Info Software Solves",
-          role: "Senior Full Stack Developer",
-          location: "Istanbul, Turkey",
-          dates: "2022 — Present",
+          company: "Intime Info Yazılım Çözümleri A.Ş.",
+          role: "Frontend Team Lead",
+          location: "Atasehir, Istanbul, Turkey · Hybrid",
+          dates: "Jun 2024 — Present",
           bullets: [
-            "Vue and React UIs in production, with the REST APIs and PostgreSQL that sit under them.",
-            "NestJS and .NET Core: authentication, CRUD, wiring screens to real data.",
-            "Figma to code, left in a shape another developer can continue.",
-            "Responsive layout, keyboard use, and keeping pages reasonably fast.",
+            "Technical leadership for the frontend team, establishing architectural standards, and guiding code reviews.",
+            "Design and maintenance of scalable, reusable component libraries across the enterprise Vue ecosystem.",
+            "Cross-functional collaboration with product design (Figma) and backend teams to optimize UX and performance.",
+            "Enforcing modern frontend best practices, responsive layouts, and accessibility standards in production.",
+          ],
+        },
+        {
+          company: "Intime Info Yazılım Çözümleri A.Ş.",
+          role: "Frontend Developer",
+          location: "Uskudar, Istanbul, Turkey",
+          dates: "Jul 2022 — Jun 2024",
+          bullets: [
+            "Developed user-facing web applications using Vue and modern JavaScript in production.",
+            "Translated Figma specifications into pixel-accurate, responsive, and maintainable frontend code.",
+            "Integrated RESTful APIs, handled client-side state management, and optimized web performance.",
           ],
         },
       ],
@@ -160,9 +171,9 @@ export default {
   },
   tr: {
     meta: {
-      title: "Yavuz Serifoglu | Senior Full Stack Developer",
+      title: "Yavuz Serifoglu | Senior Frontend Developer",
       description:
-        "Yavuz Serifoglu, İstanbul'da senior full stack developer. React, Vue, React Native, NestJS, .NET Core, PostgreSQL.",
+        "Yavuz Serifoglu, İstanbul'da senior frontend developer. React, Vue, React Native, NestJS, .NET Core, PostgreSQL.",
     },
     common: {
       language: "Dil",
@@ -189,7 +200,7 @@ export default {
       ],
     },
     hero: {
-      eyebrow: "Senior Full Stack Developer",
+      eyebrow: "Senior Frontend Developer",
       title: "Arayüz, mobil, API ve veritabanı.",
       body: "Yavuz. İletişim tasarımı kökenliyim, 2022'den beri yazılım. React ve Vue, React Native, NestJS ve .NET Core, PostgreSQL. İstanbul.",
       projectsCta: "Projeler",
@@ -201,7 +212,7 @@ export default {
         { value: "NestJS/.NET", label: "API" },
         { value: "PostgreSQL", label: "Veri" },
       ],
-      profileRole: "Senior Full Stack Developer",
+      profileRole: "Senior Frontend Developer",
       profileLocation: "İstanbul, Türkiye",
       profileFocus: "İstemci · Mobil · API · Veri",
       stack: ["React", "Vue", "React Native", "NestJS", ".NET Core", "PostgreSQL"],
@@ -245,18 +256,29 @@ export default {
     experience: {
       eyebrow: "Deneyim",
       title: "Intime, 2022'den beri.",
-      body: "Üretim işi. Kişisel projeler aşağıda.",
+      body: "Üretim ortamında liderlik ve frontend geliştirme. Kişisel projeler aşağıda.",
       items: [
         {
-          company: "Intime Info Software Solves",
-          role: "Senior Full Stack Developer",
-          location: "İstanbul, Türkiye",
-          dates: "2022 — Günümüz",
+          company: "Intime Info Yazılım Çözümleri A.Ş.",
+          role: "Frontend Team Lead",
+          location: "Ataşehir, İstanbul, Türkiye · Hibrit",
+          dates: "Haz 2024 — Günümüz",
           bullets: [
-            "Üretimde Vue ve React arayüzleri; altlarında REST API ve PostgreSQL.",
-            "NestJS ve .NET Core: kimlik doğrulama, CRUD, ekranı gerçek veriye bağlama.",
-            "Figma'dan koda. Başka birinin devam edebileceği halde bırakmak.",
-            "Responsive düzen, klavye kullanımı, sayfaların makul hızda kalması.",
+            "Frontend ekibine teknik liderlik, mimari standartların belirlenmesi ve kod inceleme süreçlerinin yönetimi.",
+            "Geniş ölçekli kurumsal Vue ekosisteminde ölçeklenebilir ve tekrar kullanılabilir bileşen kütüphanelerinin geliştirilmesi.",
+            "Ürün tasarımı (Figma) ve backend ekipleriyle yakın çalışarak kullanıcı deneyimini ve performansı optimize etme.",
+            "Üretim ortamında modern frontend standartları, responsive tasarım ve erişilebilirlik ilkelerinin uygulanması.",
+          ],
+        },
+        {
+          company: "Intime Info Yazılım Çözümleri A.Ş.",
+          role: "Frontend Developer",
+          location: "Üsküdar, İstanbul, Türkiye",
+          dates: "Tem 2022 — Haz 2024",
+          bullets: [
+            "Vue ve modern JavaScript teknolojileri ile üretim ortamında kullanıcı arayüzleri geliştirme.",
+            "Figma tasarımlarını piksel hassasiyetinde, duyarlı ve sürdürülebilir frontend koduna dönüştürme.",
+            "RESTful API entegrasyonları, istemci taraflı durum yönetimi ve web performans optimizasyonu.",
           ],
         },
       ],

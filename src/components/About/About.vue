@@ -14,7 +14,7 @@
         <p class="text-lg leading-8 text-muted">
           {{ $t("about.body") }}
         </p>
-        <div class="grid gap-3 sm:grid-cols-3">
+        <div class="grid gap-3 sm:grid-cols-2">
           <div
             v-for="item in strengths"
             :key="item.title"

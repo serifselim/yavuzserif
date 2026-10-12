@@ -17,7 +17,7 @@
     <ol class="space-y-6">
       <li
         v-for="job in jobs"
-        :key="job.company"
+        :key="job.role + job.dates"
         class="rounded-lg border border-line bg-surface p-6 md:p-8"
       >
         <div class="flex flex-col gap-2 md:flex-row md:items-start md:justify-between">

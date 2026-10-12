@@ -114,7 +114,7 @@ export default {
 </script>
 <style scoped>
 .bg-dialog {
-  background-color: rgba(21, 21, 21, 0.35);
+  background-color: rgba(15, 23, 42, 0.45);
 }
 .dialog-content {
   animation: openDialogAnim 0.18s ease-out;
