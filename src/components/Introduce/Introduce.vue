@@ -26,62 +26,38 @@
           {{ $t("hero.resumeCta") }}
         </a>
       </div>
-      <dl class="mt-12 grid w-full max-w-2xl grid-cols-3 gap-3">
+      <dl class="mt-12 grid w-full max-w-2xl grid-cols-2 gap-x-6 gap-y-5">
         <div
           v-for="metric in metrics"
           :key="metric.label"
           class="border-l border-line pl-4"
         >
-          <dt class="text-2xl font-black text-dark">{{ metric.value }}</dt>
+          <dt class="text-xl font-black text-dark md:text-2xl">{{ metric.value }}</dt>
           <dd class="mt-1 text-xs font-semibold uppercase tracking-wide text-muted">{{ metric.label }}</dd>
         </div>
       </dl>
     </div>
 
     <div class="order-1 md:order-2">
-      <div class="relative mx-auto w-full max-w-[440px] rounded-2xl border border-line bg-surface p-6 shadow-sm md:p-8">
-        <img
-          src="@/assets/images/avatar.jpg"
-          alt="Yavuz Serifoglu"
-          width="96"
-          height="96"
-          class="h-24 w-24 rounded-full border border-line object-cover"
-        />
-        <p class="mt-5 text-2xl font-black text-dark">{{ site.name }}</p>
-        <p class="mt-1 font-semibold text-primary">{{ $t("hero.profileRole") }}</p>
-        <p class="mt-1 text-sm text-muted">{{ $t("hero.profileLocation") }}</p>
-        <p class="mt-4 rounded-full bg-background px-3 py-2 text-xs font-semibold text-dark">
-          {{ $t("hero.profileFocus") }}
-        </p>
-        <ul class="mt-5 flex flex-wrap gap-2" :aria-label="$t('projects.technologies')">
-          <li
-            v-for="tech in stack"
-            :key="tech"
-            class="rounded-full border border-line bg-background px-3 py-1.5 text-xs font-semibold text-muted"
-          >
-            {{ tech }}
-          </li>
-        </ul>
-      </div>
+      <dev-runner-vue />
     </div>
   </section>
 </template>
 <script>
 import resumeUrl from "@/assets/docs/resume.pdf";
-import { site } from "@/constants";
+import DevRunnerVue from "./DevRunner.vue";
 
 export default {
   name: "Introduce",
+  components: {
+    DevRunnerVue,
+  },
   data: () => ({
     resumeUrl,
-    site,
   }),
   computed: {
     metrics() {
       return this.$tm("hero.metrics");
-    },
-    stack() {
-      return this.$tm("hero.stack");
     },
   },
 };
