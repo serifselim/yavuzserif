@@ -1,8 +1,6 @@
 <template>
   <section class="grid min-h-[calc(100vh-7rem)] items-center gap-10 pb-14 md:grid-cols-[1.05fr_0.95fr] md:pb-20">
-    <div
-      class="order-2 flex flex-col items-start md:order-1"
-    >
+    <div class="order-2 flex flex-col items-start md:order-1">
       <p class="font-mono text-sm font-semibold uppercase tracking-[0.2em] text-primary">
         {{ $t("hero.eyebrow") }}
       </p>
@@ -14,51 +12,49 @@
       </p>
       <div class="mt-8 flex flex-wrap gap-3">
         <a
-          href="#projects"
+          href="#work"
           class="rounded-full bg-dark px-6 py-3 text-sm font-semibold text-light transition hover:bg-primary"
         >
           {{ $t("hero.projectsCta") }}
         </a>
         <a
-          href="#contact"
+          :href="resumeUrl"
+          target="_blank"
+          rel="noreferrer"
           class="rounded-full border border-line bg-surface px-6 py-3 text-sm font-semibold text-dark transition hover:border-primary hover:text-primary"
         >
-          {{ $t("hero.contactCta") }}
+          {{ $t("hero.resumeCta") }}
         </a>
       </div>
-      <dl class="mt-12 grid w-full max-w-2xl grid-cols-3 gap-3">
+      <dl class="mt-12 grid w-full max-w-2xl grid-cols-2 gap-x-6 gap-y-5">
         <div
           v-for="metric in metrics"
           :key="metric.label"
           class="border-l border-line pl-4"
         >
-          <dt class="text-2xl font-black text-dark">{{ metric.value }}</dt>
+          <dt class="text-xl font-black text-dark md:text-2xl">{{ metric.value }}</dt>
           <dd class="mt-1 text-xs font-semibold uppercase tracking-wide text-muted">{{ metric.label }}</dd>
         </div>
       </dl>
     </div>
 
     <div class="order-1 md:order-2">
-      <div class="relative mx-auto max-w-[440px]">
-        <div class="absolute -left-4 top-8 hidden rounded-full border border-line bg-surface px-4 py-2 text-sm font-semibold shadow-sm md:block">
-          {{ $t("hero.craftBadge") }}
-        </div>
-        <div class="absolute -right-2 bottom-10 hidden rounded-full bg-dark px-4 py-2 text-sm font-semibold text-light shadow-sm md:block">
-          {{ $t("hero.codeBadge") }}
-        </div>
-        <Model />
-      </div>
+      <dev-runner-vue />
     </div>
   </section>
 </template>
 <script>
-import { defineAsyncComponent } from "vue";
+import resumeUrl from "@/assets/docs/resume.pdf";
+import DevRunnerVue from "./DevRunner.vue";
 
 export default {
   name: "Introduce",
   components: {
-    Model: defineAsyncComponent(() => import("../Model/Model.vue")),
+    DevRunnerVue,
   },
+  data: () => ({
+    resumeUrl,
+  }),
   computed: {
     metrics() {
       return this.$tm("hero.metrics");

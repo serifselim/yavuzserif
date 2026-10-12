@@ -2,9 +2,10 @@
   "name": "yavuzserif",
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --port 1997",
     "build": "vite build",
-    "preview": "vite preview --port 4173"
+    "preview": "vite preview --port 4173",
+    "test": "node --test src/i18n/locale.test.mjs src/game/engine.test.mjs src/game/best.test.mjs src/game/audio.test.mjs"
   },
   "dependencies": {
     "animate.css": "^4.1.1",

@@ -9,7 +9,7 @@
         justify-between
         px-5
         py-4
-        md:px-10
+        md:px-20
       "
     >
       <a href="#intro" :aria-label="$t('common.goToIntro')">
@@ -22,7 +22,7 @@
         <resume-button-vue />
       </div>
 
-      <div class="md:hidden">
+      <div v-show="!dialog" class="md:hidden">
         <button
           @click="dialog = true"
           type="button"
@@ -114,7 +114,7 @@ export default {
 </script>
 <style scoped>
 .bg-dialog {
-  background-color: rgba(21, 21, 21, 0.35);
+  background-color: rgba(15, 23, 42, 0.45);
 }
 .dialog-content {
   animation: openDialogAnim 0.18s ease-out;

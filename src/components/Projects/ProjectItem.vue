@@ -1,6 +1,6 @@
 <template>
   <article class="grid overflow-hidden rounded-lg border border-line bg-surface shadow-sm md:grid-cols-[1.15fr_0.85fr]">
-    <div class="relative bg-[#ebe7dc] p-4 md:p-6">
+    <div class="relative bg-[#edf2f7] p-4 md:p-6">
       <img
         class="aspect-[16/10] w-full rounded-md object-cover"
         :src="project.images[imgIndex]"
@@ -45,6 +45,7 @@
 
       <div class="mt-8 flex flex-wrap gap-3">
         <a
+          v-if="project.liveHref"
           :href="project.liveHref"
           target="_blank"
           rel="noreferrer"
@@ -53,6 +54,7 @@
           {{ $t("projects.livePreview") }}
         </a>
         <a
+          v-if="project.githubHref"
           :href="project.githubHref"
           target="_blank"
           rel="noreferrer"
@@ -94,7 +96,11 @@ export default {
     },
   },
   mounted() {
-    if (this.project.images.length > 1) {
+    const prefersReducedMotion =
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (this.project.images.length > 1 && !prefersReducedMotion) {
       const randomRepeat = Math.random() * 2000 + 1000;
       this.intervalId = setInterval(() => this.loopIndex(), randomRepeat);
     }

@@ -9,19 +9,12 @@
       </h2>
     </div>
 
-    <div class="grid gap-8 md:grid-cols-[240px_1fr]">
-      <img
-        src="@/assets/images/avatar.jpg"
-        alt="Yavuz Serifoglu"
-        loading="lazy"
-        decoding="async"
-        class="aspect-[4/5] w-full max-w-[260px] rounded-2xl border border-line object-cover shadow-sm"
-      />
+    <div class="grid gap-8">
       <div class="space-y-7">
         <p class="text-lg leading-8 text-muted">
           {{ $t("about.body") }}
         </p>
-        <div class="grid gap-3 sm:grid-cols-3">
+        <div class="grid gap-3 sm:grid-cols-2">
           <div
             v-for="item in strengths"
             :key="item.title"

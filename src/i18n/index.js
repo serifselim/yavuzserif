@@ -1,17 +1,17 @@
 import { reactive } from "vue";
 import messages from "./messages";
+import { resolveLocale } from "./locale.mjs";
 
 const STORAGE_KEY = "portfolio-locale";
 const locales = Object.keys(messages);
 
 const getInitialLocale = () => {
-  const savedLocale = localStorage.getItem(STORAGE_KEY);
+  const savedLocale =
+    typeof localStorage === "undefined" ? null : localStorage.getItem(STORAGE_KEY);
+  const browserLanguage =
+    typeof navigator === "undefined" ? "en" : navigator.language;
 
-  if (locales.includes(savedLocale)) {
-    return savedLocale;
-  }
-
-  return "en";
+  return resolveLocale(savedLocale, browserLanguage, locales);
 };
 
 const state = reactive({
@@ -45,6 +45,31 @@ const translateMessage = (path) => {
   return currentMessage ?? fallbackMessage ?? [];
 };
 
+const syncDocument = () => {
+  if (typeof document === "undefined") {
+    return;
+  }
+
+  const title = translate("meta.title");
+  const description = translate("meta.description");
+
+  document.documentElement.lang = state.locale;
+  document.title = title;
+
+  const write = (selector, attr, value) => {
+    const el = document.querySelector(selector);
+    if (el) {
+      el.setAttribute(attr, value);
+    }
+  };
+
+  write('meta[name="description"]', "content", description);
+  write('meta[property="og:title"]', "content", title);
+  write('meta[property="og:description"]', "content", description);
+  write('meta[name="twitter:title"]', "content", title);
+  write('meta[name="twitter:description"]', "content", description);
+};
+
 const setLocale = (locale) => {
   if (!locales.includes(locale)) {
     return;
@@ -52,14 +77,12 @@ const setLocale = (locale) => {
 
   state.locale = locale;
   localStorage.setItem(STORAGE_KEY, locale);
-  document.documentElement.lang = locale;
-  document.title = translate("meta.title");
+  syncDocument();
 };
 
 export default {
   install(app) {
-    document.documentElement.lang = state.locale;
-    document.title = translate("meta.title");
+    syncDocument();
 
     app.mixin({
       computed: {
