@@ -2,6 +2,7 @@
   <article class="grid overflow-hidden rounded-lg border border-line bg-surface shadow-sm md:grid-cols-[1.15fr_0.85fr]">
     <div class="relative bg-[#edf2f7] p-4 md:p-6">
       <img
+        v-if="hasImages"
         class="aspect-[16/10] w-full rounded-md object-cover"
         :src="project.images[imgIndex]"
         :alt="$t('projects.previewAlt', { title: title })"
@@ -9,7 +10,25 @@
         decoding="async"
       />
       <div
-        v-if="project.images.length > 1"
+        v-else
+        class="flex aspect-[16/10] w-full flex-col justify-between rounded-md bg-dark p-6 text-light md:p-8"
+      >
+        <p class="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+          {{ category }}
+        </p>
+        <p class="text-3xl font-black leading-tight md:text-4xl">{{ title }}</p>
+        <ul v-if="project.modules" class="flex flex-wrap gap-2">
+          <li
+            v-for="moduleName in project.modules"
+            :key="moduleName"
+            class="rounded-full border border-white/20 px-3 py-1 text-xs font-semibold text-light/80"
+          >
+            {{ moduleName }}
+          </li>
+        </ul>
+      </div>
+      <div
+        v-if="hasImages && project.images.length > 1"
         class="mt-4 flex justify-center gap-2"
         :aria-label="$t('projects.previewSlides')"
       >
@@ -43,7 +62,7 @@
         </ul>
       </div>
 
-      <div class="mt-8 flex flex-wrap gap-3">
+      <div v-if="project.liveHref || project.githubHref" class="mt-8 flex flex-wrap gap-3">
         <a
           v-if="project.liveHref"
           :href="project.liveHref"
@@ -76,6 +95,9 @@ export default {
     intervalId: null,
   }),
   computed: {
+    hasImages() {
+      return Array.isArray(this.project.images) && this.project.images.length > 0;
+    },
     title() {
       return this.$t(this.project.titleKey);
     },
@@ -100,7 +122,7 @@ export default {
       typeof window !== "undefined" &&
       window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    if (this.project.images.length > 1 && !prefersReducedMotion) {
+    if (this.hasImages && this.project.images.length > 1 && !prefersReducedMotion) {
       const randomRepeat = Math.random() * 2000 + 1000;
       this.intervalId = setInterval(() => this.loopIndex(), randomRepeat);
     }

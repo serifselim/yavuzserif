@@ -11,6 +11,9 @@ export default {
       turkish: "Turkish",
       loading: "Loading",
       resume: "Resume",
+      resumeMenu: "Download résumé",
+      resumeEnglish: "English",
+      resumeTurkish: "Turkish",
       contact: "Contact",
       emailCopied: "Copied.",
       copyEmail: "Copy email address",
@@ -32,7 +35,7 @@ export default {
     hero: {
       eyebrow: "Senior Frontend Developer",
       title: "UI, mobile, API, and the database.",
-      body: "I'm Yavuz. Communication design background, software since 2022. I work in React and Vue, React Native, NestJS and .NET Core, PostgreSQL. Istanbul.",
+      body: "I'm Yavuz, a senior frontend developer in Istanbul. Communication design at Yıldız Technical University, production software at Intime Info since 2022. I lead the Vue frontend for Intime IK, an enterprise HR platform, and I ship personal full-stack products with React Native, NestJS, and PostgreSQL.",
       projectsCta: "Projects",
       contactCta: "Email",
       resumeCta: "Resume",
@@ -50,7 +53,7 @@ export default {
     about: {
       eyebrow: "Skills",
       title: "What I work with.",
-      body: "I came from communication design at Yıldız, then into software. I still use Figma. Web, React Native, the API, and the queries.",
+      body: "I came from communication design at Yıldız, then into software in 2022. I still use Figma. At work I own the Vue side of Intime IK; on my own time I take a product from the screen through the API into PostgreSQL.",
       strengths: [
         {
           title: "Client",
@@ -82,11 +85,13 @@ export default {
         "Figma",
         "Git",
       ],
+      modelLabel:
+        "Dog model. Drag or press left and right to turn it. Skill logos orbit around it.",
     },
     experience: {
       eyebrow: "Experience",
       title: "Intime, since 2022.",
-      body: "Production leadership and frontend engineering. The personal projects are below.",
+      body: "Frontend team lead on Intime IK, a Vue 3 HR platform in production. Personal products sit in the work section.",
       items: [
         {
           company: "Intime Info Yazılım Çözümleri A.Ş.",
@@ -94,10 +99,10 @@ export default {
           location: "Atasehir, Istanbul, Turkey · Hybrid",
           dates: "Jun 2024 — Present",
           bullets: [
-            "Technical leadership for the frontend team, establishing architectural standards, and guiding code reviews.",
-            "Design and maintenance of scalable, reusable component libraries across the enterprise Vue ecosystem.",
-            "Cross-functional collaboration with product design (Figma) and backend teams to optimize UX and performance.",
-            "Enforcing modern frontend best practices, responsive layouts, and accessibility standards in production.",
+            "Lead the Vue 3 + TypeScript frontend for Intime IK, Intime Info's enterprise HR platform: PDKS, payroll, CRM, helpdesk, agreements, performance, and related modules.",
+            "Own the shared UI architecture — tables, theming, auth, and the REST client — so new modules ship on the same rails.",
+            "Run code reviews and keep TypeScript, Element Plus, and responsive layout standards in production.",
+            "Work with product (Figma) and backend so screens ship as maintainable slices.",
           ],
         },
         {
@@ -106,9 +111,9 @@ export default {
           location: "Uskudar, Istanbul, Turkey",
           dates: "Jul 2022 — Jun 2024",
           bullets: [
-            "Developed user-facing web applications using Vue and modern JavaScript in production.",
-            "Translated Figma specifications into pixel-accurate, responsive, and maintainable frontend code.",
-            "Integrated RESTful APIs, handled client-side state management, and optimized web performance.",
+            "Built production Vue screens for Intime IK — lists, forms, calendars, dashboards — from Figma.",
+            "Wired REST APIs, client state, and role-based views used daily by HR teams.",
+            "Tightened performance and layout on dense data tables.",
           ],
         },
       ],
@@ -118,14 +123,39 @@ export default {
     },
     projects: {
       eyebrow: "Projects",
-      title: "Personal work.",
-      body: "HydraPlant and Beyaz Nokta are full stack personal projects.",
+      title: "Work I shipped.",
+      body: "Production work at Intime Info, then personal full-stack products.",
       previewSlides: "Project preview slides",
       previewAlt: "{title} preview",
       technologies: "Technologies",
       livePreview: "Live",
       code: "Code",
       items: {
+        intimeik: {
+          title: "Intime IK",
+          category: "Production · Vue",
+          desc: "Enterprise HR platform I lead on the frontend at Intime Info. Vue 3, TypeScript, Pinia, Element Plus. Modules include PDKS, payroll, CRM, helpdesk, agreements, tasks, vehicles, and performance. Private production product.",
+        },
+        pluspdks: {
+          title: "Plus PDKS",
+          category: "Production · ASP.NET",
+          desc: "Attendance and HR web client I ship in PlusPdks.WEB. ASP.NET Core 8, Razor, JavaScript. Shifts, reports, personnel, CRM, helpdesk, and related modules. Private production product.",
+        },
+        cumbara: {
+          title: "Cumbara",
+          category: "Production · Vue",
+          desc: "Loyalty and points admin panel. Vue 3, TypeScript, Pinia, Element Plus. Campaigns, dealers, rewards, point movements, suspicious transactions, and notifications. Private production product.",
+        },
+        fairanalytics: {
+          title: "Fair Analytics",
+          category: "Production · Nuxt",
+          desc: "Bilingual marketing site for Fair Analytics. Nuxt, Vue 3, TypeScript, Tailwind. Home, products, blog, careers, and contact against the Intime Info API. Private production product.",
+        },
+        vyc: {
+          title: "VYC Türkiye",
+          category: "Production · Vue",
+          desc: "Corporate site rebuild for VYC Türkiye. Vue 3, TypeScript, Tailwind, Element Plus, TR/EN. Home, products, services, news, references, certificates, and contact.",
+        },
         hydraplant: {
           title: "HydraPlant",
           category: "React Native",
@@ -162,11 +192,13 @@ export default {
     contact: {
       eyebrow: "Contact",
       title: "Links.",
-      body: "Email, LinkedIn, GitHub, résumé.",
+      body: "Email, LinkedIn, GitHub, résumé in Turkish or English.",
       email: "Email",
       linkedin: "LinkedIn",
       github: "GitHub",
       resume: "Resume",
+      resumeEnglish: "Resume · EN",
+      resumeTurkish: "CV · TR",
     },
   },
   tr: {
@@ -181,6 +213,9 @@ export default {
       turkish: "Türkçe",
       loading: "Yükleniyor",
       resume: "CV",
+      resumeMenu: "CV indir",
+      resumeEnglish: "İngilizce",
+      resumeTurkish: "Türkçe",
       contact: "İletişim",
       emailCopied: "Kopyalandı.",
       copyEmail: "E-posta adresini kopyala",
@@ -202,7 +237,7 @@ export default {
     hero: {
       eyebrow: "Senior Frontend Developer",
       title: "Arayüz, mobil, API ve veritabanı.",
-      body: "Yavuz. İletişim tasarımı kökenliyim, 2022'den beri yazılım. React ve Vue, React Native, NestJS ve .NET Core, PostgreSQL. İstanbul.",
+      body: "Yavuz, İstanbul'da senior frontend developer. Yıldız Teknik'te iletişim tasarımı, 2022'den beri Intime Info'da üretim yazılımı. Intime IK kurumsal İK platformunun Vue arayüzüne liderlik ediyorum; kişisel tarafta React Native, NestJS ve PostgreSQL ile tam yığın ürünler çıkarıyorum.",
       projectsCta: "Projeler",
       contactCta: "E-posta",
       resumeCta: "CV",
@@ -220,7 +255,7 @@ export default {
     about: {
       eyebrow: "Yetenekler",
       title: "Ne ile çalışıyorum.",
-      body: "Yıldız'da iletişim tasarımı, sonra yazılım. Figma hâlâ duruyor. Web, React Native, API ve sorgular.",
+      body: "Yıldız'da iletişim tasarımı, 2022'de yazılım. Figma hâlâ duruyor. İşte Intime IK'nın Vue tarafını sahipleniyorum; kendi işimde ekrandan API'ye ve PostgreSQL'e kadar götürüyorum.",
       strengths: [
         {
           title: "İstemci",
@@ -252,11 +287,13 @@ export default {
         "Figma",
         "Git",
       ],
+      modelLabel:
+        "Köpek modeli. Çevirmek için sürükle veya sol ve sağ oka bas. Yetenek logoları etrafında döner.",
     },
     experience: {
       eyebrow: "Deneyim",
       title: "Intime, 2022'den beri.",
-      body: "Üretim ortamında liderlik ve frontend geliştirme. Kişisel projeler aşağıda.",
+      body: "Intime IK Vue 3 İK platformunda frontend team lead. Kişisel ürünler işler bölümünde.",
       items: [
         {
           company: "Intime Info Yazılım Çözümleri A.Ş.",
@@ -264,10 +301,10 @@ export default {
           location: "Ataşehir, İstanbul, Türkiye · Hibrit",
           dates: "Haz 2024 — Günümüz",
           bullets: [
-            "Frontend ekibine teknik liderlik, mimari standartların belirlenmesi ve kod inceleme süreçlerinin yönetimi.",
-            "Geniş ölçekli kurumsal Vue ekosisteminde ölçeklenebilir ve tekrar kullanılabilir bileşen kütüphanelerinin geliştirilmesi.",
-            "Ürün tasarımı (Figma) ve backend ekipleriyle yakın çalışarak kullanıcı deneyimini ve performansı optimize etme.",
-            "Üretim ortamında modern frontend standartları, responsive tasarım ve erişilebilirlik ilkelerinin uygulanması.",
+            "Intime Info'nun kurumsal İK platformu Intime IK'nın Vue 3 + TypeScript frontend'ine liderlik: PDKS, bordro, CRM, yardım masası, sözleşmeler, performans ve bağlı modüller.",
+            "Paylaşılan arayüz mimarisini sahipleniyorum — tablolar, tema, kimlik doğrulama ve REST istemcisi — yeni modüller aynı rayda çıksın diye.",
+            "Kod incelemesi yürütüyorum; TypeScript, Element Plus ve duyarlı yerleşim standartlarını üretimde tutuyorum.",
+            "Ürün (Figma) ve backend ile çalışarak ekranları sürdürülebilir dilimler olarak teslim ediyorum.",
           ],
         },
         {
@@ -276,9 +313,9 @@ export default {
           location: "Üsküdar, İstanbul, Türkiye",
           dates: "Tem 2022 — Haz 2024",
           bullets: [
-            "Vue ve modern JavaScript teknolojileri ile üretim ortamında kullanıcı arayüzleri geliştirme.",
-            "Figma tasarımlarını piksel hassasiyetinde, duyarlı ve sürdürülebilir frontend koduna dönüştürme.",
-            "RESTful API entegrasyonları, istemci taraflı durum yönetimi ve web performans optimizasyonu.",
+            "Intime IK için Figma'dan üretim Vue ekranları: listeler, formlar, takvimler, paneller.",
+            "İK ekiplerinin her gün kullandığı REST API, istemci state ve rol bazlı görünümleri bağladım.",
+            "Yoğun veri tablolarında performans ve yerleşimi sıkılaştırdım.",
           ],
         },
       ],
@@ -288,14 +325,39 @@ export default {
     },
     projects: {
       eyebrow: "Projeler",
-      title: "Kişisel işler.",
-      body: "HydraPlant ve Beyaz Nokta tam yığın kişisel projeler.",
+      title: "Çıkardığım işler.",
+      body: "Intime Info'daki üretim işleri, ardından kişisel tam yığın ürünler.",
       previewSlides: "Proje önizleme görselleri",
       previewAlt: "{title} önizlemesi",
       technologies: "Teknolojiler",
       livePreview: "Canlı",
       code: "Kod",
       items: {
+        intimeik: {
+          title: "Intime IK",
+          category: "Üretim · Vue",
+          desc: "Intime Info'da frontend liderliğini yürüttüğüm kurumsal İK platformu. Vue 3, TypeScript, Pinia, Element Plus. PDKS, bordro, CRM, yardım masası, sözleşmeler, görev, araç ve performans. Üretim ürünü, kaynak kodu kapalı.",
+        },
+        pluspdks: {
+          title: "Plus PDKS",
+          category: "Üretim · ASP.NET",
+          desc: "PlusPdks.WEB içinde teslim ettiğim PDKS ve İK web istemcisi. ASP.NET Core 8, Razor, JavaScript. Vardiya, rapor, personel, CRM, yardım masası ve bağlı modüller. Üretim ürünü, kaynak kodu kapalı.",
+        },
+        cumbara: {
+          title: "Cumbara",
+          category: "Üretim · Vue",
+          desc: "Sadakat ve puan admin paneli. Vue 3, TypeScript, Pinia, Element Plus. Kampanya, bayi, ödül, puan hareketi, şüpheli işlem ve bildirim. Üretim ürünü, kaynak kodu kapalı.",
+        },
+        fairanalytics: {
+          title: "Fair Analytics",
+          category: "Üretim · Nuxt",
+          desc: "Fair Analytics için iki dilli pazarlama sitesi. Nuxt, Vue 3, TypeScript, Tailwind. Ana sayfa, ürünler, blog, kariyer ve iletişim; Intime Info API. Üretim ürünü, kaynak kodu kapalı.",
+        },
+        vyc: {
+          title: "VYC Türkiye",
+          category: "Üretim · Vue",
+          desc: "VYC Türkiye kurumsal sitesinin Vue 3 yeniden yazımı. TypeScript, Tailwind, Element Plus, TR/EN. Ana sayfa, ürünler, servisler, haberler, referanslar, belgeler ve iletişim.",
+        },
         hydraplant: {
           title: "HydraPlant",
           category: "React Native",
@@ -332,11 +394,13 @@ export default {
     contact: {
       eyebrow: "İletişim",
       title: "Bağlantılar.",
-      body: "E-posta, LinkedIn, GitHub, CV.",
+      body: "E-posta, LinkedIn, GitHub, Türkçe veya İngilizce CV.",
       email: "E-posta",
       linkedin: "LinkedIn",
       github: "GitHub",
       resume: "CV",
+      resumeEnglish: "Resume · EN",
+      resumeTurkish: "CV · TR",
     },
   },
 };

@@ -45,29 +45,33 @@
 
       <div
         v-if="hud.phase === 'idle'"
-        class="pointer-events-none absolute inset-0 flex flex-col items-center justify-center gap-2 bg-background/70 px-6 text-center"
+        class="pointer-events-none absolute inset-0 flex flex-col items-center justify-center gap-2 px-6 text-center"
       >
         <p
-          class="font-mono text-sm font-bold uppercase tracking-[0.2em] text-dark"
+          class="rounded-full bg-surface/90 px-4 py-2 font-mono text-sm font-bold uppercase tracking-[0.2em] text-dark shadow-sm"
           :class="reducedMotion ? '' : 'animate-pulse'"
         >
           {{ $t("game.idleHint") }}
         </p>
-        <p v-if="reducedMotion" class="text-xs text-muted">{{ $t("game.reducedMotionNote") }}</p>
+        <p v-if="reducedMotion" class="rounded-full bg-surface/90 px-3 py-1 text-xs text-muted">
+          {{ $t("game.reducedMotionNote") }}
+        </p>
       </div>
 
       <div
         v-else-if="hud.phase === 'over'"
-        class="pointer-events-none absolute inset-0 flex flex-col items-center justify-center gap-1 bg-background/80 px-6 text-center"
+        class="pointer-events-none absolute inset-0 flex items-center justify-center px-6"
       >
-        <p class="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-accent">
-          {{ $t("game.gameOver") }}
-        </p>
-        <p class="text-4xl font-black tabular-nums text-dark">{{ hud.score }}</p>
-        <p class="text-sm font-bold text-primary">{{ $t("game.titles." + hud.title) }}</p>
-        <p class="mt-2 font-mono text-xs uppercase tracking-[0.15em] text-muted">
-          {{ $t("game.retryHint") }}
-        </p>
+        <div class="flex flex-col items-center gap-1 rounded-2xl bg-surface/90 px-6 py-4 text-center shadow-sm">
+          <p class="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-accent">
+            {{ $t("game.gameOver") }}
+          </p>
+          <p class="text-4xl font-black tabular-nums text-dark">{{ hud.score }}</p>
+          <p class="text-sm font-bold text-primary">{{ $t("game.titles." + hud.title) }}</p>
+          <p class="mt-2 font-mono text-xs uppercase tracking-[0.15em] text-muted">
+            {{ $t("game.retryHint") }}
+          </p>
+        </div>
       </div>
     </div>
 

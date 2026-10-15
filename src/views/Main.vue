@@ -56,11 +56,17 @@
               </a>
               <a
                 class="rounded-full border border-line bg-surface px-5 py-3 text-sm font-semibold text-dark transition hover:border-primary hover:text-primary"
-                :href="resumeUrl"
-                target="_blank"
-                rel="noreferrer"
+                :href="resumeTr"
+                :download="resumeDownloadName('tr')"
               >
-                {{ $t("contact.resume") }}
+                {{ $t("contact.resumeTurkish") }}
+              </a>
+              <a
+                class="rounded-full border border-line bg-surface px-5 py-3 text-sm font-semibold text-dark transition hover:border-primary hover:text-primary"
+                :href="resumeEn"
+                :download="resumeDownloadName('en')"
+              >
+                {{ $t("contact.resumeEnglish") }}
               </a>
             </div>
           </div>
@@ -75,7 +81,8 @@
 </template>
 
 <script>
-import resumeUrl from "@/assets/docs/resume.pdf";
+import resumeEn from "@/assets/docs/resume-en.pdf";
+import resumeTr from "@/assets/docs/resume-tr.pdf";
 import {
   HeaderVue,
   IntroduceVue,
@@ -87,13 +94,18 @@ import {
 } from "@/components";
 import { site } from "@/constants";
 import { mailtoHref } from "@/i18n/locale.mjs";
+import { resumeDownloadName } from "@/i18n/resume.mjs";
 
 export default {
   name: "Main",
   data: () => ({
     site,
-    resumeUrl,
+    resumeEn,
+    resumeTr,
   }),
+  methods: {
+    resumeDownloadName,
+  },
   computed: {
     emailHref() {
       return mailtoHref(site.email, this.$t("common.emailSubject"));

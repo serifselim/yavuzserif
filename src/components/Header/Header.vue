@@ -19,7 +19,7 @@
       <div class="hidden items-center md:flex">
         <nav-vue />
         <language-toggle-vue class="mr-3" />
-        <resume-button-vue />
+        <resume-button-vue align="end" />
       </div>
 
       <div v-show="!dialog" class="md:hidden">

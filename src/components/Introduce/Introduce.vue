@@ -17,14 +17,7 @@
         >
           {{ $t("hero.projectsCta") }}
         </a>
-        <a
-          :href="resumeUrl"
-          target="_blank"
-          rel="noreferrer"
-          class="rounded-full border border-line bg-surface px-6 py-3 text-sm font-semibold text-dark transition hover:border-primary hover:text-primary"
-        >
-          {{ $t("hero.resumeCta") }}
-        </a>
+        <resume-button-vue variant="outline" />
       </div>
       <dl class="mt-12 grid w-full max-w-2xl grid-cols-2 gap-x-6 gap-y-5">
         <div
@@ -44,17 +37,15 @@
   </section>
 </template>
 <script>
-import resumeUrl from "@/assets/docs/resume.pdf";
 import DevRunnerVue from "./DevRunner.vue";
+import ResumeButtonVue from "@/components/Header/ResumeButton.vue";
 
 export default {
   name: "Introduce",
   components: {
     DevRunnerVue,
+    ResumeButtonVue,
   },
-  data: () => ({
-    resumeUrl,
-  }),
   computed: {
     metrics() {
       return this.$tm("hero.metrics");

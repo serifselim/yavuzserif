@@ -7,6 +7,7 @@
       <h2 class="mt-3 text-4xl font-black leading-tight md:text-5xl">
         {{ $t("about.title") }}
       </h2>
+      <model-vue class="mt-8" />
     </div>
 
     <div class="grid gap-8">
@@ -38,8 +39,11 @@
   </section>
 </template>
 <script>
+import ModelVue from "@/components/Model/Model.vue";
+
 export default {
   name: "About",
+  components: { ModelVue },
   computed: {
     strengths() {
       return this.$tm("about.strengths");
