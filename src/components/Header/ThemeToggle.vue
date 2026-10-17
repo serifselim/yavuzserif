@@ -1,6 +1,6 @@
 <template>
   <div
-    class="theme-toggle inline-flex rounded-full border border-line bg-surface p-1 shadow-sm"
+    class="theme-toggle inline-flex items-center rounded-md border border-line bg-background p-0.5"
     role="group"
     :aria-label="$t('common.theme')"
   >
@@ -8,7 +8,7 @@
       v-for="option in options"
       :key="option.value"
       type="button"
-      class="flex h-7 w-7 items-center justify-center rounded-full transition"
+      class="flex h-7 w-7 items-center justify-center rounded-[5px] transition"
       :class="
         $appliedTheme === option.value
           ? 'bg-dark text-light'
@@ -47,6 +47,6 @@ export default {
 
 <style scoped>
 .theme-toggle ion-icon {
-  font-size: 15px;
+  font-size: 14px;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <section
-    class="mx-auto w-full max-w-[520px] overflow-hidden rounded-2xl border border-line bg-surface shadow-sm"
+    class="mx-auto w-full max-w-[520px] overflow-hidden rounded-lg border border-line bg-surface"
     :aria-label="$t('game.title')"
   >
     <header class="flex items-center gap-3 border-b border-line px-4 py-3">
@@ -9,16 +9,16 @@
         alt=""
         width="32"
         height="32"
-        class="h-8 w-8 rounded-full border border-line object-cover"
+        class="h-8 w-8 rounded-md border border-line object-cover"
       />
       <div class="min-w-0 flex-1">
-        <p class="truncate text-sm font-black text-dark">{{ site.name }}</p>
-        <p class="truncate text-xs font-semibold text-primary-text">{{ $t("hero.profileRole") }}</p>
+        <p class="truncate font-display text-sm font-bold text-dark">{{ site.name }}</p>
+        <p class="truncate font-mono text-[11px] text-muted">{{ $t("hero.profileRole") }}</p>
       </div>
       <button
         v-if="audioSupported"
         type="button"
-        class="rounded-full border border-line px-3 py-1.5 font-mono text-[11px] font-semibold uppercase tracking-wide transition hover:border-primary hover:text-primary-text"
+        class="rounded-md border border-line px-2.5 py-1 font-mono text-[10px] font-semibold uppercase tracking-wider transition hover:border-dark hover:text-dark"
         :class="soundOn ? 'border-primary text-primary-text' : 'text-muted'"
         :aria-pressed="soundOn"
         @click="toggleSound"
@@ -48,12 +48,11 @@
         class="pointer-events-none absolute inset-0 flex flex-col items-center justify-center gap-2 px-6 text-center"
       >
         <p
-          class="rounded-full bg-surface/90 px-4 py-2 font-mono text-sm font-bold uppercase tracking-[0.2em] text-dark shadow-sm"
-          :class="reducedMotion ? '' : 'animate-pulse'"
+          class="rounded-md border border-line bg-surface/95 px-4 py-2 font-mono text-xs font-semibold uppercase tracking-[0.16em] text-dark shadow-sm"
         >
           {{ $t("game.idleHint") }}
         </p>
-        <p v-if="reducedMotion" class="rounded-full bg-surface/90 px-3 py-1 text-xs text-muted">
+        <p v-if="reducedMotion" class="rounded-md bg-surface/90 px-3 py-1 text-xs text-muted">
           {{ $t("game.reducedMotionNote") }}
         </p>
       </div>
@@ -62,13 +61,13 @@
         v-else-if="hud.phase === 'over'"
         class="pointer-events-none absolute inset-0 flex items-center justify-center px-6"
       >
-        <div class="flex flex-col items-center gap-1 rounded-2xl bg-surface/90 px-6 py-4 text-center shadow-sm">
-          <p class="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-accent-text">
+        <div class="flex flex-col items-center gap-1 rounded-lg border border-line bg-surface/95 px-6 py-4 text-center shadow-sm">
+          <p class="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-primary-text">
             {{ $t("game.gameOver") }}
           </p>
-          <p class="text-4xl font-black tabular-nums text-dark">{{ hud.score }}</p>
-          <p class="text-sm font-bold text-primary-text">{{ $t("game.titles." + hud.title) }}</p>
-          <p class="mt-2 font-mono text-xs uppercase tracking-[0.15em] text-muted">
+          <p class="font-display text-4xl font-bold tabular-nums text-dark">{{ hud.score }}</p>
+          <p class="text-sm font-semibold text-muted">{{ $t("game.titles." + hud.title) }}</p>
+          <p class="mt-2 font-mono text-[11px] uppercase tracking-[0.15em] text-muted">
             {{ $t("game.retryHint") }}
           </p>
         </div>
@@ -78,42 +77,42 @@
     <div class="flex items-end justify-between gap-4 border-t border-line px-4 py-3">
       <dl class="flex gap-6">
         <div>
-          <dt class="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-muted">
+          <dt class="font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-muted">
             {{ $t("game.score") }}
           </dt>
-          <dd class="text-2xl font-black tabular-nums text-dark">{{ hud.score }}</dd>
+          <dd class="font-display text-2xl font-bold tabular-nums text-dark">{{ hud.score }}</dd>
         </div>
         <div>
-          <dt class="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-muted">
+          <dt class="font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-muted">
             {{ $t("game.best") }}
           </dt>
-          <dd class="text-2xl font-black tabular-nums text-dark">{{ Math.max(best, hud.score) }}</dd>
+          <dd class="font-display text-2xl font-bold tabular-nums text-dark">{{ Math.max(best, hud.score) }}</dd>
         </div>
       </dl>
       <p
         v-if="hud.multiplier > 1"
-        class="rounded-full bg-accent px-3 py-1 font-mono text-xs font-bold text-white"
+        class="rounded-md bg-primary px-2.5 py-1 font-mono text-xs font-bold text-white"
       >
         {{ $t("game.combo") }} x{{ hud.multiplier }}
       </p>
     </div>
 
-    <ul class="flex flex-wrap gap-2 border-t border-line px-4 py-3" :aria-label="$t('game.techLabel')">
+    <ul class="flex flex-wrap gap-1.5 border-t border-line px-4 py-2.5" :aria-label="$t('game.techLabel')">
       <li
         v-for="tech in techLabels"
         :key="tech.id"
-        class="rounded-full border px-3 py-1 text-xs font-semibold transition"
+        class="rounded border px-2.5 py-0.5 font-mono text-[11px] font-medium transition"
         :class="
           hud.collected.includes(tech.id)
             ? 'border-primary bg-primary text-white'
-            : 'border-line bg-background text-muted'
+            : 'border-line bg-well/50 text-muted'
         "
       >
         {{ tech.label }}
       </li>
     </ul>
 
-    <p class="border-t border-line px-4 py-2 text-xs text-muted">
+    <p class="border-t border-line bg-well/30 px-4 py-2 font-mono text-[11px] text-muted">
       {{ $t("hero.profileLocation") }} · {{ $t("hero.profileFocus") }}
     </p>
   </section>

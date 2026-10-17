@@ -2,63 +2,68 @@
   <section class="border-t border-line py-16 md:py-24">
     <div class="mb-10 flex flex-col gap-4 md:mb-14 md:flex-row md:items-end md:justify-between">
       <div>
-        <p class="font-mono text-sm font-semibold uppercase tracking-[0.2em] text-primary-text">
-          {{ $t("projects.eyebrow") }}
-        </p>
-        <h2 class="mt-3 text-4xl font-black leading-tight md:text-5xl">
+        <div class="flex items-center gap-2.5 font-mono text-xs font-medium uppercase tracking-[0.16em] text-primary-text">
+          <span>[ 01 ]</span>
+          <span>{{ $t("projects.eyebrow") }}</span>
+        </div>
+        <h2 class="mt-3 font-display text-4xl font-bold tracking-[-0.03em] text-dark md:text-5xl">
           {{ $t("projects.title") }}
         </h2>
       </div>
-      <p class="max-w-md text-muted">
+      <p class="max-w-md text-sm leading-7 text-muted md:text-base">
         {{ $t("projects.body") }}
       </p>
     </div>
 
-    <div class="grid gap-5 md:grid-cols-2">
+    <div class="grid border-t border-l border-line bg-surface/70 md:grid-cols-2">
       <article
-        v-for="item in projectsInfo"
+        v-for="(item, idx) in projectsInfo"
         :key="item.id"
-        class="group relative flex flex-col justify-between overflow-hidden rounded-xl border border-line bg-surface p-6 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/60 md:p-8"
-        :class="item.flagship ? 'md:col-span-2' : ''"
+        class="group relative flex flex-col justify-between border-r border-b border-line p-6 transition-colors duration-200 hover:bg-surface md:p-9"
+        :class="item.flagship || idx === projectsInfo.length - 1 ? 'md:col-span-2' : ''"
       >
-        <div
-          class="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary via-primary/60 to-transparent opacity-80 transition-opacity group-hover:opacity-100"
+        <!-- Corner Crosshair Accent -->
+        <span
+          class="pointer-events-none absolute -top-[5px] -left-[5px] select-none font-mono text-[10px] leading-none text-muted/60"
           aria-hidden="true"
-        />
+        >+</span>
 
-        <div :class="item.flagship ? 'md:grid md:grid-cols-[1.15fr_0.85fr] md:gap-8 md:items-start' : ''">
+        <div
+          :class="
+            item.flagship || idx === projectsInfo.length - 1
+              ? 'md:grid md:grid-cols-[1.2fr_0.8fr] md:gap-10 md:items-start'
+              : ''
+          "
+        >
           <div>
-            <div class="flex flex-wrap items-center justify-between gap-2">
-              <div class="flex items-center gap-2.5">
-                <span class="font-mono text-xs font-bold text-primary-text">
-                  {{ item.index }}
-                </span>
-                <span class="h-1 w-1 rounded-full bg-line" aria-hidden="true" />
-                <p class="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary-text">
+            <!-- Top Metadata Strip -->
+            <div class="flex flex-wrap items-baseline justify-between gap-2 font-mono text-[11px]">
+              <div class="flex items-center gap-2">
+                <span class="font-semibold text-primary-text">{{ item.index }}</span>
+                <span class="text-line">/</span>
+                <span class="uppercase tracking-[0.14em] text-muted">
                   {{ $t(item.categoryKey) }}
-                </p>
+                </span>
               </div>
 
-              <span
-                v-if="item.roleKey"
-                class="rounded-full border border-line bg-well px-3 py-1 font-mono text-[11px] font-semibold text-muted"
-              >
+              <span v-if="item.roleKey" class="text-muted">
                 {{ $t(item.roleKey) }}
               </span>
             </div>
 
-            <div class="mt-4 flex flex-wrap items-baseline justify-between gap-3">
-              <h3 class="text-2xl font-black tracking-tight text-dark md:text-3xl">
+            <!-- Project Title & Direct Links -->
+            <div class="mt-3.5 flex flex-wrap items-baseline justify-between gap-3">
+              <h3 class="font-display text-2xl font-bold tracking-[-0.025em] text-dark transition-colors group-hover:text-primary-text md:text-3xl">
                 {{ $t(item.titleKey) }}
               </h3>
 
-              <div v-if="item.liveHref || item.githubHref" class="flex flex-wrap items-center gap-2">
+              <div v-if="item.liveHref || item.githubHref" class="flex items-center gap-4 font-mono text-xs font-medium">
                 <a
                   v-if="item.liveHref"
                   :href="item.liveHref"
                   target="_blank"
                   rel="noreferrer"
-                  class="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-line bg-background px-3.5 py-1.5 font-mono text-xs font-semibold text-dark transition hover:border-primary hover:text-primary-text"
+                  class="inline-flex items-center gap-1 text-dark underline decoration-line underline-offset-4 transition hover:text-primary-text hover:decoration-primary"
                 >
                   <span>{{ item.liveLabel || $t("projects.livePreview") }}</span>
                   <span aria-hidden="true">↗</span>
@@ -68,45 +73,59 @@
                   :href="item.githubHref"
                   target="_blank"
                   rel="noreferrer"
-                  class="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-line bg-background px-3.5 py-1.5 font-mono text-xs font-semibold text-dark transition hover:border-primary hover:text-primary-text"
+                  class="inline-flex items-center gap-1 text-muted underline decoration-line underline-offset-4 transition hover:text-dark hover:decoration-dark"
                 >
-                  <ion-icon name="logo-github" class="text-sm" />
                   <span>{{ $t("projects.code") }}</span>
+                  <span aria-hidden="true">↗</span>
                 </a>
               </div>
             </div>
 
-            <p class="mt-3 text-sm leading-7 text-muted md:text-base md:leading-7">
+            <!-- Editorial Description -->
+            <p class="mt-3 text-sm leading-7 text-muted md:text-[15px] md:leading-7">
               {{ $t(item.descKey) }}
             </p>
           </div>
 
-          <div :class="item.flagship ? 'mt-6 md:mt-0 md:border-l md:border-line md:pl-8' : 'mt-6'">
-            <p class="font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-muted">
+          <!-- Architectural Scope & Modules Specification -->
+          <div
+            :class="
+              item.flagship || idx === projectsInfo.length - 1
+                ? 'mt-6 border-t border-dashed border-line pt-4 md:mt-0 md:border-t-0 md:border-l md:border-solid md:border-line md:pt-0 md:pl-8'
+                : 'mt-6 border-t border-dashed border-line pt-4'
+            "
+          >
+            <p class="font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-muted">
               {{ $t("projects.modulesLabel") }}
             </p>
-            <ul class="mt-2.5 flex flex-wrap gap-1.5">
-              <li
-                v-for="mod in $tm(item.modulesKey)"
-                :key="mod"
-                class="rounded-md border border-line/90 bg-well px-2.5 py-1 text-xs font-semibold text-dark"
-              >
-                {{ mod }}
-              </li>
-            </ul>
+            <p class="mt-2 text-xs font-medium leading-6 text-dark md:text-[13px]">
+              <template v-for="(mod, mIdx) in $tm(item.modulesKey)" :key="mod">
+                <span>{{ mod }}</span>
+                <span
+                  v-if="mIdx < $tm(item.modulesKey).length - 1"
+                  class="mx-2 font-mono text-primary-text"
+                  aria-hidden="true"
+                >·</span>
+              </template>
+            </p>
           </div>
         </div>
 
-        <div class="mt-6 flex flex-wrap items-center justify-between gap-3 border-t border-line/70 pt-4">
-          <ul class="flex flex-wrap gap-2" :aria-label="$t('projects.technologies')">
-            <li
-              v-for="tech in item.technologies"
-              :key="tech"
-              class="rounded-full bg-background px-3 py-1 font-mono text-xs font-semibold text-muted"
-            >
-              {{ tech }}
-            </li>
-          </ul>
+        <!-- Inline Monospace Tech Stack Ledger -->
+        <div class="mt-6 border-t border-line/80 pt-3.5">
+          <p
+            class="font-mono text-[11px] tracking-tight text-muted"
+            :aria-label="$t('projects.technologies')"
+          >
+            <template v-for="(tech, tIdx) in item.technologies" :key="tech">
+              <span>{{ tech }}</span>
+              <span
+                v-if="tIdx < item.technologies.length - 1"
+                class="mx-2 text-line"
+                aria-hidden="true"
+              >/</span>
+            </template>
+          </p>
         </div>
       </article>
     </div>

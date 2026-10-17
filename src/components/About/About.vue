@@ -1,39 +1,52 @@
 <template>
-  <section class="grid gap-10 border-t border-line py-16 md:grid-cols-[0.8fr_1.2fr] md:py-24">
+  <section class="grid gap-12 border-t border-line py-16 md:grid-cols-[0.85fr_1.15fr] md:py-24">
     <div>
-      <p class="font-mono text-sm font-semibold uppercase tracking-[0.2em] text-primary-text">
-        {{ $t("about.eyebrow") }}
-      </p>
-      <h2 class="mt-3 text-4xl font-black leading-tight md:text-5xl">
+      <div class="flex items-center gap-2.5 font-mono text-xs font-medium uppercase tracking-[0.16em] text-primary-text">
+        <span>[ 03 ]</span>
+        <span>{{ $t("about.eyebrow") }}</span>
+      </div>
+      <h2 class="mt-3 font-display text-4xl font-bold tracking-[-0.03em] text-dark md:text-5xl">
         {{ $t("about.title") }}
       </h2>
-      <model-vue class="mt-8" />
+      <div class="mt-8 overflow-hidden rounded-lg border border-line bg-surface/60 p-2">
+        <model-vue />
+      </div>
     </div>
 
-    <div class="grid gap-8">
-      <div class="space-y-7">
-        <p class="text-lg leading-8 text-muted">
+    <div class="flex flex-col justify-between">
+      <div>
+        <p class="text-base leading-8 text-muted md:text-lg">
           {{ $t("about.body") }}
         </p>
-        <div class="grid gap-3 sm:grid-cols-2">
+
+        <dl class="mt-8 divide-y divide-line border-t border-b border-line">
           <div
-            v-for="item in strengths"
+            v-for="(item, idx) in strengths"
             :key="item.title"
-            class="rounded-lg border border-line bg-surface p-4"
+            class="grid gap-2 py-5 sm:grid-cols-[140px_1fr] sm:items-baseline sm:gap-6"
           >
-            <h3 class="font-bold text-dark">{{ item.title }}</h3>
-            <p class="mt-2 text-sm leading-6 text-muted">{{ item.desc }}</p>
+            <dt class="flex items-baseline gap-2 font-display text-base font-bold text-dark">
+              <span class="font-mono text-[11px] font-medium text-primary-text">0{{ idx + 1 }}</span>
+              <span>{{ item.title }}</span>
+            </dt>
+            <dd class="text-sm leading-7 text-muted">
+              {{ item.desc }}
+            </dd>
           </div>
-        </div>
-        <div class="flex flex-wrap gap-2">
-          <span
-            v-for="skill in skills"
-            :key="skill"
-            class="rounded-full border border-line bg-surface px-3 py-2 text-xs font-semibold text-muted"
-          >
-            {{ skill }}
-          </span>
-        </div>
+        </dl>
+      </div>
+
+      <div class="mt-8">
+        <p class="font-mono text-xs leading-7 text-muted">
+          <template v-for="(skill, sIdx) in skills" :key="skill">
+            <span class="font-medium text-dark">{{ skill }}</span>
+            <span
+              v-if="sIdx < skills.length - 1"
+              class="mx-2.5 text-primary-text"
+              aria-hidden="true"
+            >/</span>
+          </template>
+        </p>
       </div>
     </div>
   </section>

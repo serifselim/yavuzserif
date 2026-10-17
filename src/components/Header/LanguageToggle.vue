@@ -1,6 +1,6 @@
 <template>
   <div
-    class="inline-flex rounded-full border border-line bg-surface p-1 text-xs font-bold shadow-sm"
+    class="inline-flex items-center rounded-md border border-line bg-background p-0.5 font-mono text-[11px] font-semibold"
     role="group"
     :aria-label="$t('common.language')"
   >
@@ -9,7 +9,7 @@
       :key="option.value"
       :href="option.href"
       :hreflang="option.value"
-      class="rounded-full px-3 py-1.5 transition"
+      class="rounded-[5px] px-2.5 py-1 transition"
       :class="
         $locale === option.value
           ? 'bg-dark text-light'

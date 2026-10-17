@@ -1,74 +1,118 @@
 <template>
   <main class="overflow-hidden">
     <header-vue />
-    <div class="mx-auto max-w-7xl px-5 md:px-20">
-      <div id="intro" class="min-h-screen pt-24 md:pt-28">
+    <div class="mx-auto max-w-7xl px-5 pt-14 md:border-x md:border-line md:px-14">
+      <div id="intro" class="scroll-mt-16">
         <introduce-vue />
       </div>
-      <div id="work" class="scroll-mt-28">
+      <div id="work" class="scroll-mt-16">
         <projects-vue />
       </div>
-      <div id="experience" class="scroll-mt-28">
+      <div id="experience" class="scroll-mt-16">
         <experience-vue />
       </div>
-      <div id="about" class="scroll-mt-28">
+      <div id="about" class="scroll-mt-16">
         <about-vue />
       </div>
       <section
         id="contact"
-        class="scroll-mt-28 border-t border-line py-16 md:ml-20 md:mr-20 md:py-20"
+        class="scroll-mt-16 border-t border-line py-16 md:py-24"
       >
-        <div class="grid gap-8 md:grid-cols-[0.9fr_1.1fr] md:items-end">
+        <div class="grid gap-10 md:grid-cols-[0.9fr_1.1fr] md:items-start">
           <div>
-            <p class="font-mono text-sm font-semibold uppercase tracking-[0.2em] text-primary-text">
-              {{ $t("contact.eyebrow") }}
-            </p>
-            <h2 class="mt-3 text-3xl font-black leading-tight md:text-5xl">
+            <div class="flex items-center gap-2.5 font-mono text-xs font-medium uppercase tracking-[0.16em] text-primary-text">
+              <span>[ 04 ]</span>
+              <span>{{ $t("contact.eyebrow") }}</span>
+            </div>
+            <h2 class="mt-3 font-display text-4xl font-bold tracking-[-0.03em] text-dark md:text-5xl">
               {{ $t("contact.title") }}
             </h2>
-          </div>
-          <div class="space-y-5 text-muted">
-            <p>
+            <p class="mt-4 max-w-sm text-sm leading-7 text-muted md:text-base">
               {{ $t("contact.body") }}
             </p>
-            <div class="flex flex-wrap gap-3">
-              <a
-                class="rounded-full bg-dark px-5 py-3 text-sm font-semibold text-light transition hover:bg-primary hover:text-white"
-                :href="emailHref"
-              >
-                {{ $t("contact.email") }}
-              </a>
-              <a
-                class="rounded-full border border-line bg-surface px-5 py-3 text-sm font-semibold text-dark transition hover:border-primary hover:text-primary-text"
-                :href="site.linkedin"
-                target="_blank"
-                rel="noreferrer"
-              >
-                {{ $t("contact.linkedin") }}
-              </a>
-              <a
-                class="rounded-full border border-line bg-surface px-5 py-3 text-sm font-semibold text-dark transition hover:border-primary hover:text-primary-text"
-                :href="site.github"
-                target="_blank"
-                rel="noreferrer"
-              >
-                {{ $t("contact.github") }}
-              </a>
-              <a
-                class="rounded-full border border-line bg-surface px-5 py-3 text-sm font-semibold text-dark transition hover:border-primary hover:text-primary-text"
-                :href="resumeTr"
-                :download="resumeDownloadName('tr')"
-              >
-                {{ $t("contact.resumeTurkish") }}
-              </a>
-              <a
-                class="rounded-full border border-line bg-surface px-5 py-3 text-sm font-semibold text-dark transition hover:border-primary hover:text-primary-text"
-                :href="resumeEn"
-                :download="resumeDownloadName('en')"
-              >
-                {{ $t("contact.resumeEnglish") }}
-              </a>
-            </div>
+          </div>
+
+          <div class="divide-y divide-line border-t border-b border-line">
+            <a
+              class="group flex items-center justify-between py-4 transition hover:px-2"
+              :href="emailHref"
+            >
+              <span class="flex items-baseline gap-3">
+                <span class="font-mono text-xs text-primary-text">01</span>
+                <span class="font-display text-lg font-bold text-dark group-hover:text-primary-text">
+                  {{ $t("contact.email") }}
+                </span>
+              </span>
+              <span class="font-mono text-xs text-muted group-hover:text-dark">
+                {{ site.email }} ↗
+              </span>
+            </a>
+
+            <a
+              class="group flex items-center justify-between py-4 transition hover:px-2"
+              :href="site.linkedin"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <span class="flex items-baseline gap-3">
+                <span class="font-mono text-xs text-primary-text">02</span>
+                <span class="font-display text-lg font-bold text-dark group-hover:text-primary-text">
+                  {{ $t("contact.linkedin") }}
+                </span>
+              </span>
+              <span class="font-mono text-xs text-muted group-hover:text-dark">
+                /in/serifselim ↗
+              </span>
+            </a>
+
+            <a
+              class="group flex items-center justify-between py-4 transition hover:px-2"
+              :href="site.github"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <span class="flex items-baseline gap-3">
+                <span class="font-mono text-xs text-primary-text">03</span>
+                <span class="font-display text-lg font-bold text-dark group-hover:text-primary-text">
+                  {{ $t("contact.github") }}
+                </span>
+              </span>
+              <span class="font-mono text-xs text-muted group-hover:text-dark">
+                @serifselim ↗
+              </span>
+            </a>
+
+            <a
+              class="group flex items-center justify-between py-4 transition hover:px-2"
+              :href="resumeTr"
+              :download="resumeDownloadName('tr')"
+            >
+              <span class="flex items-baseline gap-3">
+                <span class="font-mono text-xs text-primary-text">04</span>
+                <span class="font-display text-lg font-bold text-dark group-hover:text-primary-text">
+                  {{ $t("contact.resumeTurkish") }}
+                </span>
+              </span>
+              <span class="font-mono text-xs text-muted group-hover:text-dark">
+                PDF ↓
+              </span>
+            </a>
+
+            <a
+              class="group flex items-center justify-between py-4 transition hover:px-2"
+              :href="resumeEn"
+              :download="resumeDownloadName('en')"
+            >
+              <span class="flex items-baseline gap-3">
+                <span class="font-mono text-xs text-primary-text">05</span>
+                <span class="font-display text-lg font-bold text-dark group-hover:text-primary-text">
+                  {{ $t("contact.resumeEnglish") }}
+                </span>
+              </span>
+              <span class="font-mono text-xs text-muted group-hover:text-dark">
+                PDF ↓
+              </span>
+            </a>
           </div>
         </div>
       </section>

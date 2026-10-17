@@ -1,40 +1,43 @@
 <template>
-  <nav :aria-label="$t('common.primaryNavigation')">
+  <nav :aria-label="$t('common.primaryNavigation')" class="h-full">
     <ul
-      class="flex flex-col gap-1.5 lg:flex-row lg:items-center lg:gap-1"
+      class="flex flex-col divide-y divide-line lg:h-full lg:flex-row lg:items-stretch lg:divide-y-0"
     >
-      <li v-for="info in navInfo" :key="info.id">
+      <li v-for="info in navInfo" :key="info.id" class="flex">
         <a
           :href="info.path"
           :aria-current="activePath === info.path ? 'location' : undefined"
-          class="group relative flex items-center justify-between gap-2.5 whitespace-nowrap rounded-full px-4 py-2 text-sm font-semibold transition-all duration-200 lg:justify-center lg:px-4 lg:py-1.5"
+          class="group relative flex w-full items-center justify-between gap-2 whitespace-nowrap px-4 py-3.5 text-sm font-medium transition-colors lg:px-5 lg:py-0"
           :class="
             activePath === info.path
-              ? 'bg-dark text-light shadow-sm'
-              : 'text-muted hover:bg-well/80 hover:text-dark'
+              ? 'text-dark font-semibold'
+              : 'text-muted hover:text-dark'
           "
           @click="onSelect(info.path)"
         >
-          <span class="flex items-center gap-2">
+          <span class="flex items-baseline gap-1.5">
             <span
-              class="h-1.5 w-1.5 rounded-full transition-all duration-200"
+              class="font-mono text-[10px] transition-colors"
               :class="
                 activePath === info.path
-                  ? 'scale-100 bg-primary'
-                  : 'scale-0 bg-primary/50 group-hover:scale-75'
+                  ? 'text-primary-text font-semibold'
+                  : 'text-muted/70 group-hover:text-primary-text'
               "
-              aria-hidden="true"
-            />
-            <span>{{ info.name }}</span>
+            >
+              0{{ info.id + 1 }}
+            </span>
+            <span class="tracking-tight">{{ info.name }}</span>
           </span>
+
           <span
-            class="font-mono text-[10px] tracking-wider transition-opacity lg:hidden"
+            class="pointer-events-none absolute inset-x-4 bottom-0 hidden h-[2px] transition-all duration-200 lg:block"
             :class="
-              activePath === info.path ? 'text-light/70' : 'text-primary-text'
+              activePath === info.path
+                ? 'bg-primary opacity-100'
+                : 'bg-line opacity-0 group-hover:opacity-100'
             "
-          >
-            0{{ info.id + 1 }}
-          </span>
+            aria-hidden="true"
+          />
         </a>
       </li>
     </ul>

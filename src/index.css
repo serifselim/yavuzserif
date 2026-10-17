@@ -8,37 +8,42 @@
     scroll-behavior: smooth;
     color-scheme: light;
     background-color: rgb(var(--c-background));
-    --c-primary: 37 99 235;
-    --c-primary-text: 37 99 235;
-    --c-accent: 234 88 12;
-    --c-accent-text: 234 88 12;
+    --c-primary: 224 79 22;
+    --c-primary-text: 209 67 12;
+    --c-accent: 37 99 235;
+    --c-accent-text: 37 99 235;
     --c-light: 248 250 252;
-    --c-dark: 15 23 42;
-    --c-muted: 100 116 139;
-    --c-line: 226 232 240;
+    --c-dark: 17 19 24;
+    --c-muted: 92 96 106;
+    --c-line: 222 224 229;
     --c-surface: 255 255 255;
     --c-background: 248 250 252;
-    --c-well: 237 242 247;
+    --c-well: 240 242 245;
     --dialog-overlay: rgb(15 23 42 / 0.45);
   }
 
   html.dark {
     color-scheme: dark;
-    --c-primary-text: 96 165 250;
-    --c-accent-text: 251 146 60;
-    --c-light: 15 23 42;
-    --c-dark: 248 250 252;
-    --c-muted: 148 163 184;
-    --c-line: 51 65 85;
-    --c-surface: 30 41 59;
+    --c-primary: 249 115 22;
+    --c-primary-text: 251 146 60;
+    --c-accent: 96 165 250;
+    --c-accent-text: 96 165 250;
+    --c-light: 11 18 32;
+    --c-dark: 244 245 247;
+    --c-muted: 148 156 170;
+    --c-line: 38 46 62;
+    --c-surface: 17 24 39;
     --c-background: 11 18 32;
-    --c-well: 17 24 39;
-    --dialog-overlay: rgb(0 0 0 / 0.62);
+    --c-well: 22 31 48;
+    --dialog-overlay: rgb(0 0 0 / 0.68);
   }
 
   body {
     @apply font-sans bg-background text-dark antialiased;
     overflow-y: scroll;
+    background-image: radial-gradient(rgb(var(--c-line) / 0.65) 1px, transparent 1px);
+    background-size: 28px 28px;
+    background-position: -1px -1px;
   }
 
   ::selection {
@@ -51,12 +56,13 @@
   }
 
   ion-icon {
-    font-size: 28px;
+    font-size: 24px;
   }
 
   canvas {
-    @apply rounded-2xl;
+    @apply rounded-lg;
     max-width: 100%;
     height: auto !important;
   }
 }
+

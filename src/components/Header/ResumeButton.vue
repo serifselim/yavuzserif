@@ -8,24 +8,25 @@
       :aria-label="$t('common.resumeMenu')"
       @click="open = !open"
     >
-      {{ $t("common.resume") }}
-      <span class="ml-1 text-xs" aria-hidden="true">▾</span>
+      <span>{{ $t("common.resume") }}</span>
+      <span class="ml-1.5 font-mono text-[11px] opacity-75" aria-hidden="true">↓</span>
     </button>
     <ul
       v-if="open"
-      class="absolute z-50 mt-2 min-w-[11rem] overflow-hidden rounded-xl border border-line bg-surface py-1 shadow-lg"
+      class="absolute z-50 mt-1.5 min-w-[10.5rem] divide-y divide-line overflow-hidden rounded-md border border-line bg-surface shadow-lg"
       :class="align === 'end' ? 'right-0' : 'left-0'"
       role="menu"
     >
       <li v-for="item in downloads" :key="item.locale">
         <a
-          class="block whitespace-nowrap px-4 py-2 text-sm font-semibold text-dark transition hover:bg-background hover:text-primary-text"
+          class="flex items-center justify-between whitespace-nowrap px-3.5 py-2.5 text-xs font-semibold text-dark transition hover:bg-well hover:text-primary-text"
           role="menuitem"
           :href="item.href"
           :download="item.download"
           @click="open = false"
         >
-          {{ item.label }}
+          <span>{{ item.label }}</span>
+          <span class="font-mono text-[10px] uppercase text-muted">{{ item.locale }}</span>
         </a>
       </li>
     </ul>
@@ -72,14 +73,11 @@ export default {
       }));
     },
     buttonClass() {
-      const base =
-        "inline-flex items-center justify-center rounded-full px-5 py-2 text-center text-sm font-semibold transition-all";
-
       if (this.variant === "outline") {
-        return `${base} border border-line bg-surface px-6 py-3 text-dark hover:border-primary hover:text-primary-text`;
+        return "inline-flex items-center justify-center rounded-md border border-line bg-surface px-5 py-3 text-sm font-semibold text-dark transition hover:border-dark";
       }
 
-      return `${base} border border-dark bg-dark text-light shadow-sm hover:border-primary hover:bg-primary hover:text-white`;
+      return "inline-flex items-center justify-center rounded-md bg-dark px-3.5 py-1.5 text-xs font-semibold text-light transition hover:bg-primary hover:text-white";
     },
   },
   methods: {

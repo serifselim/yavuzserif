@@ -1,55 +1,53 @@
 <template>
-  <header class="pointer-events-none fixed inset-x-0 top-0 z-50 pt-3 md:pt-5">
+  <header class="fixed inset-x-0 top-0 z-50 border-b border-line bg-background/90 backdrop-blur-xl">
     <div
-      class="mx-auto flex max-w-7xl items-center justify-between px-4 md:px-20"
+      class="mx-auto flex h-14 max-w-7xl items-stretch justify-between px-4 md:border-x md:border-line md:px-0"
     >
-      <!-- Left: Floating Brand Pill -->
+      <!-- Left Architectural Cell: Identity -->
       <a
         href="#intro"
         :aria-label="$t('common.goToIntro')"
-        class="pointer-events-auto inline-flex items-center rounded-full border border-line/90 bg-surface/85 px-4 py-2 shadow-sm backdrop-blur-xl transition hover:border-primary/50"
+        class="flex items-center md:border-r md:border-line md:px-8"
       >
         <logo-vue />
       </a>
 
-      <!-- Center: 2026 Floating Glass Island Dock (Desktop) -->
-      <div
-        class="pointer-events-auto hidden lg:flex lg:items-center lg:rounded-full lg:border lg:border-line/90 lg:bg-surface/85 lg:p-1.5 lg:shadow-lg lg:shadow-dark/5 lg:backdrop-blur-2xl"
-      >
+      <!-- Center Architectural Cell: Indexed Navigation -->
+      <div class="hidden lg:flex lg:items-stretch">
         <nav-vue />
       </div>
 
-      <!-- Right: Floating Controls Cluster (Desktop) -->
+      <!-- Right Architectural Cell: Utility Controls -->
       <div
-        class="pointer-events-auto hidden items-center gap-2 rounded-full border border-line/90 bg-surface/85 p-1.5 shadow-sm backdrop-blur-xl lg:flex"
+        class="hidden items-center gap-2.5 lg:flex lg:border-l lg:border-line lg:px-6"
       >
         <theme-toggle-vue />
         <language-toggle-vue />
         <resume-button-vue align="end" />
       </div>
 
-      <!-- Mobile Trigger Pill -->
-      <div v-show="!dialog" class="pointer-events-auto flex items-center gap-2 lg:hidden">
+      <!-- Mobile Trigger -->
+      <div v-show="!dialog" class="flex items-center lg:hidden">
         <button
           @click="dialog = true"
           type="button"
           :aria-label="$t('common.openNavigation')"
-          class="flex items-center justify-center rounded-full border border-line/90 bg-surface/90 p-2.5 text-dark shadow-sm backdrop-blur-xl transition hover:border-primary"
+          class="flex h-9 w-9 items-center justify-center rounded-md border border-line bg-surface text-dark transition hover:border-dark"
         >
-          <ion-icon name="menu-outline" size="large" />
+          <ion-icon name="menu-outline" />
         </button>
       </div>
 
-      <!-- Mobile Floating Sheet -->
+      <!-- Mobile Drawer Sheet -->
       <div
         v-if="dialog"
-        class="pointer-events-auto fixed inset-0 z-50 bg-dialog backdrop-blur-sm lg:hidden"
+        class="fixed inset-0 z-50 bg-dialog backdrop-blur-sm lg:hidden"
         @click.self="dialog = false"
       >
         <div
-          class="dialog-content mx-4 mt-3 flex flex-col rounded-3xl border border-line bg-surface p-6 shadow-2xl"
+          class="dialog-content mx-4 mt-3 overflow-hidden rounded-lg border border-line bg-surface shadow-2xl"
         >
-          <div class="flex items-center justify-between border-b border-line/80 pb-4">
+          <div class="flex items-center justify-between border-b border-line px-5 py-3.5">
             <a
               href="#intro"
               class="w-fit"
@@ -62,17 +60,15 @@
               @click="dialog = false"
               type="button"
               :aria-label="$t('common.closeNavigation')"
-              class="flex items-center justify-center rounded-full border border-line bg-background p-2 text-dark transition hover:border-primary"
+              class="flex h-8 w-8 items-center justify-center rounded-md border border-line bg-background text-dark"
             >
-              <ion-icon name="close-circle-outline" />
+              <ion-icon name="close-outline" />
             </button>
           </div>
 
-          <div class="mt-4">
-            <nav-vue @navigate="dialog = false" />
-          </div>
+          <nav-vue @navigate="dialog = false" />
 
-          <div class="mt-5 flex flex-wrap items-center justify-between gap-3 border-t border-line/80 pt-4">
+          <div class="flex flex-wrap items-center justify-between gap-3 border-t border-line bg-well/40 px-5 py-3.5">
             <div class="flex items-center gap-2">
               <theme-toggle-vue />
               <language-toggle-vue />
@@ -111,17 +107,17 @@ export default {
   background-color: var(--dialog-overlay);
 }
 .dialog-content {
-  animation: openDialogAnim 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: openDialogAnim 0.18s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @keyframes openDialogAnim {
   from {
     opacity: 0;
-    transform: translateY(-12px) scale(0.98);
+    transform: translateY(-8px);
   }
   to {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: translateY(0);
   }
 }
 </style>

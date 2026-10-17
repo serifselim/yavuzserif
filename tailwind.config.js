@@ -20,8 +20,10 @@ module.exports = {
         well: "rgb(var(--c-well) / <alpha-value>)",
       },
       fontFamily: {
-        sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        mono: ['Cascadia Code', 'SFMono-Regular', 'Consolas', 'monospace']
+        sans: ['"Plus Jakarta Sans"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        display: ['"Space Grotesk"', '"Plus Jakarta Sans"', 'sans-serif'],
+        serif: ['"Instrument Serif"', 'Georgia', 'serif'],
+        mono: ['"JetBrains Mono"', 'Cascadia Code', 'SFMono-Regular', 'Consolas', 'monospace']
       }
     },
   },
