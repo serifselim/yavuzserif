@@ -7,7 +7,7 @@
           {{ $t("hero.eyebrow") }}
         </p>
       </div>
-      <h1 class="mt-5 max-w-4xl text-4xl font-black leading-[1.06] tracking-tight text-dark sm:text-5xl lg:text-6xl">
+      <h1 class="mt-5 max-w-3xl text-4xl font-black leading-[1.05] tracking-tight text-dark sm:text-5xl lg:text-6xl">
         {{ $t("hero.title") }}
       </h1>
       <p class="mt-6 max-w-2xl text-lg leading-8 text-muted md:text-xl">
@@ -22,16 +22,6 @@
         </a>
         <resume-button-vue variant="outline" />
       </div>
-      <dl class="mt-12 grid w-full max-w-2xl grid-cols-2 gap-4 sm:grid-cols-4">
-        <div
-          v-for="metric in metrics"
-          :key="metric.label"
-          class="rounded-xl border border-line bg-surface px-4 py-3.5 shadow-sm"
-        >
-          <dt class="text-base font-black text-dark md:text-lg">{{ metric.value }}</dt>
-          <dd class="mt-1 font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-primary-text">{{ metric.label }}</dd>
-        </div>
-      </dl>
     </div>
 
     <div class="order-1 md:order-2">
@@ -48,11 +38,6 @@ export default {
   components: {
     DevRunnerVue,
     ResumeButtonVue,
-  },
-  computed: {
-    metrics() {
-      return this.$tm("hero.metrics");
-    },
   },
 };
 </script>
