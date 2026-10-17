@@ -1,11 +1,13 @@
 <template>
   <article class="grid overflow-hidden rounded-lg border border-line bg-surface shadow-sm md:grid-cols-[1.15fr_0.85fr]">
-    <div class="relative bg-[#edf2f7] p-4 md:p-6">
+    <div class="relative bg-well p-4 md:p-6">
       <img
         v-if="hasImages"
         class="aspect-[16/10] w-full rounded-md object-cover"
         :src="project.images[imgIndex]"
         :alt="$t('projects.previewAlt', { title: title })"
+        width="800"
+        height="500"
         loading="lazy"
         decoding="async"
       />
@@ -21,7 +23,7 @@
           <li
             v-for="moduleName in project.modules"
             :key="moduleName"
-            class="rounded-full border border-white/20 px-3 py-1 text-xs font-semibold text-light/80"
+            class="rounded-full border border-light/20 px-3 py-1 text-xs font-semibold text-light/80"
           >
             {{ moduleName }}
           </li>
@@ -43,7 +45,7 @@
 
     <div class="flex flex-col justify-between p-6 md:p-8">
       <div>
-        <p class="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+        <p class="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-primary-text">
           {{ category }}
         </p>
         <h3 class="mt-3 text-3xl font-black leading-tight text-dark">
@@ -68,7 +70,7 @@
           :href="project.liveHref"
           target="_blank"
           rel="noreferrer"
-          class="rounded-full bg-dark px-5 py-3 text-sm font-semibold text-light transition hover:bg-primary"
+          class="rounded-full bg-dark px-5 py-3 text-sm font-semibold text-light transition hover:bg-primary hover:text-white"
         >
           {{ $t("projects.livePreview") }}
         </a>
@@ -77,7 +79,7 @@
           :href="project.githubHref"
           target="_blank"
           rel="noreferrer"
-          class="inline-flex items-center gap-2 rounded-full border border-line px-5 py-3 text-sm font-semibold text-dark transition hover:border-primary hover:text-primary"
+          class="inline-flex items-center gap-2 rounded-full border border-line px-5 py-3 text-sm font-semibold text-dark transition hover:border-primary hover:text-primary-text"
         >
           <ion-icon name="logo-github" />
           {{ $t("projects.code") }}

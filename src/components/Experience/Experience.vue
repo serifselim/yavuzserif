@@ -2,7 +2,7 @@
   <section class="border-t border-line py-16 md:py-24">
     <div class="mb-10 flex flex-col gap-4 md:mb-14 md:flex-row md:items-end md:justify-between">
       <div>
-        <p class="font-mono text-sm font-semibold uppercase tracking-[0.2em] text-primary">
+        <p class="font-mono text-sm font-semibold uppercase tracking-[0.2em] text-primary-text">
           {{ $t("experience.eyebrow") }}
         </p>
         <h2 class="mt-3 text-4xl font-black leading-tight md:text-5xl">
@@ -23,7 +23,7 @@
         <div class="flex flex-col gap-2 md:flex-row md:items-start md:justify-between">
           <div>
             <h3 class="text-2xl font-black text-dark">{{ job.role }}</h3>
-            <p class="mt-1 font-semibold text-primary">{{ job.company }}</p>
+            <p class="mt-1 font-semibold text-primary-text">{{ job.company }}</p>
           </div>
           <p class="font-mono text-sm font-semibold text-muted">
             {{ job.dates }} · {{ job.location }}
@@ -39,7 +39,7 @@
     </ol>
 
     <div class="mt-6 rounded-lg border border-line bg-surface px-6 py-5 md:px-8">
-      <p class="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+      <p class="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-primary-text">
         {{ $t("experience.educationEyebrow") }}
       </p>
       <p class="mt-2 text-lg font-bold text-dark">{{ $t("experience.educationTitle") }}</p>

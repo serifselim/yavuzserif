@@ -13,13 +13,13 @@
       />
       <div class="min-w-0 flex-1">
         <p class="truncate text-sm font-black text-dark">{{ site.name }}</p>
-        <p class="truncate text-xs font-semibold text-primary">{{ $t("hero.profileRole") }}</p>
+        <p class="truncate text-xs font-semibold text-primary-text">{{ $t("hero.profileRole") }}</p>
       </div>
       <button
         v-if="audioSupported"
         type="button"
-        class="rounded-full border border-line px-3 py-1.5 font-mono text-[11px] font-semibold uppercase tracking-wide transition hover:border-primary hover:text-primary"
-        :class="soundOn ? 'border-primary text-primary' : 'text-muted'"
+        class="rounded-full border border-line px-3 py-1.5 font-mono text-[11px] font-semibold uppercase tracking-wide transition hover:border-primary hover:text-primary-text"
+        :class="soundOn ? 'border-primary text-primary-text' : 'text-muted'"
         :aria-pressed="soundOn"
         @click="toggleSound"
       >
@@ -63,11 +63,11 @@
         class="pointer-events-none absolute inset-0 flex items-center justify-center px-6"
       >
         <div class="flex flex-col items-center gap-1 rounded-2xl bg-surface/90 px-6 py-4 text-center shadow-sm">
-          <p class="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-accent">
+          <p class="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-accent-text">
             {{ $t("game.gameOver") }}
           </p>
           <p class="text-4xl font-black tabular-nums text-dark">{{ hud.score }}</p>
-          <p class="text-sm font-bold text-primary">{{ $t("game.titles." + hud.title) }}</p>
+          <p class="text-sm font-bold text-primary-text">{{ $t("game.titles." + hud.title) }}</p>
           <p class="mt-2 font-mono text-xs uppercase tracking-[0.15em] text-muted">
             {{ $t("game.retryHint") }}
           </p>
@@ -92,7 +92,7 @@
       </dl>
       <p
         v-if="hud.multiplier > 1"
-        class="rounded-full bg-accent px-3 py-1 font-mono text-xs font-bold text-light"
+        class="rounded-full bg-accent px-3 py-1 font-mono text-xs font-bold text-white"
       >
         {{ $t("game.combo") }} x{{ hud.multiplier }}
       </p>
@@ -105,7 +105,7 @@
         class="rounded-full border px-3 py-1 text-xs font-semibold transition"
         :class="
           hud.collected.includes(tech.id)
-            ? 'border-primary bg-primary text-light'
+            ? 'border-primary bg-primary text-white'
             : 'border-line bg-background text-muted'
         "
       >

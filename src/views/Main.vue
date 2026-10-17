@@ -20,7 +20,7 @@
       >
         <div class="grid gap-8 md:grid-cols-[0.9fr_1.1fr] md:items-end">
           <div>
-            <p class="font-mono text-sm font-semibold uppercase tracking-[0.2em] text-primary">
+            <p class="font-mono text-sm font-semibold uppercase tracking-[0.2em] text-primary-text">
               {{ $t("contact.eyebrow") }}
             </p>
             <h2 class="mt-3 text-3xl font-black leading-tight md:text-5xl">
@@ -33,13 +33,13 @@
             </p>
             <div class="flex flex-wrap gap-3">
               <a
-                class="rounded-full bg-dark px-5 py-3 text-sm font-semibold text-light transition hover:bg-primary"
+                class="rounded-full bg-dark px-5 py-3 text-sm font-semibold text-light transition hover:bg-primary hover:text-white"
                 :href="emailHref"
               >
                 {{ $t("contact.email") }}
               </a>
               <a
-                class="rounded-full border border-line bg-surface px-5 py-3 text-sm font-semibold text-dark transition hover:border-primary hover:text-primary"
+                class="rounded-full border border-line bg-surface px-5 py-3 text-sm font-semibold text-dark transition hover:border-primary hover:text-primary-text"
                 :href="site.linkedin"
                 target="_blank"
                 rel="noreferrer"
@@ -47,7 +47,7 @@
                 {{ $t("contact.linkedin") }}
               </a>
               <a
-                class="rounded-full border border-line bg-surface px-5 py-3 text-sm font-semibold text-dark transition hover:border-primary hover:text-primary"
+                class="rounded-full border border-line bg-surface px-5 py-3 text-sm font-semibold text-dark transition hover:border-primary hover:text-primary-text"
                 :href="site.github"
                 target="_blank"
                 rel="noreferrer"
@@ -55,14 +55,14 @@
                 {{ $t("contact.github") }}
               </a>
               <a
-                class="rounded-full border border-line bg-surface px-5 py-3 text-sm font-semibold text-dark transition hover:border-primary hover:text-primary"
+                class="rounded-full border border-line bg-surface px-5 py-3 text-sm font-semibold text-dark transition hover:border-primary hover:text-primary-text"
                 :href="resumeTr"
                 :download="resumeDownloadName('tr')"
               >
                 {{ $t("contact.resumeTurkish") }}
               </a>
               <a
-                class="rounded-full border border-line bg-surface px-5 py-3 text-sm font-semibold text-dark transition hover:border-primary hover:text-primary"
+                class="rounded-full border border-line bg-surface px-5 py-3 text-sm font-semibold text-dark transition hover:border-primary hover:text-primary-text"
                 :href="resumeEn"
                 :download="resumeDownloadName('en')"
               >
@@ -72,10 +72,10 @@
           </div>
         </div>
       </section>
-      <div class="hidden md:block">
+      <footer class="hidden md:block">
         <footer-left-vue />
         <footer-right-vue />
-      </div>
+      </footer>
     </div>
   </main>
 </template>

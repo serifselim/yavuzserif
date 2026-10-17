@@ -1,40 +1,27 @@
 <template>
   <div class="fixed right-8 bottom-0 md:visible animate__fadeInUpBig">
-    <button
-      @click="copyEmail"
-      type="button"
-      class="text-vertical cursor-pointer text-center text-sm font-medium tracking-wide text-muted transition hover:text-primary"
-      :aria-label="$t('common.copyEmail')"
-      >{{ site.email }}</button
+    <a
+      :href="emailHref"
+      class="text-vertical cursor-pointer text-center text-sm font-medium tracking-wide text-muted transition hover:text-primary-text"
+      >{{ site.email }}</a
     >
     <div class="w-px h-20 bg-dark ml-2 mx-auto mt-3" />
-    <toast-vue v-if="isCopied" />
   </div>
 </template>
 
 <script>
-import ToastVue from "../Global/Toast.vue";
 import { site } from "@/constants";
+import { mailtoHref } from "@/i18n/locale.mjs";
+
 export default {
   name: "FooterRight",
   data: () => ({
-    isCopied: false,
     site,
   }),
-  methods: {
-    async copyEmail() {
-      if (navigator.clipboard) {
-        await navigator.clipboard.writeText(site.email);
-      }
-      this.isCopied = true;
-      setTimeout(() => {
-        this.isCopied = false;
-      }, 1000);
+  computed: {
+    emailHref() {
+      return mailtoHref(site.email, this.$t("common.emailSubject"));
     },
-  },
-
-  components: {
-    ToastVue,
   },
 };
 </script>    

@@ -29,10 +29,14 @@ test("the orbit ring clears the model", () => {
   assert.ok(layout.height > 0 && layout.height < 5);
 });
 
-test("a rightward drag turns the model with the finger, and the camera stays on +z", () => {
+test("a rightward drag turns the model with the finger, and the camera looks down from the front-right", () => {
   const frame = frameCamera(5, 4);
-  assert.equal(frame.position.x, 0);
-  assert.ok(frame.position.z > 4);
+  const rise = frame.position.y - frame.lookAt.y;
+  assert.ok(frame.position.x > 1, `side offset ${frame.position.x}`);
+  assert.ok(frame.position.z > frame.position.x * 0.5, "not a pure side view");
+  assert.ok(rise > frame.position.z, `looking down from above, rise ${rise}`);
+  assert.equal(frame.lookAt.x, 0);
+  assert.equal(frame.lookAt.z, 0);
   assert.ok(yawFromDrag(0, 40) < 0);
   assert.ok(yawFromDrag(0, -40) > 0);
 });

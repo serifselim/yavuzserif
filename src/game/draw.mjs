@@ -1,6 +1,6 @@
 import { PICKUP_SIZE, PLAYER, WORLD } from "./engine.mjs";
 
-export const DAY_LENGTH = 48;
+export const DAY_LENGTH = 150;
 
 const INK = [15, 23, 42];
 const PAPER = [255, 255, 255];
@@ -112,6 +112,9 @@ export function cycleAt(time) {
     tick: rgb(sample(TICK_STOPS, u)),
     ink: rgb(mix(INK, INK_NIGHT, night)),
     paper: rgb(mix(PAPER, PAPER_NIGHT, night)),
+    mesa: rgb(mix(sample(SKY_HORIZON, u), sample(GROUND_STOPS, u), 0.62)),
+    ridge: rgb(mix(sample(GROUND_STOPS, u), [146, 100, 62], daylight * 0.45)),
+    soil: rgb(mix(sample(GROUND_STOPS, u), [120, 78, 48], 0.35 + daylight * 0.15)),
     starAlpha: clamp01((0.42 - daylight) / 0.42),
     sun: body(u, 0.25),
     moon: body(u, 0.75),
@@ -183,68 +186,159 @@ function drawMoon(ctx, moon) {
   ctx.restore();
 }
 
-function drawBackdrop(ctx, distance, cycle) {
-  ctx.fillStyle = cycle.grid;
-  const offset = (distance * 0.35) % 40;
-  for (let x = -offset; x < WORLD.width; x += 40) {
-    ctx.fillRect(Math.round(x), 0, 1, WORLD.ground);
+const CLOUDS = [
+  { x: 70, y: 58, s: 1 },
+  { x: 250, y: 40, s: 0.8 },
+  { x: 430, y: 72, s: 1.15 },
+  { x: 590, y: 48, s: 0.7 },
+];
+
+function drawClouds(ctx, cycle) {
+  const alpha = cycle.daylight * cycle.daylight * 0.85;
+  if (alpha <= 0.02) return;
+  ctx.save();
+  ctx.globalAlpha = alpha;
+  ctx.fillStyle = "rgb(255, 255, 255)";
+  for (const cloud of CLOUDS) {
+    const { x, y, s } = cloud;
+    disk(ctx, x, y, 18 * s);
+    disk(ctx, x + 22 * s, y + 4, 13 * s);
+    disk(ctx, x - 20 * s, y + 6, 11 * s);
   }
-  for (let y = 20; y < WORLD.ground; y += 40) {
-    ctx.fillRect(0, y, WORLD.width, 1);
+  ctx.restore();
+}
+
+function drawRidge(ctx, base, amp, color, phase) {
+  ctx.beginPath();
+  ctx.moveTo(-20, WORLD.ground);
+  for (let x = -40; x <= WORLD.width + 40; x += 16) {
+    const wave = Math.sin(x * 0.018 + phase) * amp + Math.sin(x * 0.007 + phase) * amp * 0.55;
+    ctx.lineTo(x, base - wave);
+  }
+  ctx.lineTo(WORLD.width + 20, WORLD.ground);
+  ctx.closePath();
+  ctx.fillStyle = color;
+  ctx.fill();
+}
+
+const SHRUBS = [48, 168, 310, 455, 590];
+
+function drawBackdrop(ctx, cycle) {
+  drawRidge(ctx, WORLD.ground - 18, 26, cycle.mesa, 0.4);
+  drawRidge(ctx, WORLD.ground - 4, 16, cycle.ridge, 1.7);
+  ctx.fillStyle = cycle.ridge;
+  for (const x of SHRUBS) {
+    disk(ctx, x, WORLD.ground - 7, 8);
+    disk(ctx, x + 9, WORLD.ground - 5, 5);
   }
 }
 
 function drawGround(ctx, distance, cycle) {
   ctx.fillStyle = cycle.ground;
   ctx.fillRect(0, WORLD.ground, WORLD.width, WORLD.height - WORLD.ground);
+  ctx.fillStyle = cycle.soil;
+  ctx.fillRect(0, WORLD.ground, WORLD.width, 10);
   ctx.fillStyle = cycle.ink;
   ctx.fillRect(0, WORLD.ground, WORLD.width, 2);
   ctx.fillStyle = cycle.tick;
-  const near = distance % 32;
-  for (let x = -near; x < WORLD.width; x += 32) {
-    ctx.fillRect(Math.round(x), WORLD.ground + 14, 14, 2);
+  const near = (distance * 1.15) % 28;
+  for (let x = -near; x < WORLD.width; x += 28) {
+    const px = Math.round(x);
+    ctx.fillRect(px, WORLD.ground + 16, 10, 3);
+    ctx.fillRect(px + 14, WORLD.ground + 28, 5, 2);
+    ctx.fillRect(px + 6, WORLD.ground + 40, 8, 2);
   }
-  const far = (distance * 0.6) % 48;
-  for (let x = -far; x < WORLD.width; x += 48) {
-    ctx.fillRect(Math.round(x), WORLD.ground + 34, 8, 2);
-  }
+}
+
+const TECH_COLOR = {
+  vue: "#42b883",
+  react: "#38bdf8",
+  nestjs: "#e11d48",
+  postgres: "#336791",
+  typescript: "#3178c6",
+};
+
+function drawLabel(ctx, text, x, top, cycle) {
+  ctx.fillStyle = cycle.ink;
+  ctx.font = `bold 10px ${MONO}`;
+  ctx.textAlign = "center";
+  ctx.textBaseline = "alphabetic";
+  ctx.fillText(text, x, top - 6);
+}
+
+function drawShadow(ctx, x, width) {
+  ctx.fillStyle = "rgba(15, 23, 42, 0.16)";
+  ctx.fillRect(x + 2, WORLD.ground - 3, Math.max(8, width - 4), 3);
 }
 
 function drawObstacle(ctx, o, cycle) {
   const x = Math.round(o.x);
   const top = WORLD.ground - o.height;
-  ctx.fillStyle = o.kind === "conflict" ? cycle.ink : COLORS.accent;
-  ctx.fillRect(x, top, o.width, o.height);
-  ctx.fillStyle = "rgba(255, 255, 255, 0.35)";
-  ctx.fillRect(x + 3, top + 3, o.width - 6, 3);
-  ctx.fillStyle = cycle.ink;
-  ctx.font = `bold 10px ${MONO}`;
-  ctx.textAlign = "center";
-  ctx.textBaseline = "alphabetic";
-  ctx.fillText(LABELS[o.kind], x + o.width / 2, top - 6);
+  drawShadow(ctx, x, o.width);
+  if (o.kind === "conflict") {
+    ctx.fillStyle = cycle.ink;
+    ctx.fillRect(x, top, o.width, o.height);
+    ctx.fillStyle = "rgba(255, 255, 255, 0.2)";
+    ctx.fillRect(x + 4, top + 6, o.width - 8, o.height - 14);
+    ctx.fillStyle = COLORS.accent;
+    const bolt = Math.max(8, o.height - 20);
+    ctx.fillRect(x + o.width / 2 - 2, top + 8, 4, bolt);
+  } else if (o.kind === "notfound") {
+    ctx.fillStyle = "#9a3412";
+    ctx.fillRect(x, top + 6, o.width, o.height - 6);
+    ctx.fillStyle = "#fdba74";
+    ctx.fillRect(x, top + 6, o.width, 5);
+    ctx.fillStyle = "#7c2d12";
+    ctx.fillRect(x + 4, top + 6, 4, o.height - 6);
+    ctx.fillRect(x + o.width - 8, top + 6, 4, o.height - 6);
+    ctx.fillRect(x + 8, top + 14, o.width - 16, 3);
+  } else {
+    ctx.fillStyle = "#9a3412";
+    ctx.fillRect(x + 4, top + o.height - 7, 3, 9);
+    ctx.fillRect(x + o.width - 8, top + o.height - 7, 3, 9);
+    ctx.fillStyle = COLORS.accent;
+    ctx.beginPath();
+    ctx.arc(x + o.width / 2, top + o.height / 2 + 1, o.width / 2 - 1, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.fillStyle = "#fb923c";
+    ctx.beginPath();
+    ctx.arc(x + o.width / 2 - 2, top + o.height / 2 - 1, o.width / 3, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.fillStyle = "#fff7ed";
+    ctx.fillRect(x + o.width - 11, top + 7, 5, 5);
+    ctx.fillStyle = "#1c1917";
+    ctx.fillRect(x + o.width - 9, top + 9, 2, 2);
+    ctx.strokeStyle = "#7c2d12";
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(x + o.width - 6, top + 6);
+    ctx.lineTo(x + o.width + 2, top - 2);
+    ctx.stroke();
+  }
+  drawLabel(ctx, LABELS[o.kind], x + o.width / 2, top, cycle);
 }
 
 function drawPickup(ctx, k, time, reducedMotion, cycle) {
   const bob = reducedMotion ? 0 : Math.sin(time * 4 + k.x * 0.05) * 3;
   const cx = k.x + PICKUP_SIZE / 2;
   const cy = WORLD.ground - k.y - PICKUP_SIZE / 2 + bob;
-  const r = PICKUP_SIZE / 2 + 3;
-  ctx.beginPath();
-  ctx.moveTo(cx, cy - r);
-  ctx.lineTo(cx + r, cy);
-  ctx.lineTo(cx, cy + r);
-  ctx.lineTo(cx - r, cy);
-  ctx.closePath();
-  ctx.fillStyle = COLORS.primary;
-  ctx.fill();
+  ctx.save();
+  ctx.globalAlpha = 0.28;
+  ctx.fillStyle = TECH_COLOR[k.tech];
+  disk(ctx, cx, cy, 14);
+  ctx.restore();
+  ctx.fillStyle = TECH_COLOR[k.tech];
+  disk(ctx, cx, cy, 9);
   ctx.strokeStyle = cycle.ink;
   ctx.lineWidth = 2;
+  ctx.beginPath();
+  ctx.arc(cx, cy, 9, 0, Math.PI * 2);
   ctx.stroke();
   ctx.fillStyle = "rgb(255, 255, 255)";
   ctx.font = `bold 9px ${MONO}`;
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
-  ctx.fillText(SYMBOLS[k.tech], cx, cy + 1);
+  ctx.fillText(SYMBOLS[k.tech], cx, cy + 0.5);
 }
 
 function drawPlayer(ctx, state, time, reducedMotion, cycle) {
@@ -286,7 +380,8 @@ export function draw(ctx, state, time, { reducedMotion = false, shakeX = 0, shak
   drawStars(ctx, cycle, time, reducedMotion);
   drawSun(ctx, cycle.sun);
   drawMoon(ctx, cycle.moon);
-  drawBackdrop(ctx, state.distance, cycle);
+  drawClouds(ctx, cycle);
+  drawBackdrop(ctx, cycle);
   drawGround(ctx, state.distance, cycle);
   for (const k of state.pickups) drawPickup(ctx, k, time, reducedMotion, cycle);
   for (const o of state.obstacles) drawObstacle(ctx, o, cycle);

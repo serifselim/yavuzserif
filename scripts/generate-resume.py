@@ -47,7 +47,7 @@ COPY = {
         "filename": "resume-en.pdf",
         "title": "Yavuz Selim Şerifoğlu — Senior Frontend Developer",
         "subject": "Résumé",
-        "role": "Senior Frontend Developer  ·  Vue, React, React Native, TypeScript, UI Architecture",
+        "role": "Senior Frontend Developer",
         "summary_heading": "SUMMARY",
         "summary": (
             "Senior frontend developer in Istanbul. Communication design at Yıldız Technical "
@@ -90,7 +90,8 @@ COPY = {
         "projects_heading": "PROJECTS",
         "projects": [
             "<b>Intime IK</b>  ·  Vue 3, TypeScript, Pinia, Element Plus. Enterprise HR platform I lead on the frontend: PDKS, payroll, CRM, helpdesk, agreements, performance.",
-            "<b>Plus PDKS</b>  ·  ASP.NET Core 8, Razor, JavaScript. Attendance and HR web client: shifts, reports, personnel, CRM, helpdesk.",
+            "<b>Intime Proje</b>  ·  Vue 3, TypeScript, Pinia, Element Plus. Project management: Kanban, tasks, timesheets, reports, roles, Git commits.",
+            "<b>Filonika</b>  ·  Vue 3, ASP.NET Core 8, SQL Server. Fleet management: vehicles, drivers, contracts, insurance, financing.",
             "<b>Cumbara</b>  ·  Vue 3, TypeScript, Pinia, Element Plus. Loyalty admin: campaigns, dealers, rewards, points, notifications.",
             "<b>Fair Analytics</b>  ·  Nuxt, Vue 3, TypeScript, Tailwind. Bilingual marketing site: products, blog, careers, contact.",
             "<b>VYC Türkiye</b>  ·  Vue 3, TypeScript, Tailwind. Corporate site rebuild, TR/EN. vycturkiye.com.",
@@ -107,7 +108,7 @@ COPY = {
         "filename": "resume-tr.pdf",
         "title": "Yavuz Selim Şerifoğlu — Senior Frontend Developer",
         "subject": "CV",
-        "role": "Senior Frontend Developer  ·  Vue, React, React Native, TypeScript, Arayüz Mimarisi",
+        "role": "Senior Frontend Developer",
         "summary_heading": "ÖZET",
         "summary": (
             "İstanbul'da senior frontend developer. Yıldız Teknik Üniversitesi'nde iletişim tasarımı; "
@@ -149,7 +150,8 @@ COPY = {
         "projects_heading": "PROJELER",
         "projects": [
             "<b>Intime IK</b>  ·  Vue 3, TypeScript, Pinia, Element Plus. Frontend liderliğini yürüttüğüm kurumsal İK platformu: PDKS, bordro, CRM, yardım masası, performans.",
-            "<b>Plus PDKS</b>  ·  ASP.NET Core 8, Razor, JavaScript. PDKS ve İK web istemcisi: vardiya, rapor, personel, CRM, yardım masası.",
+            "<b>Intime Proje</b>  ·  Vue 3, TypeScript, Pinia, Element Plus. Proje yönetimi: Kanban, konular, zaman çizelgesi, raporlar, roller, Git commit.",
+            "<b>Filonika</b>  ·  Vue 3, ASP.NET Core 8, SQL Server. Filo yönetimi: araç, sürücü, sözleşme, sigorta, finansman.",
             "<b>Cumbara</b>  ·  Vue 3, TypeScript, Pinia, Element Plus. Sadakat admin paneli: kampanya, bayi, ödül, puan, bildirim.",
             "<b>Fair Analytics</b>  ·  Nuxt, Vue 3, TypeScript, Tailwind. İki dilli pazarlama sitesi: ürünler, blog, kariyer, iletişim.",
             "<b>VYC Türkiye</b>  ·  Vue 3, TypeScript, Tailwind. Kurumsal site yeniden yazımı, TR/EN. vycturkiye.com.",
@@ -196,8 +198,8 @@ def styles():
             fontSize=10.5,
             leading=14,
             textColor=PRIMARY,
-            spaceBefore=10,
-            spaceAfter=4,
+            spaceBefore=6,
+            spaceAfter=2,
             tracking=0.6,
         ),
         "body": ParagraphStyle(
@@ -378,8 +380,8 @@ def build_locale(locale):
         pagesize=A4,
         leftMargin=16 * mm,
         rightMargin=16 * mm,
-        topMargin=14 * mm,
-        bottomMargin=14 * mm,
+        topMargin=12 * mm,
+        bottomMargin=12 * mm,
         title=copy["title"],
         author="Yavuz Selim Şerifoğlu",
         subject=copy["subject"],

@@ -1,6 +1,29 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { mailtoHref, resolveLocale } from "./locale.mjs";
+import {
+  canonicalUrlForLocale,
+  mailtoHref,
+  ogLocaleForLocale,
+  parseQueryLocale,
+  resolveLocale,
+} from "./locale.mjs";
+
+test("prefers an explicit query locale over saved and browser locales", () => {
+  assert.equal(parseQueryLocale("?lang=tr"), "tr");
+  assert.equal(parseQueryLocale("?lang=EN"), "en");
+  assert.equal(parseQueryLocale("?lang=de"), null);
+  assert.equal(resolveLocale("en", "en-US", ["en", "tr"], "tr"), "tr");
+});
+
+test("maps each locale to its canonical URL and Open Graph locale", () => {
+  assert.equal(canonicalUrlForLocale("en"), "https://www.yavuzserifoglu.com/");
+  assert.equal(
+    canonicalUrlForLocale("tr"),
+    "https://www.yavuzserifoglu.com/?lang=tr"
+  );
+  assert.equal(ogLocaleForLocale("en"), "en_US");
+  assert.equal(ogLocaleForLocale("tr"), "tr_TR");
+});
 
 test("uses a saved locale when it is supported", () => {
   assert.equal(resolveLocale("tr", "en-US"), "tr");

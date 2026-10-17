@@ -19,7 +19,7 @@
     >
       <li v-for="item in downloads" :key="item.locale">
         <a
-          class="block whitespace-nowrap px-4 py-2 text-sm font-semibold text-dark transition hover:bg-background hover:text-primary"
+          class="block whitespace-nowrap px-4 py-2 text-sm font-semibold text-dark transition hover:bg-background hover:text-primary-text"
           role="menuitem"
           :href="item.href"
           :download="item.download"
@@ -76,10 +76,10 @@ export default {
         "inline-flex items-center justify-center rounded-full px-5 py-2 text-center text-sm font-semibold transition-all";
 
       if (this.variant === "outline") {
-        return `${base} border border-line bg-surface px-6 py-3 text-dark hover:border-primary hover:text-primary`;
+        return `${base} border border-line bg-surface px-6 py-3 text-dark hover:border-primary hover:text-primary-text`;
       }
 
-      return `${base} border border-dark bg-dark text-light shadow-sm hover:border-primary hover:bg-primary`;
+      return `${base} border border-dark bg-dark text-light shadow-sm hover:border-primary hover:bg-primary hover:text-white`;
     },
   },
   methods: {

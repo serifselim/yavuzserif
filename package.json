@@ -5,7 +5,7 @@
     "dev": "vite --port 1997",
     "build": "vite build",
     "preview": "vite preview --port 4173",
-    "test": "node --test src/i18n/locale.test.mjs src/i18n/resume.test.mjs src/game/engine.test.mjs src/game/best.test.mjs src/game/audio.test.mjs src/game/draw.test.mjs src/components/Model/orbit.test.mjs",
+    "test": "node --test src/i18n/locale.test.mjs src/i18n/resume.test.mjs src/theme/theme.test.mjs src/game/engine.test.mjs src/game/best.test.mjs src/game/audio.test.mjs src/game/draw.test.mjs src/components/Model/orbit.test.mjs",
     "resume": "python3 scripts/generate-resume.py"
   },
   "dependencies": {

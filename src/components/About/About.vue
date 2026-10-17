@@ -1,7 +1,7 @@
 <template>
   <section class="grid gap-10 border-t border-line py-16 md:grid-cols-[0.8fr_1.2fr] md:py-24">
     <div>
-      <p class="font-mono text-sm font-semibold uppercase tracking-[0.2em] text-primary">
+      <p class="font-mono text-sm font-semibold uppercase tracking-[0.2em] text-primary-text">
         {{ $t("about.eyebrow") }}
       </p>
       <h2 class="mt-3 text-4xl font-black leading-tight md:text-5xl">

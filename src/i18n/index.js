@@ -1,17 +1,26 @@
 import { reactive } from "vue";
 import messages from "./messages";
-import { resolveLocale } from "./locale.mjs";
+import {
+  canonicalUrlForLocale,
+  ogLocaleForLocale,
+  parseQueryLocale,
+  resolveLocale,
+} from "./locale.mjs";
 
 const STORAGE_KEY = "portfolio-locale";
 const locales = Object.keys(messages);
 
 const getInitialLocale = () => {
+  const queryLocale =
+    typeof window === "undefined"
+      ? null
+      : parseQueryLocale(window.location.search, locales);
   const savedLocale =
     typeof localStorage === "undefined" ? null : localStorage.getItem(STORAGE_KEY);
   const browserLanguage =
     typeof navigator === "undefined" ? "en" : navigator.language;
 
-  return resolveLocale(savedLocale, browserLanguage, locales);
+  return resolveLocale(savedLocale, browserLanguage, locales, queryLocale);
 };
 
 const state = reactive({
@@ -52,6 +61,9 @@ const syncDocument = () => {
 
   const title = translate("meta.title");
   const description = translate("meta.description");
+  const canonicalUrl = canonicalUrlForLocale(state.locale);
+  const ogLocale = ogLocaleForLocale(state.locale);
+  const alternateOgLocale = ogLocaleForLocale(state.locale === "tr" ? "en" : "tr");
 
   document.documentElement.lang = state.locale;
   document.title = title;
@@ -64,8 +76,12 @@ const syncDocument = () => {
   };
 
   write('meta[name="description"]', "content", description);
+  write('link[rel="canonical"]', "href", canonicalUrl);
   write('meta[property="og:title"]', "content", title);
   write('meta[property="og:description"]', "content", description);
+  write('meta[property="og:url"]', "content", canonicalUrl);
+  write('meta[property="og:locale"]', "content", ogLocale);
+  write('meta[property="og:locale:alternate"]', "content", alternateOgLocale);
   write('meta[name="twitter:title"]', "content", title);
   write('meta[name="twitter:description"]', "content", description);
 };
@@ -77,6 +93,17 @@ const setLocale = (locale) => {
 
   state.locale = locale;
   localStorage.setItem(STORAGE_KEY, locale);
+
+  if (typeof window !== "undefined" && window.history?.replaceState) {
+    const url = new URL(window.location.href);
+    if (locale === "tr") {
+      url.searchParams.set("lang", "tr");
+    } else {
+      url.searchParams.delete("lang");
+    }
+    window.history.replaceState({}, "", url.toString());
+  }
+
   syncDocument();
 };
 

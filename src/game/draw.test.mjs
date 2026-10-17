@@ -59,6 +59,9 @@ function fakeCtx() {
     arc(x, y, r) {
       ctx._arc = { x, y, r };
     },
+    ellipse(x, y, rx) {
+      ctx._arc = { x, y, r: rx };
+    },
     clip() {},
     fill() {
       ops.push({ op: "fill", fillStyle: ctx.fillStyle, arc: ctx._arc, alpha: ctx.globalAlpha });

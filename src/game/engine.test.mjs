@@ -7,6 +7,9 @@ import {
   createGame,
   jump,
   releaseJump,
+  conflictHeight,
+  gapSeconds,
+  pressureFor,
   speedForDistance,
   step,
   titleForScore,
@@ -180,27 +183,40 @@ test("restart is blocked briefly after a hit, then resets everything", () => {
   assert.equal(s.overFor, 0);
 });
 
-// Jumps when the next obstacle is 0.2 s away, never touches anything else.
-const botFrame = (s) => {
+test("later runs get tighter and taller, then stop short of an unfair cap", () => {
+  assert.ok(pressureFor(SPEED.start, 0) < 0.05);
+  assert.ok(pressureFor(SPEED.max, 40000) > 0.95);
+  assert.ok(gapSeconds(0, 0) > 1.2);
+  assert.ok(gapSeconds(1, 0) < gapSeconds(0, 0));
+  assert.ok(gapSeconds(1, 0) >= 0.9);
+  assert.ok(conflictHeight(1) > conflictHeight(0) + 20);
+  assert.ok(conflictHeight(1) <= 90);
+});
+
+// Jumps when the next obstacle is `lead` seconds away.
+const botFrame = (s, lead) => {
   const ahead = s.obstacles.find((o) => o.x + o.width > PLAYER.x);
-  if (
-    ahead &&
-    s.player.onGround &&
-    ahead.x - (PLAYER.x + PLAYER.width) <= s.speed * 0.2
-  ) {
+  if (ahead && s.player.onGround && ahead.x - (PLAYER.x + PLAYER.width) <= s.speed * lead) {
     jump(s);
   }
 };
 
-test("a bot that jumps on time survives 60 s on every seed (layouts are fair)", () => {
-  for (let seed = 1; seed <= 60; seed++) {
-    const s = createGame(seeded(seed));
-    jump(s);
-    for (let f = 0; f < 3600; f++) {
-      botFrame(s);
-      step(s, 1 / 60);
-      assert.equal(s.phase, "running", `seed ${seed} died at frame ${f}, speed ${s.speed}`);
-    }
+const runBot = (seed, frames, lead) => {
+  const s = createGame(seeded(seed));
+  jump(s);
+  for (let f = 0; f < frames; f++) {
+    botFrame(s, lead);
+    step(s, 1 / 60);
+    if (s.phase !== "running") return { s, frame: f };
+  }
+  return { s, frame: frames };
+};
+
+test("a timed jump still survives 90 s after the speed cap on every seed", () => {
+  for (let seed = 1; seed <= 40; seed++) {
+    const { s, frame } = runBot(seed, 5400, 0.35);
+    assert.equal(s.phase, "running", `seed ${seed} died at frame ${frame}, speed ${s.speed.toFixed(0)}`);
     assert.ok(s.speed >= SPEED.max - 1, `seed ${seed} never reached top speed`);
+    assert.ok(s.speed <= SPEED.max + 1e-9);
   }
 });

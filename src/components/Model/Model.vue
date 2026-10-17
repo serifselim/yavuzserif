@@ -95,43 +95,56 @@ export default {
       this.renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: false });
       this.renderer.outputEncoding = THREE.sRGBEncoding;
       this.renderer.setClearColor(0xf8fafc, 1);
-      this.renderer.shadowMap.enabled = true;
-      this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
       this.scene = new THREE.Scene();
       this.camera = new THREE.PerspectiveCamera(32, 1, 0.1, 100);
       this.placeCamera(MODEL_HEIGHT, 4.5);
       this.clock = new THREE.Clock();
 
-      this.scene.add(new THREE.HemisphereLight(0xffffff, 0xe2e8f0, 0.75));
-      const key = new THREE.DirectionalLight(0xffffff, 0.95);
-      key.position.set(5, 10, 7);
-      key.castShadow = true;
-      key.shadow.mapSize.set(1024, 1024);
-      key.shadow.camera.near = 0.5;
-      key.shadow.camera.far = 40;
-      key.shadow.camera.left = -8;
-      key.shadow.camera.right = 8;
-      key.shadow.camera.top = 8;
-      key.shadow.camera.bottom = -8;
+      this.scene.add(new THREE.HemisphereLight(0xffffff, 0xc5d0de, 0.55));
+      const key = new THREE.DirectionalLight(0xfff6ea, 0.85);
+      key.position.set(8, 16, 7);
       this.scene.add(key);
-      const fill = new THREE.DirectionalLight(0xffffff, 0.35);
-      fill.position.set(-6, 4, -3);
+      const fill = new THREE.DirectionalLight(0xd7e6ff, 0.4);
+      fill.position.set(-8, 8, -3);
       this.scene.add(fill);
+      const rim = new THREE.DirectionalLight(0xffffff, 0.45);
+      rim.position.set(-3, 11, -10);
+      this.scene.add(rim);
 
       const shadow = new THREE.Mesh(
-        new THREE.CircleGeometry(1, 48),
-        new THREE.ShadowMaterial({ opacity: 0.16 })
+        new THREE.CircleGeometry(1, 64),
+        new THREE.MeshBasicMaterial({
+          map: this.contactShadow(),
+          transparent: true,
+          depthWrite: false,
+        })
       );
       shadow.rotation.x = -Math.PI / 2;
-      shadow.position.y = 0.02;
-      shadow.receiveShadow = true;
+      shadow.position.y = 0.01;
+      shadow.scale.setScalar(3.4);
       this.scene.add(shadow);
       this.shadow = shadow;
 
       this.modelPivot = new THREE.Group();
       this.scene.add(this.modelPivot);
       this.resize();
+    },
+    contactShadow() {
+      const size = 256;
+      const canvas = document.createElement("canvas");
+      canvas.width = size;
+      canvas.height = size;
+      const ctx = canvas.getContext("2d");
+      const fade = ctx.createRadialGradient(size / 2, size / 2, size * 0.02, size / 2, size / 2, size * 0.5);
+      fade.addColorStop(0, "rgba(15, 23, 42, 0.22)");
+      fade.addColorStop(0.42, "rgba(15, 23, 42, 0.08)");
+      fade.addColorStop(1, "rgba(15, 23, 42, 0)");
+      ctx.fillStyle = fade;
+      ctx.fillRect(0, 0, size, size);
+      const texture = new THREE.CanvasTexture(canvas);
+      texture.encoding = THREE.sRGBEncoding;
+      return texture;
     },
     placeCamera(height, orbitRadius) {
       const frame = frameCamera(height, orbitRadius);
@@ -145,12 +158,6 @@ export default {
       loader.load(MODEL_URL, (object) => this.mountModel(object));
     },
     mountModel(object) {
-      object.traverse((child) => {
-        if (child.isMesh) {
-          child.castShadow = true;
-          child.receiveShadow = true;
-        }
-      });
       this.modelPivot.add(object);
       const raw = new THREE.Box3().setFromObject(object);
       const rawSize = raw.getSize(new THREE.Vector3());
@@ -164,7 +171,7 @@ export default {
 
       const size = new THREE.Box3().setFromObject(object).getSize(new THREE.Vector3());
       const halfWidth = Math.max(size.x, size.z) / 2;
-      this.shadow.scale.setScalar(Math.max(halfWidth, 1));
+      this.shadow.scale.setScalar(Math.max(halfWidth * 2.15, 2.8));
       const layout = orbitLayout(size.y || MODEL_HEIGHT, halfWidth);
       this.orbitRadius = layout.radius;
       this.orbitHeight = layout.height;

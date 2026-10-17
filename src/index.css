@@ -6,6 +6,34 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    color-scheme: light;
+    background-color: rgb(var(--c-background));
+    --c-primary: 37 99 235;
+    --c-primary-text: 37 99 235;
+    --c-accent: 234 88 12;
+    --c-accent-text: 234 88 12;
+    --c-light: 248 250 252;
+    --c-dark: 15 23 42;
+    --c-muted: 100 116 139;
+    --c-line: 226 232 240;
+    --c-surface: 255 255 255;
+    --c-background: 248 250 252;
+    --c-well: 237 242 247;
+    --dialog-overlay: rgb(15 23 42 / 0.45);
+  }
+
+  html.dark {
+    color-scheme: dark;
+    --c-primary-text: 96 165 250;
+    --c-accent-text: 251 146 60;
+    --c-light: 15 23 42;
+    --c-dark: 248 250 252;
+    --c-muted: 148 163 184;
+    --c-line: 51 65 85;
+    --c-surface: 30 41 59;
+    --c-background: 11 18 32;
+    --c-well: 17 24 39;
+    --dialog-overlay: rgb(0 0 0 / 0.62);
   }
 
   body {
@@ -14,7 +42,7 @@
   }
 
   ::selection {
-    @apply bg-primary text-light;
+    @apply bg-primary text-white;
   }
 
   a,

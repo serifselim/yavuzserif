@@ -1,12 +1,14 @@
 <template>
   <div
     class="inline-flex rounded-full border border-line bg-surface p-1 text-xs font-bold shadow-sm"
+    role="group"
     :aria-label="$t('common.language')"
   >
-    <button
+    <a
       v-for="option in options"
       :key="option.value"
-      type="button"
+      :href="option.href"
+      :hreflang="option.value"
       class="rounded-full px-3 py-1.5 transition"
       :class="
         $locale === option.value
@@ -14,11 +16,11 @@
           : 'text-muted hover:text-dark'
       "
       :aria-label="option.label"
-      :aria-pressed="$locale === option.value"
-      @click="$setLocale(option.value)"
+      :aria-current="$locale === option.value ? 'true' : undefined"
+      @click.prevent="$setLocale(option.value)"
     >
       {{ option.short }}
-    </button>
+    </a>
   </div>
 </template>
 
@@ -31,11 +33,13 @@ export default {
         {
           value: "en",
           short: "EN",
+          href: "/",
           label: this.$t("common.english"),
         },
         {
           value: "tr",
           short: "TR",
+          href: "/?lang=tr",
           label: this.$t("common.turkish"),
         },
       ];

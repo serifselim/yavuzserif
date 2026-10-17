@@ -1,7 +1,7 @@
 export const WORLD = Object.freeze({ width: 640, height: 360, ground: 300 });
 export const PLAYER = Object.freeze({ x: 80, width: 28, height: 36 });
 export const PHYSICS = Object.freeze({ gravity: 2200, jumpVelocity: 780, jumpCut: 0.5 });
-export const SPEED = Object.freeze({ start: 260, max: 720, perDistance: 0.035 });
+export const SPEED = Object.freeze({ start: 260, max: 620, perDistance: 0.032 });
 export const COMBO = Object.freeze({ window: 3, max: 4, pickupValue: 50 });
 export const INSET = 4;
 export const SPAWN_X = WORLD.width + 40;
@@ -41,6 +41,27 @@ export function createGame(rng = Math.random) {
 
 export function speedForDistance(distance) {
   return Math.min(SPEED.start + distance * SPEED.perDistance, SPEED.max);
+}
+
+// 0 at the opening, 1 deep into a run. Speed does most of the work;
+// distance keeps raising pressure after the speed cap.
+export function pressureFor(speed, distance) {
+  const span = SPEED.max - SPEED.start;
+  const speedT = span <= 0 ? 1 : Math.min(Math.max((speed - SPEED.start) / span, 0), 1);
+  const late = Math.min(Math.max((distance - 6000) / 24000, 0), 1);
+  return Math.min(speedT * 0.6 + late * 0.4, 1);
+}
+
+// Empty time between obstacles. The late floor stays longer than one full
+// jump, so a landed player can always choose the next jump.
+export function gapSeconds(pressure, roll) {
+  const min = 1.35 - pressure * 0.4;
+  const span = 0.4 - pressure * 0.15;
+  return min + roll * span;
+}
+
+export function conflictHeight(pressure) {
+  return OBSTACLE_KINDS.conflict.height + Math.round(Math.min(Math.max(pressure, 0), 1) * 36);
 }
 
 export function titleForScore(score) {
@@ -91,23 +112,47 @@ const pickupBox = (k) => ({
 const overlaps = (a, b) =>
   a.left < b.right && a.right > b.left && a.bottom < b.top && a.top > b.bottom;
 
+function pickKind(rng, pressure) {
+  const roll = rng();
+  const bugCut = 0.42 - pressure * 0.2;
+  if (roll < bugCut) return "bug";
+  if (roll < bugCut + 0.34) return "conflict";
+  return "notfound";
+}
+
+function pushObstacle(state, kind, x, pressure) {
+  const { width } = OBSTACLE_KINDS[kind];
+  const height = kind === "conflict" ? conflictHeight(pressure) : OBSTACLE_KINDS[kind].height;
+  state.obstacles.push({ kind, x, width, height });
+  return width;
+}
+
 function spawn(state, travel) {
   state.gapLeft -= travel;
   if (state.gapLeft > 0) return;
 
-  const kind = KIND_IDS[Math.floor(state.rng() * KIND_IDS.length)];
-  const { width, height } = OBSTACLE_KINDS[kind];
+  const pressure = pressureFor(state.speed, state.distance);
+  const kind = pickKind(state.rng, pressure);
   const x = SPAWN_X + state.gapLeft;
-  state.obstacles.push({ kind, x, width, height });
+  let cursor = x;
+  let span = pushObstacle(state, kind, cursor, pressure);
 
-  const gap = (0.9 + state.rng() * 0.7) * state.speed;
-  state.gapLeft = width + gap;
+  const paired = pressure > 0.5 && state.rng() < (pressure - 0.5) * 0.8;
+  if (paired) {
+    const pairKind = pickKind(state.rng, pressure);
+    const pairGap = gapSeconds(pressure, 0) * state.speed;
+    cursor += span + pairGap;
+    span = cursor - x + pushObstacle(state, pairKind, cursor, pressure);
+  }
+
+  const gap = gapSeconds(pressure, state.rng()) * state.speed;
+  state.gapLeft = span + gap;
 
   if (state.rng() < 0.7) {
     const level = Math.floor(state.rng() * PICKUP_HEIGHTS.length);
     state.pickups.push({
       tech: TECH[state.techIndex % TECH.length],
-      x: x + width + gap / 2 - PICKUP_SIZE / 2,
+      x: x + span + gap / 2 - PICKUP_SIZE / 2,
       y: PICKUP_HEIGHTS[level],
     });
     state.techIndex += 1;

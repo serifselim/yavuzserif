@@ -1,0 +1,22 @@
+{
+  "name": "Yavuz Şerifoğlu | Senior Frontend Developer",
+  "short_name": "Yavuz",
+  "description": "Yavuz Serifoglu (Yavuz Şerifoğlu), Senior Frontend Developer in Istanbul. React, Vue, React Native, NestJS, .NET Core, PostgreSQL.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f8fafc",
+  "theme_color": "#2563eb",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}
+

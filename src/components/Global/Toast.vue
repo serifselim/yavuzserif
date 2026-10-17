@@ -26,7 +26,7 @@
         items-center
         w-8
         h-8
-        text-light
+        text-white
         bg-primary
         rounded-full
       "

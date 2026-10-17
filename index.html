@@ -3,51 +3,127 @@
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" href="/favicon.ico" />
+  <meta name="theme-color" content="#f8fafc" />
+  <script id="theme-boot">
+    (function () {
+      try {
+        var saved = localStorage.getItem("portfolio-theme");
+        var preference =
+          saved === "light" || saved === "dark" || saved === "system" ? saved : "system";
+        var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        var applied =
+          preference === "light" || preference === "dark"
+            ? preference
+            : prefersDark
+              ? "dark"
+              : "light";
+        var root = document.documentElement;
+        root.classList.toggle("dark", applied === "dark");
+        root.style.colorScheme = applied === "dark" ? "dark" : "light";
+        var themeMeta = document.querySelector('meta[name="theme-color"]');
+        if (themeMeta) {
+          themeMeta.setAttribute("content", applied === "dark" ? "#0b1220" : "#f8fafc");
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" href="/favicon.ico" sizes="32x32" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <link rel="preconnect" href="https://unpkg.com" crossorigin />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Yavuz Selim Şerifoğlu" />
   <meta
     name="description"
-    content="Yavuz Serifoglu, senior frontend developer in Istanbul. React, Vue, React Native, NestJS, .NET Core, PostgreSQL."
+    content="Yavuz Serifoglu (Yavuz Şerifoğlu), Senior Frontend Developer & Frontend Team Lead in Istanbul. Vue 3, React, React Native, TypeScript, NestJS, .NET Core, PostgreSQL."
   />
+  <link rel="canonical" href="https://www.yavuzserifoglu.com/" />
+  <link rel="alternate" hreflang="en" href="https://www.yavuzserifoglu.com/" />
+  <link rel="alternate" hreflang="tr" href="https://www.yavuzserifoglu.com/?lang=tr" />
+  <link rel="alternate" hreflang="x-default" href="https://www.yavuzserifoglu.com/" />
+
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Yavuz Serifoglu | Senior Frontend Developer" />
+  <meta property="og:site_name" content="Yavuz Şerifoğlu" />
+  <meta property="og:url" content="https://www.yavuzserifoglu.com/" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:locale:alternate" content="tr_TR" />
+  <meta property="og:title" content="Yavuz Serifoglu | Senior Frontend Developer & Frontend Team Lead" />
   <meta
     property="og:description"
-    content="Yavuz Serifoglu, senior frontend developer in Istanbul. React, Vue, React Native, NestJS, .NET Core, PostgreSQL."
+    content="Yavuz Serifoglu (Yavuz Şerifoğlu), Senior Frontend Developer & Frontend Team Lead in Istanbul. Vue 3, React, React Native, TypeScript, NestJS, .NET Core, PostgreSQL."
   />
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Yavuz Serifoglu | Senior Frontend Developer" />
+  <meta property="og:image" content="https://www.yavuzserifoglu.com/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Yavuz Şerifoğlu — Senior Frontend Developer & Frontend Team Lead" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Yavuz Serifoglu | Senior Frontend Developer & Frontend Team Lead" />
   <meta
     name="twitter:description"
-    content="Yavuz Serifoglu, senior frontend developer in Istanbul. React, Vue, React Native, NestJS, .NET Core, PostgreSQL."
+    content="Yavuz Serifoglu (Yavuz Şerifoğlu), Senior Frontend Developer & Frontend Team Lead in Istanbul. Vue 3, React, React Native, TypeScript, NestJS, .NET Core, PostgreSQL."
   />
-  <title>Yavuz Serifoglu | Senior Frontend Developer</title>
+  <meta name="twitter:image" content="https://www.yavuzserifoglu.com/og-image.png" />
+  <meta name="twitter:image:alt" content="Yavuz Şerifoğlu — Senior Frontend Developer & Frontend Team Lead" />
+
+  <title>Yavuz Serifoglu | Senior Frontend Developer & Frontend Team Lead</title>
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Yavuz Serifoglu",
-      "jobTitle": "Senior Frontend Developer",
-      "email": "mailto:yavuzserifoglu@gmail.com",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Istanbul",
-        "addressCountry": "TR"
-      },
-      "sameAs": [
-        "https://github.com/serifselim",
-        "https://www.linkedin.com/in/serifselim/"
-      ],
-      "knowsAbout": [
-        "React",
-        "Vue",
-        "React Native",
-        "Expo",
-        "NestJS",
-        ".NET Core",
-        "PostgreSQL",
-        "Frontend development",
-        "Mobile development"
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://www.yavuzserifoglu.com/#website",
+          "url": "https://www.yavuzserifoglu.com/",
+          "name": "Yavuz Şerifoğlu | Senior Frontend Developer & Frontend Team Lead",
+          "inLanguage": ["en", "tr"]
+        },
+        {
+          "@type": "Person",
+          "@id": "https://www.yavuzserifoglu.com/#person",
+          "name": "Yavuz Serifoglu",
+          "alternateName": [
+            "Yavuz Şerifoğlu",
+            "Yavuz Selim Şerifoğlu",
+            "Yavuz Selim Serifoglu"
+          ],
+          "url": "https://www.yavuzserifoglu.com/",
+          "image": "https://www.yavuzserifoglu.com/og-image.png",
+          "jobTitle": "Senior Frontend Developer & Frontend Team Lead",
+          "email": "mailto:yavuzserifoglu@gmail.com",
+          "worksFor": {
+            "@type": "Organization",
+            "name": "Intime Info Yazılım Çözümleri A.Ş."
+          },
+          "alumniOf": {
+            "@type": "CollegeOrUniversity",
+            "name": "Yıldız Technical University"
+          },
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Istanbul",
+            "addressCountry": "TR"
+          },
+          "sameAs": [
+            "https://github.com/serifselim",
+            "https://www.linkedin.com/in/serifselim/",
+            "https://www.instagram.com/yvzserif/"
+          ],
+          "knowsAbout": [
+            "React",
+            "Vue",
+            "React Native",
+            "TypeScript",
+            "Expo",
+            "NestJS",
+            ".NET Core",
+            "PostgreSQL",
+            "Frontend development",
+            "Mobile development"
+          ]
+        }
       ]
     }
   </script>
@@ -55,6 +131,43 @@
 
 <body>
   <div id="app"></div>
+  <noscript>
+    <main class="mx-auto max-w-4xl px-6 py-16">
+      <h1>Yavuz Şerifoğlu (Yavuz Serifoglu) — Senior Frontend Developer &amp; Frontend Team Lead</h1>
+      <p>
+        Senior Frontend Developer and Frontend Team Lead in Istanbul. Communication design at Yıldız Technical University,
+        leading the Vue 3 + TypeScript frontend architecture for Intime IK at Intime Info since 2022, and shipping end-to-end
+        web and mobile products with React, React Native (Expo), NestJS, .NET Core, and PostgreSQL.
+      </p>
+      <section>
+        <h2>Projects</h2>
+        <ul>
+          <li><strong>HydraPlant</strong> — React Native (Expo), NestJS, PostgreSQL daily water tracker app.</li>
+          <li><strong>Beyaz Nokta</strong> — React Native (Expo), NestJS, PostgreSQL online football manager (<a href="https://www.beyaznoktamanager.com/">beyaznoktamanager.com</a>).</li>
+          <li><strong>Intime IK</strong> — Vue 3, TypeScript, Pinia, Element Plus enterprise HR platform (PDKS, payroll, CRM, helpdesk, agreements, performance).</li>
+          <li><strong>Intime Proje</strong> — Vue 3, TypeScript, Pinia, Element Plus project management platform (Kanban, tasks, timesheets, reports, roles, Git commits).</li>
+          <li><strong>Filonika</strong> — Vue 3, ASP.NET Core 8, SQL Server fleet management system (vehicles, drivers, contracts, insurance, financing).</li>
+          <li><strong>Cumbara</strong> — Vue 3, TypeScript, Pinia, Element Plus loyalty administration portal (campaigns, dealers, rewards, points, notifications).</li>
+          <li><strong>Fair Analytics</strong> — Nuxt, Vue 3, TypeScript, Tailwind CSS bilingual marketing platform (products, blog, careers, contact).</li>
+          <li><strong>VYC Türkiye</strong> — Vue 3, TypeScript, Tailwind CSS corporate site rebuild (<a href="https://vycturkiye.com/">vycturkiye.com</a>).</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Experience</h2>
+        <p><strong>Frontend Team Lead</strong> — Intime Info Yazılım Çözümleri A.Ş. (2024 – Present)</p>
+        <p><strong>Frontend Developer</strong> — Intime Info Yazılım Çözümleri A.Ş. (2022 – 2024)</p>
+      </section>
+      <section>
+        <h2>Contact</h2>
+        <p>
+          <a href="mailto:yavuzserifoglu@gmail.com">yavuzserifoglu@gmail.com</a> ·
+          <a href="https://www.linkedin.com/in/serifselim/">LinkedIn</a> ·
+          <a href="https://github.com/serifselim">GitHub</a> ·
+          <a href="https://www.yavuzserifoglu.com/?lang=tr" hreflang="tr">Türkçe</a>
+        </p>
+      </section>
+    </main>
+  </noscript>
   <script type="module" src="/src/main.js"></script>
 
   <!-- ionic icons -->
@@ -64,3 +177,4 @@
 </body>
 
 </html>
+
